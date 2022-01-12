@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { TextInputProps } from "react-native"
+
 import { Container, InputStyled, HeaderInput} from "./styles";
 
 
-interface InputProps{
+interface InputProps extends TextInputProps{
 	headerText: string;
 	style: any;
 }
