@@ -7,14 +7,14 @@ interface ButtonProps {
 	children: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ children }) => {
+const Button: React.FC<ButtonProps> = ({ children, ... rest }) => {
 
 	return (
-		<Container>
+		<Container { ... rest } >
 			<ButtonText>
+				// TODO: Permitir outros componetes  de vez somente string
 				{children}	
 			</ButtonText>
-			
 		</Container>
 	)
 
