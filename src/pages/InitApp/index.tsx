@@ -1,9 +1,7 @@
 import React from "react";
 import { Image, StyleSheet} from "react-native";
 
-import Button from '../../components/Button';
-
-import { Container, LogoContainer, ContentContainer,  Title } from "./styles"
+import { Container, LogoContainer, ContentContainer, Title, Button } from "./styles"
 
 import logoIFbank from "../../assets/logo.png"
 
@@ -20,11 +18,11 @@ const InitApp: React.FC = () => {
 				Cadastre-se para desfrutar de nosso aplicativo
 				</Title>
 
-				<Button style={styles.button} >
+				<Button>
 					Criar cadastro
 				</Button>
 
-				<Button style={styles.button} >
+				<Button>
 					Ja possuo cadastro
 				</Button>	
 			</ContentContainer>
@@ -32,14 +30,5 @@ const InitApp: React.FC = () => {
 		</Container>
 	)
 }
-
-const styles = StyleSheet.create({
-	button: {	
-		backgroundColor: "#32A041",
-		padding: "30px 50px",
-		marginTop: 30,
-		borderRadius: 10,
-	}
-});
 
 export default InitApp;

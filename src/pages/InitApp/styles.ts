@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import GenericButton from '../../components/Button';
+
 export const Container = styled.View`
 	flex: 1;
 
@@ -40,3 +42,10 @@ export const Title = styled.Text`
 	color:  #111111;
 
 `
+
+export const Button = styled(GenericButton)`
+	background-color: #32A041;
+	padding: 30px 50px;
+	margin-top: 50px;
+	border-radius: 10px;
+`;

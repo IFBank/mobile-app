@@ -4,7 +4,6 @@ import { Container, ButtonText } from "./styles";
 
 interface ButtonProps{
 	children: string;
-	style: Object;
 }
 
 const Button: React.FC<ButtonProps> = ({ children, ... rest }) => {
