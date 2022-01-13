@@ -14,4 +14,5 @@ export const InputStyled = styled.TextInput`
 
 export const HeaderInput = styled.Text`
 	font-size: 14px;
+	font-family: "Montserrat-Light";
 `
