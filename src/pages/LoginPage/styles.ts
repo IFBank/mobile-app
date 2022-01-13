@@ -52,12 +52,6 @@ export const Button = styled(GenericButton)`
 	border-radius: 20px;
 `;
 
-export const ButtonText = styled.Text`
-	color: #FFF;
-	font-family: "Montserrat-Bold";
-	font-size: 24px;
-`;
-
 export const Input = styled(GenericInput)`
 	margin: 0 16px
 	margin-top: 32px;

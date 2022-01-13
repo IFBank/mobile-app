@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet} from "react-native";
+import { Image, View, KeyboardAvoidingView, ScrollView, Plataform } from "react-native";
 
 import { 
 	Container, 
@@ -14,32 +14,44 @@ import {
 import logoIFbank from "../../assets/logo.png"
 
 
-const InitApp: React.FC = () => {
+const LoginPage: React.FC = () => {
 
 	return (
-		<Container>
-			<LogoContainer>
-				<Image source={logoIFbank}/>
-			</LogoContainer>
+		<KeyboardAvoidingView 
+			style={{ flex: 1 }}
+			behavior={Platform.OS === "ios" ? "padding" : undefined}
+			enabled
+		>
+			<ScrollView
+				keyboardShouldPersistTaps="handled"
+				contentContainerStyle={{ flex: 1 }}
+			>
+				<Container>
+					<LogoContainer>
+						<Image source={logoIFbank}/>
+					</LogoContainer>
 
-			<ContentContainer>
-				<Title>
-					Login
-				</Title>
+					<ContentContainer>
+						<View>
+							<Title>
+								Login
+							</Title>
+						</View>
 
-				<Input returnKeyType="next" headerText="Digite seu e-mail"/>
-				<Input returnKeyType="done" headerText="Digite sua senha"/>
+						<Input returnKeyType="next" headerText="Digite seu e-mail"/>
+						<Input returnKeyType="done" headerText="Digite sua senha"/>
 
-				<Button>
-					<ButtonText>
-						Iniciar Sessão	
-					</ButtonText>
-				</Button>
+						<Button fontSize={24}>
+							Iniciar Sessão	
+						</Button>
 
-			</ContentContainer>
+					</ContentContainer>
+					
+				</Container>
+			</ScrollView>
+		</KeyboardAvoidingView>
 			
-		</Container>
 	)
 }
 
-export default InitApp;
+export default LoginPage;
