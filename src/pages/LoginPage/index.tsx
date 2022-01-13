@@ -32,7 +32,7 @@ const LoginPage: React.FC = () => {
 					</LogoContainer>
 
 					<ContentContainer>
-						<View>
+						<View style={{ alignItems: "center"}}>
 							<Title>
 								Login
 							</Title>

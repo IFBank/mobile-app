@@ -36,11 +36,16 @@ export const ContentContainer = styled.View`
 export const Title = styled.Text`
 	margin-top: 40px;
 
-	font-family: "Montserrat-SemiBold";
+	font-family: "Montserrat-Bold";
 
 	font-size: 24px;
 	text-align: center;
 	color:  #111111;
+
+	width: 87px;
+
+	border-bottom-width: 2px;
+	border-bottom-color: #000;
 
 `
 
