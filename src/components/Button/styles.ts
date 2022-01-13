@@ -16,8 +16,3 @@ export const Container = styled(RectButton)`
     elevation: 4;
 
 `;
-
-export const ButtonText = styled.Text`
-	color: #FFF;
-	font-family: "MontserratAlternates-Bold";
-`;

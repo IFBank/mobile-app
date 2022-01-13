@@ -49,3 +49,9 @@ export const Button = styled(GenericButton)`
 	margin-top: 50px;
 	border-radius: 10px;
 `;
+
+export const ButtonText = styled.Text`
+	color: #FFF;
+	font-family: "Montserrat-Bold";
+	font-size: 20px;
+`;

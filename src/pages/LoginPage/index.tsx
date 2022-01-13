@@ -1,7 +1,15 @@
 import React from "react";
 import { Image, StyleSheet} from "react-native";
 
-import { Container, LogoContainer, ContentContainer, Title, Input, Button } from "./styles"
+import { 
+	Container, 
+	LogoContainer, 
+	ContentContainer, 
+	Title, 
+	Button, 
+	ButtonText, 
+	Input 
+} from "./styles"
 
 import logoIFbank from "../../assets/logo.png"
 
@@ -23,7 +31,9 @@ const InitApp: React.FC = () => {
 				<Input returnKeyType="done" headerText="Digite sua senha"/>
 
 				<Button>
-					Iniciar Sessão
+					<ButtonText>
+						Iniciar Sessão	
+					</ButtonText>
 				</Button>
 
 			</ContentContainer>

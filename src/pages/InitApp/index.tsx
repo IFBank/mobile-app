@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, StyleSheet} from "react-native";
 
-import { Container, LogoContainer, ContentContainer, Title, Button } from "./styles"
+import { Container, LogoContainer, ContentContainer, Title, Button, ButtonText } from "./styles"
 
 import logoIFbank from "../../assets/logo.png"
 
@@ -19,11 +19,15 @@ const InitApp: React.FC = () => {
 				</Title>
 
 				<Button>
-					Criar cadastro
+					<ButtonText>
+						Criar cadastro	
+					</ButtonText>		
 				</Button>
 
 				<Button>
-					Ja possuo cadastro
+					<ButtonText>
+						Ja possuo cadastro
+					</ButtonText>		
 				</Button>	
 			</ContentContainer>
 			
