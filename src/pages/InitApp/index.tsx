@@ -18,16 +18,12 @@ const InitApp: React.FC = () => {
 				Cadastre-se para desfrutar de nosso aplicativo
 				</Title>
 
-				<Button>
-					<ButtonText>
-						Criar cadastro	
-					</ButtonText>		
-				</Button>
+				<Button fontSize={20}>
+					Criar cadastro	
+				</Button >
 
-				<Button>
-					<ButtonText>
-						Ja possuo cadastro
-					</ButtonText>		
+				<Button fontSize={20}>
+					Ja possuo cadastro	
 				</Button>	
 			</ContentContainer>
 			
