@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View, KeyboardAvoidingView, ScrollView, Plataform } from "react-native";
+import { Image, View, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
 
 import { 
 	Container, 
