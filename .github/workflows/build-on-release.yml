@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_apk:
-    name: Build APK
+    name: Build APK and Publish to Release
     runs-on: ubuntu-latest
     if: github.event.release.draft == false 
     steps:
@@ -27,17 +27,12 @@ jobs:
       - name: Build Android 
         run: cd android && ./gradlew assembleRelease --no-daemon
         
-  add_file_apk_to_release:
-    needs: build_apk
-    runs-on: ubuntu-latest
-    if: github.event.release.draft == false 
-    steps:
-      - uses: actions/checkout@v2
-        
       - name: Update Files On Release
         run: gh release upload $TAG $FILE_PATH
         env:   
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ github.event.release.tag_name }}
           FILE_PATH: "./android/app/build/outputs/apk/release/app-release.apk#Apk"
+      
+      
             
