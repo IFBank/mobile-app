@@ -2,6 +2,7 @@ import React from "react";
 import { View, StatusBar, useColorScheme } from "react-native";
 
 import { NavigationContainer } from '@react-navigation/native';
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { ThemeContext, themes } from './themes';
 
@@ -15,9 +16,12 @@ const App: React.FC  = ( ) => {
 
 			<ThemeContext.Provider value={theme}>
 				<StatusBar barStyle="light-content" backgroundColor={theme.primary} hidden={true} />
-				<View style={{flex:1, backgroundColor: "#312E36"}}>
-					<Routes />
-				</View>
+				<GestureHandlerRootView style={{flex:1}} >
+					<View style={{flex:1, backgroundColor: "#312E36"}}>
+						<Routes />
+					</View>	
+				</GestureHandlerRootView>
+				
 			</ThemeContext.Provider>
 				
 		</NavigationContainer>
