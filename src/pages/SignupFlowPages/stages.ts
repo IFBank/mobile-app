@@ -14,7 +14,8 @@ export const stages = {
 					headerText: "Insira seu RA",
 					name: 'ra',
 					autoCorrect: false,
-					keyboardType: "number-pad"
+					keyboardType: "number-pad",
+					returnKeyType: "done"
 				}
 			]
 		},
@@ -26,13 +27,20 @@ export const stages = {
 			nextPage: "StageThree",
 			inputs: [
 				{
-					headerText: "Insira seu nome completo"
+					headerText: "Insira seu nome completo",
+					name: 'student-name',
+					returnKeyType: "next"
 				},
 				{
-					headerText: "Insira seu CPF"
+					headerText: "Insira seu CPF",
+					name: 'cpf',
+					keyboardType: "number-pad",
+					returnKeyType: "next"
 				},
 				{
-					headerText: "Insira sua data de nascimento"
+					headerText: "Insira sua data de nascimento",
+					name: 'birthdate',
+					returnKeyType: "done"
 				},
 			]
 		},
@@ -44,7 +52,12 @@ export const stages = {
 			nextPage: "StageFour",
 			inputs: [
 				{
-					headerText: "Insira seu e-mail de cadastro"
+					headerText: "Insira seu e-mail de cadastro",
+					name: 'email',
+					keyboardType: "email-address",
+					autoCapitalize: false,
+					autoCorrect: false,
+					returnKeyType: "done"
 				},
 			]
 		},
@@ -57,10 +70,16 @@ export const stages = {
 			nextPage: "StageFive",
 			inputs: [
 				{
-					headerText: "Insira sua senha"
+					headerText: "Insira sua senha",
+					name: 'password',
+					secureTextEntry: true,
+					returnKeyType: "next"
 				},
 				{
-					headerText: "Confirme sua senha"
+					headerText: "Confirme sua senha",
+					name: 'password-confirm',
+					secureTextEntry: true,
+					returnKeyType: "done"
 				},
 			]
 		},
@@ -72,7 +91,10 @@ export const stages = {
 			nextPage: "Home",
 			inputs: [
 				{
-					headerText: "Insira seu nome de exibição (Apelido)"
+					headerText: "Insira seu nome de exibição (Apelido)",
+					name:"nickname",
+					autoCorrect: false,
+					returnKeyType: "done"
 				},
 			]
 		},
