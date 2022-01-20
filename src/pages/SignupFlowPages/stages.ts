@@ -23,7 +23,7 @@ export const stages = {
 			title: "Validação do titular",
 			description: "Verificaremos se você é o detentor do RA informado.",
 			hasBackScreen: true,
-			nextPage: "SatgeThree",
+			nextPage: "StageThree",
 			inputs: [
 				{
 					headerText: "Insira seu nome completo"
