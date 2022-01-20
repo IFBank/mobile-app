@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import ScreenExample from '../pages/ScreenExample';
+import ScreenExampleStack from '../pages/ScreenExample';
 
 import InitAppScreen from '../pages/InitApp';
 import LoginPageScreen from '../pages/LoginPage';
@@ -55,8 +56,8 @@ const AppRoutes: React.FC = () => (
 		<AppStack.Screen name="Dashboard" component={ScreenExample} /> 
 		<AppStack.Screen name="Ajuda" component={ScreenExample} /> 
 
-		<AppStack.Screen name="Deposito" component={ScreenExample} /> {/*Será um StackScreen*/}
-		<AppStack.Screen name="Shop" component={ScreenExample} /> {/*Será um StackScreen*/}
+		<AppStack.Screen name="Deposito" component={ScreenExampleStack} /> 
+		<AppStack.Screen name="Shop" component={ScreenExampleStack} />
 		
 	</AppStack.Navigator>
 );
