@@ -40,7 +40,7 @@ export const Title = styled.Text`
 
 	font-size: 24px;
 	text-align: center;
-	color:  #111111;
+	color: #000000;
 
 	width: 87px;
 
@@ -51,7 +51,7 @@ export const Title = styled.Text`
 
 export const Button = styled(GenericButton)`
 	background-color: #32A041;
-	padding: 12px 64px;
+	padding: 12px 0px;
 	margin: 0 32px;
 	margin-top: 50px;
 	border-radius: 20px;

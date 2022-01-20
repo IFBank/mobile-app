@@ -45,7 +45,7 @@ export const Title = styled.Text`
 
 export const Button = styled(GenericButton)`
 	background-color: #32A041;
-	padding: 30px 20px;
+	padding: 30px 0px;
 	margin-top: 30px;
 	border-radius: 10px;
 `;
