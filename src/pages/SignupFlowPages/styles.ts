@@ -44,6 +44,7 @@ export const SubTitle = styled.Text`
 	color: #000;
 
 	padding-left: 16px;
+	padding-right: 16px;
 	padding-top: 6px;
 `;
 
