@@ -44,12 +44,14 @@ export const SubTitle = styled.Text`
 	color: #000;
 
 	padding-left: 16px;
+	padding-right: 16px;
 	padding-top: 6px;
 `;
 
 export const Input = styled(GenericInput)`
 	margin: 0 16px;
-`;
+	margin-top: ${({index=0}) => index == 0 ? 32 : 36}px;
+`
 
 export const ArrowNavegatorStyled = styled(ArrowNavegator)`
 	position: absolute;
