@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useCallback } from "react";
 import { Image, View, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
 
 import { 
@@ -11,10 +11,19 @@ import {
 	Input 
 } from "./styles"
 
+import { Form } from "@unform/mobile"
+import { FormHandles } from "@unform/core"
+
 import logoIFbank from "../../assets/logo.png"
 
 
 const LoginPage: React.FC = () => {
+	const formRef = useRef<FormHandles>(null)
+
+	const handleLogin = useCallback((data: object) => {
+		// TODO: consulta na API e ações necessarias
+		console.log(data)
+	}, [])
 
 	return (
 		<KeyboardAvoidingView 
@@ -38,12 +47,37 @@ const LoginPage: React.FC = () => {
 							</Title>
 						</View>
 
-						<Input returnKeyType="next" headerText="Digite seu e-mail"/>
-						<Input returnKeyType="done" headerText="Digite sua senha"/>
+						<Form ref={formRef} onSubmit={handleLogin}>
+							
+							<Input 
+								name='email' 
+								headerText="Digite seu e-mail"
+								keyboardType="email-address" 
+								autoCapitalize="none"
+								autoCorrect={false}
+								returnKeyType="next" 
+								
+							/>
+							<Input 
+								name="password" 
+								headerText="Digite sua senha"
+								secureTextEntry={true}
+								returnKeyType="done" 
+							/>
 
-						<Button fontSize={24}>
-							Iniciar Sessão	
-						</Button>
+							<Button 
+								fontSize={24}
+								onPress={
+									() => {
+										formRef.current?.submitForm()
+									}
+								}
+							>
+								Iniciar Sessão	
+							</Button>	
+
+						</Form>
+						
 
 					</ContentContainer>
 					
