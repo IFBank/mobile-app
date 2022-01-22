@@ -84,6 +84,7 @@ const BaseScreen: React.FC = ({children=null}) => {
 					}
 				} 
 				nextPage={
+					// TODO: Customizar nextPage para o handleSubmit do Form
 					() => {
 						navigation.navigate(stage.nextPage)
 					}
