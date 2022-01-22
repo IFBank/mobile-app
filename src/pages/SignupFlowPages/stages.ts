@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 export const stages = {
-	maxStages: 5,
+	maxStages: 4,
 	stagesList: [
 		{
 			stageNumber: 1,
@@ -64,11 +64,17 @@ export const stages = {
 
 		{
 			stageNumber: 4,
-			title: "Criar senha",
-			description: "Crie uma senha para sua conta.",
+			title: "Seu Perfil",
+			description: "Tudo pronto! Agora somente é necessário criar o seu perfil. Coloque o seu apelido e a senha que usará.",
 			hasBackScreen: true,
-			nextPage: "StageFive",
+			nextPage: "Home",
 			inputs: [
+				{
+					headerText: "Insira seu nome de exibição (Apelido)",
+					name:"nickname",
+					autoCorrect: false,
+					returnKeyType: "done"
+				},
 				{
 					headerText: "Insira sua senha",
 					name: 'password',
@@ -82,22 +88,7 @@ export const stages = {
 					returnKeyType: "done"
 				},
 			]
-		},
-		{
-			stageNumber: 5,
-			title: "Criar perfil ",
-			description: "Configure os dados do seu perfil.",
-			hasBackScreen: true,
-			nextPage: "Home",
-			inputs: [
-				{
-					headerText: "Insira seu nome de exibição (Apelido)",
-					name:"nickname",
-					autoCorrect: false,
-					returnKeyType: "done"
-				},
-			]
-		},
+		}
 	]
 }
 
