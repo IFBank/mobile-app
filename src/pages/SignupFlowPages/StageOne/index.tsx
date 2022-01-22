@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useRef} from "react";
 
 import { useNavigation } from '@react-navigation/native';
+
+import { Form } from "@unform/mobile"
+import { FormHandles } from "@unform/core"
 
 import BaseScreen from '../BaseScreen';
 
@@ -12,24 +15,29 @@ const StageOne: React.FC = () => {
 	const stageNumber = 0;
 	const stageOfPage = stages.stagesList[stageNumber];	
 
-	const navigation = useNavigation()
+	const formRef = useRef<FormHandles>(null);
+	const navigation = useNavigation();
+
+	const handleSubmit = useCallback( (data) => {
+		// TODO: salvar RA no asyncStorage
+		console.log(data)
+		navigation.navigate(stageOfPage.nextPage)
+	})
 
 	return (
 		<StageContext.Provider 
 			value={stageOfPage}
 		>
 			<BaseScreen>
-				<>
+				<Form 
+					ref={formRef}
+					onSubmit={handleSubmit}
+				>
 					<Input 
 						{ ... stageOfPage.inputs[0]} 
-						onSubmitEditing={ 
-							() => {
-								// TODO: salvar RA no asyncStorage
-								navigation.navigate(stageOfPage.nextPage)
-							}
-						} 
+						onSubmitEditing={ () => formRef.current?.submitForm() } 
 					/>
-				</>
+				</Form>
 				
 			</BaseScreen>
 		</StageContext.Provider>
