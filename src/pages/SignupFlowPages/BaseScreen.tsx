@@ -19,7 +19,7 @@ const StageHeader: React.FC = ({stage, theme, navigation}) => {
 	return (
 		<StageContainer>
 			<StageText>
-				{`${stage}/${maxStage} etapas concluídas`}
+				{`${stage-1}/${maxStage} etapas concluídas`}
 			</StageText>
 			<StageCancelButton 
 				theme={theme} 
