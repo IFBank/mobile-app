@@ -55,7 +55,7 @@ export const stages = {
 					headerText: "Insira seu e-mail de cadastro",
 					name: 'email',
 					keyboardType: "email-address",
-					autoCapitalize: false,
+					autoCapitalize: 'none',
 					autoCorrect: false,
 					returnKeyType: "done"
 				},
