@@ -50,7 +50,8 @@ export const SubTitle = styled.Text`
 
 export const Input = styled(GenericInput)`
 	margin: 0 16px;
-`;
+	margin-top: ${({index=0}) => index == 0 ? 32 : 36}px;
+`
 
 export const ArrowNavegatorStyled = styled(ArrowNavegator)`
 	position: absolute;

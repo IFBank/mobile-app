@@ -9,7 +9,7 @@ import BaseScreen from '../BaseScreen';
 
 import { stages, StageContext } from '../stages';
 
-import { Input } from './styles'
+import { Input } from '../styles'
 
 const StageOne: React.FC = () => {
 	const stageNumber = 0;
@@ -34,8 +34,9 @@ const StageOne: React.FC = () => {
 					onSubmit={handleSubmit}
 				>
 					<Input 
-						{ ... stageOfPage.inputs[0]} 
+						index={0}
 						onSubmitEditing={ () => formRef.current?.submitForm() } 
+						{ ... stageOfPage.inputs[0]} 
 					/>
 				</Form>
 				

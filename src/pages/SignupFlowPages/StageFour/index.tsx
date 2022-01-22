@@ -7,7 +7,7 @@ import { FormHandles } from "@unform/core"
 
 import { stages, StageContext } from '../stages';
 
-import { Input } from './styles'
+import { Input } from '../styles'
 
 
 const StageFour: React.FC = () => {
@@ -31,7 +31,11 @@ const StageFour: React.FC = () => {
 				>
 					{stageOfPage.inputs.map( 
 						(value, index) => (
-							<Input { ... value} key={value.name}/>
+							<Input 
+								index={index}
+								key={value.name}
+								{ ... value}
+							/>
 						)
 					)}
 				</Form>
