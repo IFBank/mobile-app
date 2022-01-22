@@ -11,7 +11,6 @@ import CadastroStageOneScreen from '../pages/SignupFlowPages/StageOne';
 import CadastroStageTwoScreen from '../pages/SignupFlowPages/StageTwo';
 import CadastroStageThreeScreen from '../pages/SignupFlowPages/StageThree';
 import CadastroStagegFourScreen from '../pages/SignupFlowPages/StageFour';
-import CadastroStageFiveScreen from '../pages/SignupFlowPages/StageFive';
 
 const AppStack = createNativeStackNavigator()
 const CadastroFlowStack = createNativeStackNavigator()
@@ -32,7 +31,6 @@ const CadastroFlowStackScreen = () => {
 			<CadastroFlowStack.Screen name="StageTwo" component={CadastroStageTwoScreen} />
 			<CadastroFlowStack.Screen name="StageThree" component={CadastroStageThreeScreen} />
 			<CadastroFlowStack.Screen name="StageFour" component={CadastroStagegFourScreen} />
-			<CadastroFlowStack.Screen name="StageFive" component={CadastroStageFiveScreen} />
 				
 		</CadastroFlowStack.Navigator>
 	)

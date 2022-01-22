@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { ThemeContext } from '../../themes';
 import { StageContext } from './stages';
 
-import { View, Image } from "react-native";
+import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
 import ArrowNavegator from '../../components/ArrowNavegator';
@@ -43,55 +43,67 @@ const BaseScreen: React.FC = ({children=null}) => {
 	const navigation = useNavigation();
 
 	return (
-		<Container>
-			<GenericHeader>
-				<TextHeader>
-					Cadastramento 
-				</TextHeader>
-				<Image source={logoIFbank} />
-			</GenericHeader>
+		<KeyboardAvoidingView
+			style={{ flex: 1 }}
+			behavior={Platform.OS === "ios" ? "padding" : undefined}
+			enabled
+		>
+			<ScrollView
+				keyboardShouldPersistTaps="handled"
+				contentContainerStyle={{ flex: 1 }}
+			>
+				<Container>
+				<GenericHeader>
+					<TextHeader>
+						Cadastramento 
+					</TextHeader>
+					<Image source={logoIFbank} />
+				</GenericHeader>
 
-			<StageHeader stage={stage.stageNumber} theme={theme} navigation={navigation}/>
+				<StageHeader stage={stage.stageNumber} theme={theme} navigation={navigation}/>
 
-			<Title>
-				{stage.title}
-			</Title>
+				<Title>
+					{stage.title}
+				</Title>
 
-			<SubTitle>
-				{stage.description}
-			</SubTitle>	
+				<SubTitle>
+					{stage.description}
+				</SubTitle>	
 
-			{children}
+				{children}
 
-			{/*{
-				actualStage.inputs.map( (value, key) => {
-						const style = {
-							marginTop: (key == 0 ? 30 : 46)
-						}	
+				{/*{
+					actualStage.inputs.map( (value, key) => {
+							const style = {
+								marginTop: (key == 0 ? 30 : 46)
+							}	
 
-						return (
-							<Input { ... value } key={key} style={style}/>
-						)
+							return (
+								<Input { ... value } key={key} style={style}/>
+							)
+						}
+					)
+				}*/}
+		
+				<ArrowNavegatorStyled 
+					hasBackScreen={stage.hasBackScreen} 
+					backPage={
+						() => {
+							navigation.goBack()
+						}
+					} 
+					nextPage={
+						// TODO: Customizar nextPage para o handleSubmit do Form
+						() => {
+							navigation.navigate(stage.nextPage)
+						}
 					}
-				)
-			}*/}
-	
-			<ArrowNavegatorStyled 
-				hasBackScreen={stage.hasBackScreen} 
-				backPage={
-					() => {
-						navigation.goBack()
-					}
-				} 
-				nextPage={
-					// TODO: Customizar nextPage para o handleSubmit do Form
-					() => {
-						navigation.navigate(stage.nextPage)
-					}
-				}
-			/>
+				/>
 
-		</Container>
+			</Container>
+			</ScrollView>
+		</KeyboardAvoidingView>
+			
 	)
 }
 
