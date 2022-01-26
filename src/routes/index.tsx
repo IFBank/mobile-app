@@ -6,6 +6,8 @@ import ScreenExampleStack from '../pages/ScreenExample';
 
 import InitAppScreen from '../pages/InitApp';
 import LoginPageScreen from '../pages/LoginPage';
+import HomePageScreen from '../pages/HomePage';
+import ProfilePageScreen from '../pages/ProfilePage';
 
 import CadastroStageOneScreen from '../pages/SignupFlowPages/StageOne';
 import CadastroStageTwoScreen from '../pages/SignupFlowPages/StageTwo';
@@ -42,15 +44,15 @@ const AppRoutes: React.FC = () => (
       		headerShown: false,
       		cardStyle: { backgroundColor: '#312E36' },
     	}}
-		initialRouteName={logado == true ? "Home" : "InitApp"}
+		initialRouteName={logado == true ? "Home" : "Home"}
 
 	>
 		<AppStack.Screen name="InitApp" component={InitAppScreen} />
 		<AppStack.Screen name="Login" component={LoginPageScreen} />
 		<AppStack.Screen name="CadastroFlow" component={CadastroFlowStackScreen} />
 
-		<AppStack.Screen name="Home" component={ScreenExample} />
-		<AppStack.Screen name="Perfil" component={ScreenExample} /> 
+		<AppStack.Screen name="Home" component={HomePageScreen} />
+		<AppStack.Screen name="Perfil" component={ProfilePageScreen} /> 
 		<AppStack.Screen name="Dashboard" component={ScreenExample} /> 
 		<AppStack.Screen name="Ajuda" component={ScreenExample} /> 
 
