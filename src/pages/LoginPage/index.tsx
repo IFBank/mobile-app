@@ -33,7 +33,7 @@ const LoginPage: React.FC = () => {
 		>
 			<ScrollView
 				keyboardShouldPersistTaps="handled"
-				contentContainerStyle={{ flex: 1 }}
+				contentContainerStyle={{ flexGrow: 1 }}
 			>
 				<Container>
 					<LogoContainer>
