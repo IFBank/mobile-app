@@ -50,7 +50,7 @@ const BaseScreen: React.FC = ({children=null}) => {
 		>
 			<ScrollView
 				keyboardShouldPersistTaps="handled"
-				contentContainerStyle={{ flex: 1 }}
+				contentContainerStyle={{ flexGrow: 1 }}
 			>
 				<Container>
 				<GenericHeader>
