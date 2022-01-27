@@ -28,21 +28,21 @@ export const TextPerfilName = styled(TextPerfilNormal)`
 
 export const ContentSection = styled.View`
 	margin: 0px 16px
-	margin-top: 36px;
+	margin-top: 26px;
 `;
 
 export const SectionTitle = styled.Text`
 	font-family: "Montserrat-Bold";
-	font-size: 24px;
+	font-size: 20px;
 	color: #000;
 `;
 
 export const SectionParagraph = styled.Text`
 	font-family: "Montserrat-Regular";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000;
 
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 `;
 
 
