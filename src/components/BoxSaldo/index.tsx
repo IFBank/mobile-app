@@ -2,7 +2,11 @@ import React, { useContext } from "react";
 
 import { ThemeContext } from '../../themes.ts'
 
-import { Container, SaldoContainer, SaldoText, SaldoTextValue, StyledButton} from "./styles"
+import BoxContainer from '../BoxContainer';
+
+import { SaldoContainer, SaldoText, SaldoTextValue, StyledButton} from "./styles"
+
+import DashedLine from 'react-native-dashed-line';
 
 interface BoxSaldoProps {
 
@@ -14,11 +18,14 @@ const BoxSaldo: React.FC<BoxSaldoProps> = ({}) => {
 	const value = 12;
 
 	return (
-		<Container>
+		<BoxContainer>
 			<SaldoContainer>
 				<SaldoText>
 					Saldo Atual
 				</SaldoText>
+			
+				<DashedLine style={{ flexShrink: 1, marginTop:16, width: "100%"}}/>
+				
 				<SaldoTextValue isLEQZero={value <= 0 }>
 					{`R$ ${value}`}
 				</SaldoTextValue>
@@ -27,7 +34,7 @@ const BoxSaldo: React.FC<BoxSaldoProps> = ({}) => {
 			<StyledButton fontSize={12} theme={theme}>
 				Fazer um deposito
 			</StyledButton>
-		</Container>
+		</BoxContainer>
 	)
 }
 
