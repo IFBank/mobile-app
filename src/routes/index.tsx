@@ -44,7 +44,7 @@ const AppRoutes: React.FC = () => (
       		headerShown: false,
       		cardStyle: { backgroundColor: '#312E36' },
     	}}
-		initialRouteName={logado == true ? "Home" : "Home"}
+		initialRouteName={logado == true ? "Home" : "InitApp"}
 
 	>
 		<AppStack.Screen name="InitApp" component={InitAppScreen} />
