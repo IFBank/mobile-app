@@ -29,10 +29,12 @@ const HomeTabs = () => {
 	return(
 		<HomeTab.Navigator 
 			screenOptions={{
-				header: BaseHeader
+				header: BaseHeader,
+				tabBarInactiveTintColor:"#0000004c",
+				tabBarActiveTintColor: "#32A041"
 			}}
+			backBehavior="initialRoute"
 			initialRouteName="Home"
-			backBehaviour="initialRoute"
 		>
 			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
 			<HomeTab.Screen name="Shop" component={ScreenExampleStack} />
