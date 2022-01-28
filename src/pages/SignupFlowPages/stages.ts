@@ -67,7 +67,7 @@ export const stages = {
 			title: "Seu Perfil",
 			description: "Tudo pronto! Agora somente é necessário criar o seu perfil. Coloque o seu apelido e a senha que usará.",
 			hasBackScreen: true,
-			nextPage: "Home",
+			nextPage: "HomeApp",
 			inputs: [
 				{
 					headerText: "Insira seu nome de exibição (Apelido)",
