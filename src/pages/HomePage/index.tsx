@@ -2,56 +2,32 @@ import React from "react";
 
 import { ScrollView, Image, View } from "react-native";
 
-import GenericHeader from '../../components/Header';
 import BoxSaldo from '../../components/BoxSaldo';
+import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
-import { Container, PerfilContainer, TextPerfilNormal, TextPerfilName, ContentSection, SectionTitle, SectionParagraph } from "./styles"
-
-import fotoPerfil from "../../assets/miniFotoPerfil.png"
-import logoIFBank from "../../assets/miniLogo2.png"
+import { Container, ContentSection, SectionTitle, SectionParagraph } from "./styles"
 
 const HomePage: React.FC = () => {
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1 }} >
 			<Container style={{flex: 1}}>
-				
-
-					<GenericHeader>
-						<PerfilContainer>
-							<Image source={fotoPerfil}/>
-							<View>
-								<TextPerfilNormal>
-									Ola,  
-									<TextPerfilName>
-									 {" Exodo Jaffar!"}
-									</TextPerfilName>
-								</TextPerfilNormal>
-								
-							</View>
-						</PerfilContainer>
-						
-						<Image source={logoIFBank} style={{marginRight: -18}}/>
-
-					</GenericHeader>
 
 					<ContentSection>
 						<SectionTitle>Conta</SectionTitle>
 						<SectionParagraph>Para mais informações vá à aba dashboard.</SectionParagraph>
 
-						<BoxSaldo>
-							
-						</BoxSaldo>
-
+						<BoxSaldo />
 					</ContentSection>
 
 					<ContentSection>
 						<SectionTitle>Combos Salvos</SectionTitle>
 						<SectionParagraph>Encontre seus pedidos salvos e facilite seu processo de compra. </SectionParagraph>
 
-						<BoxSaldo>
-							
-						</BoxSaldo>
-
+						<BoxHomeEmpty 
+							imageSource={'sourceimage'} 
+							mainText="Sem combos registrados!" 
+							subTitleText="Você pode registrá-los na finalização de seus pedidos!"
+						/>
 					</ContentSection>
 
 					<ContentSection>
@@ -60,10 +36,7 @@ const HomePage: React.FC = () => {
 							Fique atento aos pedidos feitos, você terá um limite de tempo para recebê-los!
 						</SectionParagraph>
 
-						<BoxSaldo>
-							
-						</BoxSaldo>
-
+						<BoxSaldo />
 					</ContentSection>
 
 

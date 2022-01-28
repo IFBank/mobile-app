@@ -20,8 +20,22 @@ export const Container = styled.View`
 	border-bottom-left-radius: 20px;
 `
 
-export const TextHeader = styled.Text`
-    font-family: "Montserrat-Bold";
-    font-size: 20px;
+export const PerfilContainer = styled.View`
+    flex-direction: row;
+    align-items: center;
+
+    padding: 20px 0px;
+
+`;
+
+export const TextPerfilNormal = styled.Text`
+    margin-left: 15px;
     color: #FFF;
+    font-size: 18px;
+    font-family: "Montserrat-Regular";
+
+`;
+
+export const TextPerfilName = styled(TextPerfilNormal)`
+    font-family: "Montserrat-Bold";
 `;

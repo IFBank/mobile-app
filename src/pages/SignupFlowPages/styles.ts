@@ -6,6 +6,7 @@ import ArrowNavegator from '../../components/ArrowNavegator';
 
 export const Container = styled.View`
 	flex: 1;
+	padding-bottom: 25px;
 `
 
 export const TextHeader = styled.Text`
@@ -31,7 +32,7 @@ export const StageCancelButton = styled(GenericButton)`
 
 export const Title = styled.Text`
 	font-family: "Montserrat-Bold";
-	font-size: 24px;
+	font-size: 20px;
 	color: #000;
 
 	padding-left: 18px;
@@ -40,7 +41,7 @@ export const Title = styled.Text`
 
 export const SubTitle = styled.Text`
 	font-family: "Montserrat-Regular";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000;
 
 	padding-left: 16px;
@@ -54,6 +55,7 @@ export const Input = styled(GenericInput)`
 `
 
 export const ArrowNavegatorStyled = styled(ArrowNavegator)`
-	position: absolute;
+	position: relative;
 	bottom: 19px;
+	margin-top: 19px;
 `;

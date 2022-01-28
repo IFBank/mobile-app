@@ -3,27 +3,7 @@ import styled from "styled-components/native"
 export const Container = styled.View`
 	flex: 1;
 
-	padding-bottom: 5px;
-`;
-
-export const PerfilContainer = styled.View`
-	flex-direction: row;
-	align-items: center;
-
-	padding: 20px 0px;
-
-`;
-
-export const TextPerfilNormal = styled.Text`
-	margin-left: 15px;
-	color: #FFF;
-	font-size: 18px;
-	font-family: "Montserrat-Regular";
-
-`;
-
-export const TextPerfilName = styled(TextPerfilNormal)`
-	font-family: "Montserrat-Bold";
+	padding-bottom: 25px;
 `;
 
 export const ContentSection = styled.View`

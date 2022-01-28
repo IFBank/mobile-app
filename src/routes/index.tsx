@@ -1,5 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import ScreenExample from '../pages/ScreenExample';
 import ScreenExampleStack from '../pages/ScreenExample';
@@ -14,19 +15,52 @@ import CadastroStageTwoScreen from '../pages/SignupFlowPages/StageTwo';
 import CadastroStageThreeScreen from '../pages/SignupFlowPages/StageThree';
 import CadastroStagegFourScreen from '../pages/SignupFlowPages/StageFour';
 
+// Headers
+import HomeHeader from "../components/HomeHeader"
+import BaseHeader from "../components/Header"
+
 const AppStack = createNativeStackNavigator()
 const CadastroFlowStack = createNativeStackNavigator()
+const HomeTab = createBottomTabNavigator();
 
 const logado = false
+
+const HomeTabs = () => {
+	return(
+		<HomeTab.Navigator 
+			screenOptions={{
+				header: BaseHeader,
+				tabBarInactiveTintColor:"#0000004c",
+				tabBarActiveTintColor: "#32A041"
+			}}
+			backBehavior="initialRoute"
+			initialRouteName="Home"
+		>
+			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
+			<HomeTab.Screen name="Shop" component={ScreenExampleStack} />
+
+			<HomeTab.Screen 
+				name="Home" 
+				component={HomePageScreen} 
+				options={{
+					header: HomeHeader
+				}}
+			/>
+			<HomeTab.Screen name="Dashboard" component={ScreenExample} /> 
+			<HomeTab.Screen name="Perfil" component={ProfilePageScreen} /> 
+
+		</HomeTab.Navigator>
+	)
+}
 
 const CadastroFlowStackScreen = () => {
 	return (
 		<CadastroFlowStack.Navigator
 			screenOptions={{
-      			headerShown: false,
+      			header: BaseHeader,
       			cardStyle: { backgroundColor: '#312E36' },
+      			title: "Cadastramento"
     		}}
-
     		initialRouteName="StageOne"
 		>
 			<CadastroFlowStack.Screen name="StageOne" component={CadastroStageOneScreen} />
@@ -44,20 +78,16 @@ const AppRoutes: React.FC = () => (
       		headerShown: false,
       		cardStyle: { backgroundColor: '#312E36' },
     	}}
-		initialRouteName={logado == true ? "Home" : "InitApp"}
+		initialRouteName={logado == true ? "HomeApp" : "InitApp"}
 
 	>
 		<AppStack.Screen name="InitApp" component={InitAppScreen} />
 		<AppStack.Screen name="Login" component={LoginPageScreen} />
 		<AppStack.Screen name="CadastroFlow" component={CadastroFlowStackScreen} />
 
-		<AppStack.Screen name="Home" component={HomePageScreen} />
-		<AppStack.Screen name="Perfil" component={ProfilePageScreen} /> 
-		<AppStack.Screen name="Dashboard" component={ScreenExample} /> 
-		<AppStack.Screen name="Ajuda" component={ScreenExample} /> 
+		<AppStack.Screen name="HomeApp" component={HomeTabs} />
 
 		<AppStack.Screen name="Deposito" component={ScreenExampleStack} /> 
-		<AppStack.Screen name="Shop" component={ScreenExampleStack} />
 		
 	</AppStack.Navigator>
 );

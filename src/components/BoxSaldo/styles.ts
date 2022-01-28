@@ -16,8 +16,6 @@ export const SaldoText = styled.Text`
 
     font-family: "Montserrat-Regular";
     font-size: 16px;
-    background-color: #f2f2f2;
-    z-index: 1;
 `;
 
 export const SaldoTextValue = styled.Text`
