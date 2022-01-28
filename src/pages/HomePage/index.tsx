@@ -15,20 +15,14 @@ const HomePage: React.FC = () => {
 						<SectionTitle>Conta</SectionTitle>
 						<SectionParagraph>Para mais informações vá à aba dashboard.</SectionParagraph>
 
-						<BoxSaldo>
-							
-						</BoxSaldo>
-
+						<BoxSaldo />
 					</ContentSection>
 
 					<ContentSection>
 						<SectionTitle>Combos Salvos</SectionTitle>
 						<SectionParagraph>Encontre seus pedidos salvos e facilite seu processo de compra. </SectionParagraph>
 
-						<BoxSaldo>
-							
-						</BoxSaldo>
-
+						<BoxSaldo />
 					</ContentSection>
 
 					<ContentSection>
@@ -37,10 +31,7 @@ const HomePage: React.FC = () => {
 							Fique atento aos pedidos feitos, você terá um limite de tempo para recebê-los!
 						</SectionParagraph>
 
-						<BoxSaldo>
-							
-						</BoxSaldo>
-
+						<BoxSaldo />
 					</ContentSection>
 
 
