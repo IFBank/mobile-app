@@ -6,6 +6,7 @@ import ArrowNavegator from '../../components/ArrowNavegator';
 
 export const Container = styled.View`
 	flex: 1;
+	padding-bottom: 25px;
 `
 
 export const TextHeader = styled.Text`

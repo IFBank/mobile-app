@@ -6,6 +6,8 @@ import Icon from "react-native-vector-icons/MaterialIcons"
 
 export const Container = styled.View`
 	flex: 1;
+	padding-bottom: 25px;
+	
 `;
 
 export const ImageContainer = styled.View`
