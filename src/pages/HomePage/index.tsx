@@ -2,37 +2,14 @@ import React from "react";
 
 import { ScrollView, Image, View } from "react-native";
 
-import GenericHeader from '../../components/Header';
 import BoxSaldo from '../../components/BoxSaldo';
 
-import { Container, PerfilContainer, TextPerfilNormal, TextPerfilName, ContentSection, SectionTitle, SectionParagraph } from "./styles"
-
-import fotoPerfil from "../../assets/miniFotoPerfil.png"
-import logoIFBank from "../../assets/miniLogo2.png"
+import { Container, ContentSection, SectionTitle, SectionParagraph } from "./styles"
 
 const HomePage: React.FC = () => {
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1 }} >
 			<Container style={{flex: 1}}>
-				
-
-					<GenericHeader>
-						<PerfilContainer>
-							<Image source={fotoPerfil}/>
-							<View>
-								<TextPerfilNormal>
-									Ola,  
-									<TextPerfilName>
-									 {" Exodo Jaffar!"}
-									</TextPerfilName>
-								</TextPerfilNormal>
-								
-							</View>
-						</PerfilContainer>
-						
-						<Image source={logoIFBank} style={{marginRight: -18}}/>
-
-					</GenericHeader>
 
 					<ContentSection>
 						<SectionTitle>Conta</SectionTitle>

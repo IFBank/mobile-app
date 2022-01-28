@@ -6,26 +6,6 @@ export const Container = styled.View`
 	padding-bottom: 5px;
 `;
 
-export const PerfilContainer = styled.View`
-	flex-direction: row;
-	align-items: center;
-
-	padding: 20px 0px;
-
-`;
-
-export const TextPerfilNormal = styled.Text`
-	margin-left: 15px;
-	color: #FFF;
-	font-size: 18px;
-	font-family: "Montserrat-Regular";
-
-`;
-
-export const TextPerfilName = styled(TextPerfilNormal)`
-	font-family: "Montserrat-Bold";
-`;
-
 export const ContentSection = styled.View`
 	margin: 0px 16px
 	margin-top: 26px;

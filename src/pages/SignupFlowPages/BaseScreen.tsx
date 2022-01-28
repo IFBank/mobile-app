@@ -6,9 +6,8 @@ import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
 import ArrowNavegator from '../../components/ArrowNavegator';
-import GenericHeader from '../../components/Header';
 
-import { Container, TextHeader, StageContainer, StageText, StageCancelButton , Title, SubTitle, Input, ArrowNavegatorStyled} from "./styles";
+import { Container,StageContainer, StageText, StageCancelButton , Title, SubTitle, Input, ArrowNavegatorStyled} from "./styles";
 
 import logoIFbank from "../../assets/minilogo.png"
 import {stages} from './stages'
@@ -53,12 +52,6 @@ const BaseScreen: React.FC = ({children=null}) => {
 				contentContainerStyle={{ flexGrow: 1 }}
 			>
 				<Container>
-				<GenericHeader>
-					<TextHeader>
-						Cadastramento 
-					</TextHeader>
-					<Image source={logoIFbank} />
-				</GenericHeader>
 
 				<StageHeader stage={stage.stageNumber} theme={theme} navigation={navigation}/>
 

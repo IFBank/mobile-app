@@ -1,20 +1,25 @@
 import React, { useContext } from 'react';
 
-import { Container } from "./styles";
+import { Image } from "react-native";
+import { Container, TextHeader } from "./styles";
 
 import { ThemeContext } from '../../themes.ts'
+
+import logoIFbank from "../../assets/minilogo.png"
 
 interface HeaderProps {
 	children: any
 }
 
-const Header: React.FC<HeaderProps> = ({ children, ... rest }) => {
-
+const Header: React.FC<HeaderProps> = ({ options, route, ... rest }) => {
 	const theme = useContext(ThemeContext);
 
 	return (
 		<Container theme={theme} { ... rest}>
-			{children}
+			<TextHeader>
+				{options?.title || route?.name} 
+			</TextHeader>
+			<Image source={logoIFbank} />
 		</Container>
 	)
 

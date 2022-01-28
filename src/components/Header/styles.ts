@@ -19,3 +19,9 @@ export const Container = styled.View`
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
 `
+
+export const TextHeader = styled.Text`
+    font-family: "Montserrat-Bold";
+    font-size: 20px;
+    color: #FFF;
+`;

@@ -2,14 +2,12 @@ import React, { useContext, useCallback, useRef } from "react";
 import { ThemeContext } from '../../themes'
 
 import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
-import GenericHeader from '../../components/Header';
 
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
 
-import { Container, TextHeader, ImageContainer, Input, ButtonContainer, IconStyled, Button } from "./styles"
+import { Container, ImageContainer, Input, ButtonContainer, IconStyled, Button } from "./styles"
 
-import logoIFbank from "../../assets/minilogo.png"
 import fotoPerfilExample from "../../assets/fotoPerfil.png"
 
 const ProfilePage = () => {
@@ -26,12 +24,6 @@ const ProfilePage = () => {
 				keyboardShouldPersistTaps="handled"
 			>
 				<Container>
-					<GenericHeader>
-						<TextHeader>
-							Perfil 
-						</TextHeader>
-						<Image source={logoIFbank} />
-					</GenericHeader>
 
 					<ImageContainer>
 						<View>

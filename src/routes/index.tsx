@@ -15,6 +15,10 @@ import CadastroStageTwoScreen from '../pages/SignupFlowPages/StageTwo';
 import CadastroStageThreeScreen from '../pages/SignupFlowPages/StageThree';
 import CadastroStagegFourScreen from '../pages/SignupFlowPages/StageFour';
 
+// Headers
+import HomeHeader from "../components/HomeHeader"
+import BaseHeader from "../components/Header"
+
 const AppStack = createNativeStackNavigator()
 const CadastroFlowStack = createNativeStackNavigator()
 const HomeTab = createBottomTabNavigator();
@@ -48,8 +52,9 @@ const CadastroFlowStackScreen = () => {
 	return (
 		<CadastroFlowStack.Navigator
 			screenOptions={{
-      			headerShown: false,
+      			header: BaseHeader,
       			cardStyle: { backgroundColor: '#312E36' },
+      			title: "Cadastramento"
     		}}
 
     		initialRouteName="StageOne"

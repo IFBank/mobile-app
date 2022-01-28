@@ -8,12 +8,6 @@ export const Container = styled.View`
 	flex: 1;
 `;
 
-export const TextHeader = styled.Text`
-	font-family: "Montserrat-Bold";
-	font-size: 20px;
-	color: #FFF;
-`;
-
 export const ImageContainer = styled.View`
 	width: 100%;
 	align-items: center;
