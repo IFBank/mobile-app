@@ -3,6 +3,7 @@ import React from "react";
 import { ScrollView, Image, View } from "react-native";
 
 import BoxSaldo from '../../components/BoxSaldo';
+import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
 import { Container, ContentSection, SectionTitle, SectionParagraph } from "./styles"
 
@@ -22,7 +23,11 @@ const HomePage: React.FC = () => {
 						<SectionTitle>Combos Salvos</SectionTitle>
 						<SectionParagraph>Encontre seus pedidos salvos e facilite seu processo de compra. </SectionParagraph>
 
-						<BoxSaldo />
+						<BoxHomeEmpty 
+							imageSource={'sourceimage'} 
+							mainText="Sem combos registrados!" 
+							subTitleText="Você pode registrá-los na finalização de seus pedidos!"
+						/>
 					</ContentSection>
 
 					<ContentSection>
