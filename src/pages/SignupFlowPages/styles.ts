@@ -32,7 +32,7 @@ export const StageCancelButton = styled(GenericButton)`
 
 export const Title = styled.Text`
 	font-family: "Montserrat-Bold";
-	font-size: 24px;
+	font-size: 20px;
 	color: #000;
 
 	padding-left: 18px;
@@ -41,7 +41,7 @@ export const Title = styled.Text`
 
 export const SubTitle = styled.Text`
 	font-family: "Montserrat-Regular";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000;
 
 	padding-left: 16px;
