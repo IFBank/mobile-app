@@ -32,9 +32,11 @@ const HomeTabs = () => {
 				header: BaseHeader
 			}}
 			initialRouteName="Home"
+			backBehaviour="initialRoute"
 		>
 			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
-			<HomeTab.Screen name="Perfil" component={ProfilePageScreen} /> 
+			<HomeTab.Screen name="Shop" component={ScreenExampleStack} />
+
 			<HomeTab.Screen 
 				name="Home" 
 				component={HomePageScreen} 
@@ -43,7 +45,8 @@ const HomeTabs = () => {
 				}}
 			/>
 			<HomeTab.Screen name="Dashboard" component={ScreenExample} /> 
-			<HomeTab.Screen name="Shop" component={ScreenExampleStack} />
+			<HomeTab.Screen name="Perfil" component={ProfilePageScreen} /> 
+
 		</HomeTab.Navigator>
 	)
 }
@@ -56,7 +59,6 @@ const CadastroFlowStackScreen = () => {
       			cardStyle: { backgroundColor: '#312E36' },
       			title: "Cadastramento"
     		}}
-
     		initialRouteName="StageOne"
 		>
 			<CadastroFlowStack.Screen name="StageOne" component={CadastroStageOneScreen} />
