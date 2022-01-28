@@ -78,7 +78,10 @@ const BaseScreen: React.FC = ({children=null}) => {
 					)
 				}*/}
 		
-				<ArrowNavegatorStyled 
+				
+
+			</Container>
+			<ArrowNavegatorStyled 
 					hasBackScreen={stage.hasBackScreen} 
 					backPage={
 						() => {
@@ -92,8 +95,6 @@ const BaseScreen: React.FC = ({children=null}) => {
 						}
 					}
 				/>
-
-			</Container>
 			</ScrollView>
 		</KeyboardAvoidingView>
 			

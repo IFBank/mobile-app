@@ -55,6 +55,7 @@ export const Input = styled(GenericInput)`
 `
 
 export const ArrowNavegatorStyled = styled(ArrowNavegator)`
-	position: absolute;
+	position: relative;
 	bottom: 19px;
+	margin-top: 19px;
 `;
