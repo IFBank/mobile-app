@@ -15,7 +15,7 @@ import ProfilePageScreen from '../pages/ProfilePage';
 import CadastroStageOneScreen from '../pages/SignupFlowPages/StageOne';
 import CadastroStageTwoScreen from '../pages/SignupFlowPages/StageTwo';
 import CadastroStageThreeScreen from '../pages/SignupFlowPages/StageThree';
-import CadastroStagegFourScreen from '../pages/SignupFlowPages/StageFour';
+import CadastroStageFourScreen from '../pages/SignupFlowPages/StageFour';
 
 // Headers
 import HomeHeader from "../components/HomeHeader"
@@ -23,6 +23,7 @@ import BaseHeader from "../components/Header"
 
 const AppStack = createNativeStackNavigator()
 const CadastroFlowStack = createNativeStackNavigator()
+const DepositoFlowStack = createNativeStackNavigator()
 const HomeTab = createBottomTabNavigator();
 
 const logado = false
@@ -66,6 +67,44 @@ const homeTabNavegatorOptions = ({route}) => {
 	}
 }
 
+const CadastroFlowStackScreen = () => {
+	return (
+		<CadastroFlowStack.Navigator
+			screenOptions={{
+      			header: BaseHeader,
+      			cardStyle: { backgroundColor: '#312E36' },
+      			title: "Cadastramento"
+    		}}
+    		initialRouteName="StageOne"
+		>
+			<CadastroFlowStack.Screen name="StageOne" component={CadastroStageOneScreen} />
+			<CadastroFlowStack.Screen name="StageTwo" component={CadastroStageTwoScreen} />
+			<CadastroFlowStack.Screen name="StageThree" component={CadastroStageThreeScreen} />
+			<CadastroFlowStack.Screen name="StageFour" component={CadastroStageFourScreen} />
+				
+		</CadastroFlowStack.Navigator>
+	)
+}
+
+const DepositoFlowStackScreen = () => {
+	return (
+		<DepositoFlowStack.Navigator
+			screenOptions={{
+      			header: BaseHeader,
+      			cardStyle: { backgroundColor: '#312E36' },
+      			title: "Deposito"
+    		}}
+    		initialRouteName="SetValue"
+		>
+			<DepositoFlowStack.Screen name="SetValue" component={ScreenExample} />
+			<DepositoFlowStack.Screen name="SelectPaymentType" component={ScreenExample} />
+			<DepositoFlowStack.Screen name="Pix" component={ScreenExample} />
+				
+		</DepositoFlowStack.Navigator>
+	)
+}
+
+
 const HomeTabs = () => {
 	return(
 		<HomeTab.Navigator 
@@ -90,24 +129,6 @@ const HomeTabs = () => {
 	)
 }
 
-const CadastroFlowStackScreen = () => {
-	return (
-		<CadastroFlowStack.Navigator
-			screenOptions={{
-      			header: BaseHeader,
-      			cardStyle: { backgroundColor: '#312E36' },
-      			title: "Cadastramento"
-    		}}
-    		initialRouteName="StageOne"
-		>
-			<CadastroFlowStack.Screen name="StageOne" component={CadastroStageOneScreen} />
-			<CadastroFlowStack.Screen name="StageTwo" component={CadastroStageTwoScreen} />
-			<CadastroFlowStack.Screen name="StageThree" component={CadastroStageThreeScreen} />
-			<CadastroFlowStack.Screen name="StageFour" component={CadastroStagegFourScreen} />
-				
-		</CadastroFlowStack.Navigator>
-	)
-}
 
 const AppRoutes: React.FC = () => (
 	<AppStack.Navigator
@@ -124,7 +145,7 @@ const AppRoutes: React.FC = () => (
 
 		<AppStack.Screen name="HomeApp" component={HomeTabs} />
 
-		<AppStack.Screen name="Deposito" component={ScreenExampleStack} /> 
+		<AppStack.Screen name="Deposito" component={DepositoFlowStackScreen} /> 
 		
 	</AppStack.Navigator>
 );
