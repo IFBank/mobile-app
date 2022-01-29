@@ -7,7 +7,7 @@ import HomeHeader from '../../components/HomeHeader';
 import BoxSaldo from '../../components/BoxSaldo';
 import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
-import { Container, ContentSection, SectionTitle, SectionParagraph } from "./styles"
+import { Container, ContentSection, TitleHeaderStyled } from "./styles"
 
 import imageEmptyCombos from "../../assets/imageEmptyCombos.png"
 import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
@@ -19,15 +19,16 @@ const HomePage: React.FC = () => {
 				<HomeHeader />
 
 				<ContentSection>
-					<SectionTitle>Conta</SectionTitle>
-					<SectionParagraph>Para mais informações vá à aba dashboard.</SectionParagraph>
+					<TitleHeaderStyled mainTitle="Conta" subTitle="Para mais informações vá à aba dashboard."/>
 
 					<BoxSaldo />
 				</ContentSection>
 
 				<ContentSection>
-					<SectionTitle>Combos Salvos</SectionTitle>
-					<SectionParagraph>Encontre seus pedidos salvos e facilite seu processo de compra. </SectionParagraph>
+					<TitleHeaderStyled 
+						mainTitle="Combos Salvos" 
+						subTitle="Encontre seus pedidos salvos e facilite seu processo de compra."
+					/>
 
 					<BoxHomeEmpty 
 						imageSource={imageEmptyCombos} 
@@ -38,10 +39,10 @@ const HomePage: React.FC = () => {
 				</ContentSection>
 
 				<ContentSection>
-					<SectionTitle>Pedidos pendentes</SectionTitle>
-					<SectionParagraph>
-						Fique atento aos pedidos feitos, você terá um limite de tempo para recebê-los!
-					</SectionParagraph>
+					<TitleHeaderStyled 
+						mainTitle="Pedidos pendentes" 
+						subTitle="Fique atento aos pedidos feitos, você terá um limite de tempo para recebê-los!"
+					/>
 
 					<BoxHomeEmpty 
 						imageSource={imageEmptyPedidos} 

@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import ArrowNavegator from '../../components/ArrowNavegator';
 
-import { Container,StageContainer, StageText, StageCancelButton , Title, SubTitle, Input, ArrowNavegatorStyled} from "./styles";
+import { Container,StageContainer, StageText, StageCancelButton , TitleHeaderStyled, Input, ArrowNavegatorStyled} from "./styles";
 
 import logoIFbank from "../../assets/minilogo.png"
 import {stages} from './stages'
@@ -55,13 +55,7 @@ const BaseScreen: React.FC = ({children=null}) => {
 
 				<StageHeader stage={stage.stageNumber} theme={theme} navigation={navigation}/>
 
-				<Title>
-					{stage.title}
-				</Title>
-
-				<SubTitle>
-					{stage.description}
-				</SubTitle>	
+				<TitleHeaderStyled mainTitle={stage.title} subTitle={stage.description}/>
 
 				{children}
 

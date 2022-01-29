@@ -1,5 +1,7 @@
 import styled from "styled-components/native"
 
+import TitleHeader from '../../components/TitleHeader';
+
 export const Container = styled.View`
 	flex: 1;
 
@@ -11,18 +13,6 @@ export const ContentSection = styled.View`
 	margin-top: 26px;
 `;
 
-export const SectionTitle = styled.Text`
-	font-family: "Montserrat-Bold";
-	font-size: 20px;
-	color: #000;
-`;
-
-export const SectionParagraph = styled.Text`
-	font-family: "Montserrat-Regular";
-	font-size: 12px;
-	color: #000;
-
+export const TitleHeaderStyled = styled(TitleHeader)`
 	margin-bottom: 12px;
 `;
-
-
