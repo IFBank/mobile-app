@@ -43,7 +43,7 @@ const HomeTabs = () => {
 				name="Home" 
 				component={HomePageScreen} 
 				options={{
-					header: HomeHeader
+					headerShown: false
 				}}
 			/>
 			<HomeTab.Screen name="Dashboard" component={ScreenExample} /> 
