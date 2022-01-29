@@ -9,6 +9,9 @@ import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
 import { Container, ContentSection, SectionTitle, SectionParagraph } from "./styles"
 
+import imageEmptyCombos from "../../assets/imageEmptyCombos.png"
+import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
+
 const HomePage: React.FC = () => {
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1 }} >
@@ -27,9 +30,10 @@ const HomePage: React.FC = () => {
 					<SectionParagraph>Encontre seus pedidos salvos e facilite seu processo de compra. </SectionParagraph>
 
 					<BoxHomeEmpty 
-						imageSource={'sourceimage'} 
+						imageSource={imageEmptyCombos} 
 						mainText="Sem combos registrados!" 
 						subTitleText="Você pode registrá-los na finalização de seus pedidos!"
+						typeOfEmpty="combos"
 					/>
 				</ContentSection>
 
@@ -39,7 +43,12 @@ const HomePage: React.FC = () => {
 						Fique atento aos pedidos feitos, você terá um limite de tempo para recebê-los!
 					</SectionParagraph>
 
-					<BoxSaldo />
+					<BoxHomeEmpty 
+						imageSource={imageEmptyPedidos} 
+						mainText="Sem pedios pendentes!" 
+						subTitleText="Vá a aba cantina e faça o seu!"
+						typeOfEmpty="pedidos"
+					/>
 				</ContentSection>
 
 

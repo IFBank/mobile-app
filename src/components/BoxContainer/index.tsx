@@ -9,12 +9,12 @@ interface BoxContainerProps {
 	boxColor: string;
 }
 
-const BoxContainer: React.FC<BoxContainerProps> = ({children, boxColor}) => {
+const BoxContainer: React.FC<BoxContainerProps> = ({children, boxColor, ... rest}) => {
 
 	const theme = useContext(ThemeContext);
 
 	return (
-		<Container boxColor={boxColor} theme={theme}>
+		<Container boxColor={boxColor} theme={theme} { ... rest } >
 			{children}
 		</Container>
 	)
