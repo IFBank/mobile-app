@@ -5,6 +5,8 @@ import { Image } from "react-native"
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
 
+import { useNavigation } from '@react-navigation/native';
+
 import TitleHeader from '../../../components/TitleHeader';
 import PaymentValueInput from '../../../components/PaymentValueInput';
 
@@ -22,10 +24,13 @@ const SetValuePage: React.FC = () => {
 		setIsFilledInput(value)
 	}) 
 
-	const handleLogin = useCallback((data: object) => {
+	const handleFinishedInput = useCallback((data: object) => {
 		// TODO: consulta na API e ações necessarias
 		console.log(data)
+		navigation.navigate("SelectPaymentType")
 	}, [])
+
+	const navigation = useNavigation();
 
 	return (
 		<Container>
@@ -40,11 +45,12 @@ const SetValuePage: React.FC = () => {
 				subTitle="Digite o valor a ser depositado no saldo desta conta "
 			/>
 			<FormContainer >
-				<Form ref={formRef} onSubmit={handleLogin}>
+				<Form ref={formRef} onSubmit={handleFinishedInput}>
 					<PaymentValueInput 
 						name="value" 
 						headerText="R$" 
 						updateIsFilledParent={updateIsFilledParent}
+						onSubmitEditing={handleFinishedInput}
 						keyboardType="number-pad"
 						returnKeyType= "done"
 					/>	
@@ -53,7 +59,7 @@ const SetValuePage: React.FC = () => {
 
 			<ForwardBottomButtonStyled 
 				canGoNext={isFilledInput} 
-				nextPage={() => {}}
+				nextPage={handleFinishedInput}
 			/>
 		</Container>
 	)
