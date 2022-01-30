@@ -5,7 +5,7 @@ import { StageContext } from './stages';
 import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
-import ArrowNavegator from '../../components/ArrowNavegator';
+import StepIndicator from 'react-native-step-indicator';
 
 import { Container,StageContainer, StageText, StageCancelButton , TitleHeaderStyled, Input, ArrowNavegatorStyled} from "./styles";
 
@@ -41,6 +41,22 @@ const BaseScreen: React.FC = ({children=null}) => {
 
 	const navigation = useNavigation();
 
+	const stepIndicatorCustomStyles = {
+		stepIndicatorSize: 25,
+		currentStepIndicatorSize: 35,
+		stepIndicatorLabelFontSize: 0,
+		currentStepIndicatorLabelFontSize: 13,
+		// stepStrokeWidth: 50,
+		stepStrokeCurrentColor: theme.primary,
+		stepStrokeFinishedColor: theme.primary,
+		stepStrokeUnFinishedColor: theme.primary_gray,
+		separatorFinishedColor: theme.primary,
+		separatorUnFinishedColor: theme.primary_gray,
+		stepIndicatorFinishedColor: theme.primary,
+		stepIndicatorUnFinishedColor: theme.primary_gray,
+		// stepIndicatorCurrentColor: theme.primary,
+	}
+
 	return (
 		<KeyboardAvoidingView
 			style={{ flex: 1 }}
@@ -54,6 +70,11 @@ const BaseScreen: React.FC = ({children=null}) => {
 				<Container>
 
 				<StageHeader stage={stage.stageNumber} theme={theme} navigation={navigation}/>
+				<StepIndicator 
+					currentPosition={stage.stageNumber -1}
+					stepCount={maxStage} 
+					customStyles={stepIndicatorCustomStyles}
+				/>
 
 				<TitleHeaderStyled mainTitle={stage.title} subTitle={stage.description}/>
 
