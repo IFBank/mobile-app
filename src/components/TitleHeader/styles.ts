@@ -4,10 +4,10 @@ export const Container = styled.View``;
 
 export const Title = styled.Text`
 	font-family: "Montserrat-Bold";
-	font-size: 20px;
+	font-size: ${({fontSize}) => fontSize}px;
 	color: #000;
 
-	margin-bottom: 9px;		
+	margin-bottom: ${({marginBottom}) => marginBottom}px;		
 `;
 
 export const SubTitle = styled.Text`
