@@ -17,6 +17,9 @@ import CadastroStageTwoScreen from '../pages/SignupFlowPages/StageTwo';
 import CadastroStageThreeScreen from '../pages/SignupFlowPages/StageThree';
 import CadastroStageFourScreen from '../pages/SignupFlowPages/StageFour';
 
+import DepositoSetValueScreen from '../pages/DepositoFlowPages/SetValuePage';
+import SelectPaymentTypeScreen from '../pages/DepositoFlowPages/SelectPaymentTypePage';
+
 // Headers
 import HomeHeader from "../components/HomeHeader"
 import BaseHeader from "../components/Header"
@@ -94,10 +97,10 @@ const DepositoFlowStackScreen = () => {
       			cardStyle: { backgroundColor: '#312E36' },
       			title: "Deposito"
     		}}
-    		initialRouteName="SetValue"
+    		initialRouteName="SelectPaymentType"
 		>
-			<DepositoFlowStack.Screen name="SetValue" component={ScreenExample} />
-			<DepositoFlowStack.Screen name="SelectPaymentType" component={ScreenExample} />
+			<DepositoFlowStack.Screen name="SetValue" component={DepositoSetValueScreen} />
+			<DepositoFlowStack.Screen name="SelectPaymentType" component={SelectPaymentTypeScreen} />
 			<DepositoFlowStack.Screen name="Pix" component={ScreenExample} />
 				
 		</DepositoFlowStack.Navigator>
