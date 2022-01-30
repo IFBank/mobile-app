@@ -97,7 +97,7 @@ const DepositoFlowStackScreen = () => {
       			cardStyle: { backgroundColor: '#312E36' },
       			title: "Deposito"
     		}}
-    		initialRouteName="SelectPaymentType"
+    		initialRouteName="SetValue"
 		>
 			<DepositoFlowStack.Screen name="SetValue" component={DepositoSetValueScreen} />
 			<DepositoFlowStack.Screen name="SelectPaymentType" component={SelectPaymentTypeScreen} />
