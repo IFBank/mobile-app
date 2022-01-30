@@ -15,31 +15,6 @@ import {stages} from './stages'
 const maxStage = stages.maxStages;
 
 const StageHeader: React.FC = ({stage, theme, navigation}) => {
-	return (
-		<StageContainer>
-			<StageText>
-				{`${stage-1}/${maxStage} etapas concluídas`}
-			</StageText>
-			<StageCancelButton 
-				theme={theme} 
-				fontSize={14}
-				onPress={
-					() => {
-						navigation.navigate('InitApp')
-					}	
-				}
-			>
-				Cancelar
-			</StageCancelButton>
-		</StageContainer>
-	);
-}
-
-const BaseScreen: React.FC = ({children=null}) => {
-	const theme = useContext(ThemeContext);
-	const stage = useContext(StageContext);
-
-	const navigation = useNavigation();
 
 	const stepIndicatorCustomStyles = {
 		stepIndicatorSize: 25,
@@ -57,6 +32,41 @@ const BaseScreen: React.FC = ({children=null}) => {
 		// stepIndicatorCurrentColor: theme.primary,
 	}
 
+
+	return (
+		<View style={{marginBottom: 32}}>
+			<StageContainer>
+				<StageText>
+					{`${stage-1}/${maxStage} etapas concluídas`}
+				</StageText>
+				<StageCancelButton 
+					theme={theme} 
+					fontSize={14}
+					onPress={
+						() => {
+							navigation.navigate('InitApp')
+						}	
+					}
+				>
+					Cancelar
+				</StageCancelButton>
+			</StageContainer>
+			<StepIndicator 
+				currentPosition={stage-1}
+				stepCount={maxStage} 
+				customStyles={stepIndicatorCustomStyles}
+			/>
+		</View>
+			
+	);
+}
+
+const BaseScreen: React.FC = ({children=null}) => {
+	const theme = useContext(ThemeContext);
+	const stage = useContext(StageContext);
+
+	const navigation = useNavigation();
+
 	return (
 		<KeyboardAvoidingView
 			style={{ flex: 1 }}
@@ -70,11 +80,6 @@ const BaseScreen: React.FC = ({children=null}) => {
 				<Container>
 
 				<StageHeader stage={stage.stageNumber} theme={theme} navigation={navigation}/>
-				<StepIndicator 
-					currentPosition={stage.stageNumber -1}
-					stepCount={maxStage} 
-					customStyles={stepIndicatorCustomStyles}
-				/>
 
 				<TitleHeaderStyled mainTitle={stage.title} subTitle={stage.description}/>
 
