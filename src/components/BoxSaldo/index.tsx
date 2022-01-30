@@ -10,7 +10,6 @@ import { LeadingTextStyled, StyledButton} from "./styles"
 const BoxSaldo: React.FC = () => {
 	const navigation = useNavigation();
 
-
 	const theme = useContext(ThemeContext);
 	const value = 12;
 
