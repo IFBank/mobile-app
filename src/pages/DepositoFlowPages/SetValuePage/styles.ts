@@ -7,7 +7,7 @@ export const ImageContainer = styled.View`
 	justify-content: center;
 	align-items: center;
 
-	padding-top: 26px;
+	padding-top: 54px;
 	padding-bottom: 40px;
 `;
 
