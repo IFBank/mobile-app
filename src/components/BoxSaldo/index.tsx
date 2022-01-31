@@ -1,37 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext} from "react";
 
 import { ThemeContext } from '../../themes.ts'
+import { useNavigation } from '@react-navigation/native';
 
 import BoxContainer from '../BoxContainer';
 
-import { SaldoContainer, SaldoText, SaldoTextValue, StyledButton} from "./styles"
+import { LeadingTextStyled, StyledButton} from "./styles"
 
-import DashedLine from 'react-native-dashed-line';
+const numberToRealString: string = (value: Number) => {
+	let stringValue = value.toString();
 
-interface BoxSaldoProps {
+	const [integerPart, floatPart] = stringValue.includes('.') ? stringValue.split('.') : [stringValue, '00']
 
+	const realString = floatPart.length == 1 ? `${integerPart},${floatPart}0` : `${integerPart},${floatPart}`
+
+	return `R$ ${realString}`
 }
 
-const BoxSaldo: React.FC<BoxSaldoProps> = ({}) => {
+const BoxSaldo: React.FC = () => {
+	const navigation = useNavigation();
 
 	const theme = useContext(ThemeContext);
-	const value = 12;
+	const value = 0;
 
 	return (
 		<BoxContainer>
-			<SaldoContainer>
-				<SaldoText>
-					Saldo Atual
-				</SaldoText>
-			
-				<DashedLine style={{ flexShrink: 1, marginTop:16, width: "100%"}}/>
-				
-				<SaldoTextValue isLEQZero={value <= 0 }>
-					{`R$ ${value}`}
-				</SaldoTextValue>
-			</SaldoContainer>
+			<LeadingTextStyled fontSize={16} textName="Saldo Atual" textValue={numberToRealString(value)} integerValue={value}/>
 
-			<StyledButton fontSize={12} theme={theme}>
+			<StyledButton 
+				fontSize={12} 
+				theme={theme} 
+				onPress={ 
+					() => {
+						navigation.navigate('Deposito')
+					}
+				}
+			>
 				Fazer um deposito
 			</StyledButton>
 		</BoxContainer>

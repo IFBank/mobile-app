@@ -5,9 +5,9 @@ import { StageContext } from './stages';
 import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
-import ArrowNavegator from '../../components/ArrowNavegator';
+import StepIndicator from 'react-native-step-indicator';
 
-import { Container,StageContainer, StageText, StageCancelButton , Title, SubTitle, Input, ArrowNavegatorStyled} from "./styles";
+import { Container,StageContainer, StageText, StageCancelButton , TitleHeaderStyled, Input, ArrowNavegatorStyled} from "./styles";
 
 import logoIFbank from "../../assets/minilogo.png"
 import {stages} from './stages'
@@ -15,23 +15,49 @@ import {stages} from './stages'
 const maxStage = stages.maxStages;
 
 const StageHeader: React.FC = ({stage, theme, navigation}) => {
+
+	const stepIndicatorCustomStyles = {
+		stepIndicatorSize: 25,
+		currentStepIndicatorSize: 35,
+		stepIndicatorLabelFontSize: 0,
+		currentStepIndicatorLabelFontSize: 13,
+		// stepStrokeWidth: 50,
+		stepStrokeCurrentColor: theme.primary,
+		stepStrokeFinishedColor: theme.primary,
+		stepStrokeUnFinishedColor: theme.primary_gray,
+		separatorFinishedColor: theme.primary,
+		separatorUnFinishedColor: theme.primary_gray,
+		stepIndicatorFinishedColor: theme.primary,
+		stepIndicatorUnFinishedColor: theme.primary_gray,
+		// stepIndicatorCurrentColor: theme.primary,
+	}
+
+
 	return (
-		<StageContainer>
-			<StageText>
-				{`${stage-1}/${maxStage} etapas concluídas`}
-			</StageText>
-			<StageCancelButton 
-				theme={theme} 
-				fontSize={14}
-				onPress={
-					() => {
-						navigation.navigate('InitApp')
-					}	
-				}
-			>
-				Cancelar
-			</StageCancelButton>
-		</StageContainer>
+		<View style={{marginBottom: 32}}>
+			<StageContainer>
+				<StageText>
+					{`${stage-1}/${maxStage} etapas concluídas`}
+				</StageText>
+				<StageCancelButton 
+					theme={theme} 
+					fontSize={14}
+					onPress={
+						() => {
+							navigation.navigate('InitApp')
+						}	
+					}
+				>
+					Cancelar
+				</StageCancelButton>
+			</StageContainer>
+			<StepIndicator 
+				currentPosition={stage-1}
+				stepCount={maxStage} 
+				customStyles={stepIndicatorCustomStyles}
+			/>
+		</View>
+			
 	);
 }
 
@@ -55,13 +81,7 @@ const BaseScreen: React.FC = ({children=null}) => {
 
 				<StageHeader stage={stage.stageNumber} theme={theme} navigation={navigation}/>
 
-				<Title>
-					{stage.title}
-				</Title>
-
-				<SubTitle>
-					{stage.description}
-				</SubTitle>	
+				<TitleHeaderStyled mainTitle={stage.title} subTitle={stage.description}/>
 
 				{children}
 

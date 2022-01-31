@@ -1,27 +1,12 @@
 import styled from "styled-components/native"
 
+import LeadingText from '../LeadingText';
 import GenericButton from "../Button"
 
-export const SaldoContainer = styled.View`
+export const LeadingTextStyled = styled(LeadingText)`
     margin: 0px 12px;
     margin-top: 18px;
     margin-bottom: 22px;
-
-    flex-direction: row;
-    justify-content: space-between;
-`;
-
-export const SaldoText = styled.Text`
-    color: #000;
-
-    font-family: "Montserrat-Regular";
-    font-size: 16px;
-`;
-
-export const SaldoTextValue = styled.Text`
-    color: ${ ({isLEQZero=false}) => isLEQZero ? "#FF1F26" : "#000"};
-    font-family: "Montserrat-Bold";
-    font-size: 16px;
 `;
 
 export const StyledButton = styled(GenericButton)`

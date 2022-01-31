@@ -2,6 +2,8 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import Icon from "react-native-vector-icons/MaterialIcons"
+
 import ScreenExample from '../pages/ScreenExample';
 import ScreenExampleStack from '../pages/ScreenExample';
 
@@ -13,7 +15,10 @@ import ProfilePageScreen from '../pages/ProfilePage';
 import CadastroStageOneScreen from '../pages/SignupFlowPages/StageOne';
 import CadastroStageTwoScreen from '../pages/SignupFlowPages/StageTwo';
 import CadastroStageThreeScreen from '../pages/SignupFlowPages/StageThree';
-import CadastroStagegFourScreen from '../pages/SignupFlowPages/StageFour';
+import CadastroStageFourScreen from '../pages/SignupFlowPages/StageFour';
+
+import DepositoSetValueScreen from '../pages/DepositoFlowPages/SetValuePage';
+import SelectPaymentTypeScreen from '../pages/DepositoFlowPages/SelectPaymentTypePage';
 
 // Headers
 import HomeHeader from "../components/HomeHeader"
@@ -21,36 +26,48 @@ import BaseHeader from "../components/Header"
 
 const AppStack = createNativeStackNavigator()
 const CadastroFlowStack = createNativeStackNavigator()
+const DepositoFlowStack = createNativeStackNavigator()
 const HomeTab = createBottomTabNavigator();
 
 const logado = false
 
-const HomeTabs = () => {
-	return(
-		<HomeTab.Navigator 
-			screenOptions={{
-				header: BaseHeader,
-				tabBarInactiveTintColor:"#0000004c",
-				tabBarActiveTintColor: "#32A041"
-			}}
-			backBehavior="initialRoute"
-			initialRouteName="Home"
-		>
-			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
-			<HomeTab.Screen name="Shop" component={ScreenExampleStack} />
+const homeTabNavegatorOptions = ({route}) => {
 
-			<HomeTab.Screen 
-				name="Home" 
-				component={HomePageScreen} 
-				options={{
-					header: HomeHeader
-				}}
-			/>
-			<HomeTab.Screen name="Dashboard" component={ScreenExample} /> 
-			<HomeTab.Screen name="Perfil" component={ProfilePageScreen} /> 
+	const homeTabIcons = ({ focused, color, size }) => {
+		let iconName;
 
-		</HomeTab.Navigator>
-	)
+		switch (route.name){
+			case "Home":
+				iconName = "home"
+				break;
+			case "Ajuda":
+				iconName = "contact-support"
+				break;
+			case "Shop":
+				iconName = "storefront"
+				break;
+			case "Perfil":
+				iconName = "account-circle"
+				break;
+			case "Dashboard":
+				iconName = "dashboard"
+				break;
+			default:
+    			console.log(`Nome de rota inesperado: ${route.name}`);
+		}
+
+		return(
+			<Icon name={iconName}  color={color} size={size}/>
+		)
+	}
+
+	return {
+		tabBarIcon: homeTabIcons,
+		header: BaseHeader,
+
+		tabBarInactiveTintColor:"#0000004c",
+		tabBarActiveTintColor: "#32A041"
+	}
 }
 
 const CadastroFlowStackScreen = () => {
@@ -66,11 +83,55 @@ const CadastroFlowStackScreen = () => {
 			<CadastroFlowStack.Screen name="StageOne" component={CadastroStageOneScreen} />
 			<CadastroFlowStack.Screen name="StageTwo" component={CadastroStageTwoScreen} />
 			<CadastroFlowStack.Screen name="StageThree" component={CadastroStageThreeScreen} />
-			<CadastroFlowStack.Screen name="StageFour" component={CadastroStagegFourScreen} />
+			<CadastroFlowStack.Screen name="StageFour" component={CadastroStageFourScreen} />
 				
 		</CadastroFlowStack.Navigator>
 	)
 }
+
+const DepositoFlowStackScreen = () => {
+	return (
+		<DepositoFlowStack.Navigator
+			screenOptions={{
+      			header: BaseHeader,
+      			cardStyle: { backgroundColor: '#312E36' },
+      			title: "Deposito"
+    		}}
+    		initialRouteName="SetValue"
+		>
+			<DepositoFlowStack.Screen name="SetValue" component={DepositoSetValueScreen} />
+			<DepositoFlowStack.Screen name="SelectPaymentType" component={SelectPaymentTypeScreen} />
+			<DepositoFlowStack.Screen name="Pix" component={ScreenExample} />
+				
+		</DepositoFlowStack.Navigator>
+	)
+}
+
+
+const HomeTabs = () => {
+	return(
+		<HomeTab.Navigator 
+			screenOptions={homeTabNavegatorOptions}
+			backBehavior="initialRoute"
+			initialRouteName="Home"
+		>
+			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
+			<HomeTab.Screen name="Shop" component={ScreenExampleStack} />
+
+			<HomeTab.Screen 
+				name="Home" 
+				component={HomePageScreen} 
+				options={{
+					headerShown: false
+				}}
+			/>
+			<HomeTab.Screen name="Dashboard" component={ScreenExample} /> 
+			<HomeTab.Screen name="Perfil" component={ProfilePageScreen} /> 
+
+		</HomeTab.Navigator>
+	)
+}
+
 
 const AppRoutes: React.FC = () => (
 	<AppStack.Navigator
@@ -87,7 +148,7 @@ const AppRoutes: React.FC = () => (
 
 		<AppStack.Screen name="HomeApp" component={HomeTabs} />
 
-		<AppStack.Screen name="Deposito" component={ScreenExampleStack} /> 
+		<AppStack.Screen name="Deposito" component={DepositoFlowStackScreen} /> 
 		
 	</AppStack.Navigator>
 );

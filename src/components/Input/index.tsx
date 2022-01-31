@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useImperativeHandle, forwardRef } from 'react';
 
 import { TextInputProps } from "react-native"
 import { useField } from '@unform/core'
@@ -16,12 +16,31 @@ interface InputValueReference{
 	value: string;
 }
 
-const Input: React.FC<InputProps> = ({ name, headerText, style, ... rest}) => {
-	// TODO: Implementar o estado do input de focus e sua estilizaçao
+interface InputRef{
+	focus(): void;
+}
+
+const Input: React.RefForwardingComponent<InputRef, InputProps> = ({ name, headerText, style, ... rest}, ref) => {
 	const inputElementRef = useRef<any>(null)
 
 	const { registerField, defaultValue = '', fieldName, error } = useField(name)
 	const inputValueRef = useRef<InputValueReference>({value: defaultValue})
+
+	const [isFocused, setIsFocused] = useState(false) ;
+	const [isFilled, setIsFilled] = useState(false) ;
+
+	const handleInputFocus = useCallback(() => {setIsFocused(true)}, [])
+	const handleInputBlur = useCallback(() => {
+		setIsFocused(false)
+
+		setIsFilled( !! inputValueRef.current.value)
+	}, [])
+
+	useImperativeHandle(ref,  () => ({
+		focus(){ 
+			inputElementRef.current.focus();
+		}
+	}));
 
 	useEffect(() => {
 		registerField<string>({
@@ -40,13 +59,15 @@ const Input: React.FC<InputProps> = ({ name, headerText, style, ... rest}) => {
 	}, [fieldName, registerField])
 
 	return (
-		<Container style={style}>
+		<Container style={style} isFocused={isFocused}>
 			<HeaderInput>
 				{headerText}
 			</HeaderInput>
 			<InputStyled
 				ref={inputElementRef}
-				defaultValue={defaultValue} 
+				defaultValue={defaultValue}
+				onFocus={handleInputFocus} 
+				onBlur={handleInputBlur} 
 				onChangeText={(value) => {
 					inputValueRef.current.value = value;
 				}}
@@ -57,4 +78,4 @@ const Input: React.FC<InputProps> = ({ name, headerText, style, ... rest}) => {
 
 };
 
-export default Input;
+export default forwardRef(Input);
