@@ -13,7 +13,7 @@ export const InputStyled = styled.TextInput`
 	border-bottom-color: ${ ({isFocused=false}) => isFocused ? "#111" : "#C1C1C1" };
 
 	padding: 0px;
-	padding-left: 9px;
+	padding-left: 2px;
 	width: 100px;
 `;
 
