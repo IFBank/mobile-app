@@ -13,7 +13,8 @@ const TitleHeader: React.FC<TitleHeaderProps> = ({ mainTitle, subTitle, fontSize
 	return (
 		<Container { ... rest }>
 			<Title fontSize={fontSizeMain} marginBottom={marginBottomMain} >{mainTitle}</Title>
-			<SubTitle>{subTitle}</SubTitle>
+			{(subTitle!=="") && <SubTitle>{subTitle}</SubTitle>}
+			
 		</Container>
 	)
 }
