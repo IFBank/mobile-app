@@ -28,6 +28,7 @@ import BaseHeader from "../components/Header"
 const AppStack = createNativeStackNavigator()
 const CadastroFlowStack = createNativeStackNavigator()
 const DepositoFlowStack = createNativeStackNavigator()
+const ConfirmPaymentStack = createNativeStackNavigator()
 const HomeTab = createBottomTabNavigator();
 
 const logado = false
@@ -109,6 +110,21 @@ const DepositoFlowStackScreen = () => {
 	)
 }
 
+const ConfirmPaymentStackScreen = () => {
+	return (
+		<ConfirmPaymentStack.Navigator
+			screenOptions={{
+      			header: BaseHeader,
+      			title: "Shop Cantina"
+    		}}
+    		initialRouteName="Confirm"
+		>
+			<ConfirmPaymentStack.Screen name="Confirm" component={ScreenExample} />
+			<ConfirmPaymentStack.Screen name="ShowConfirmBeautify" component={ScreenExample} />
+				
+		</ConfirmPaymentStack.Navigator>
+	)
+}
 
 const HomeTabs = () => {
 	return(
@@ -118,7 +134,12 @@ const HomeTabs = () => {
 			initialRouteName="Home"
 		>
 			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
-			<HomeTab.Screen name="Shop" component={ScreenExampleStack} />
+			<HomeTab.Screen name="Shop" component={ScreenExampleStack} 
+				options={{
+      				title: "Shop Cantina",
+      				tabBarLabel: "Cantina"
+				}}
+			/>
 
 			<HomeTab.Screen 
 				name="Home" 
@@ -151,6 +172,8 @@ const AppRoutes: React.FC = () => (
 		<AppStack.Screen name="HomeApp" component={HomeTabs} />
 
 		<AppStack.Screen name="Deposito" component={DepositoFlowStackScreen} /> 
+
+		<AppStack.Screen name="ConfirmPayment" component={ConfirmPaymentStackScreen} /> 
 		
 	</AppStack.Navigator>
 );
