@@ -19,6 +19,7 @@ import CadastroStageFourScreen from '../pages/SignupFlowPages/StageFour';
 
 import DepositoSetValueScreen from '../pages/DepositoFlowPages/SetValuePage';
 import SelectPaymentTypeScreen from '../pages/DepositoFlowPages/SelectPaymentTypePage';
+import PixScreen from '../pages/DepositoFlowPages/PixPage';
 
 // Headers
 import HomeHeader from "../components/HomeHeader"
@@ -101,7 +102,8 @@ const DepositoFlowStackScreen = () => {
 		>
 			<DepositoFlowStack.Screen name="SetValue" component={DepositoSetValueScreen} />
 			<DepositoFlowStack.Screen name="SelectPaymentType" component={SelectPaymentTypeScreen} />
-			<DepositoFlowStack.Screen name="Pix" component={ScreenExample} />
+			<DepositoFlowStack.Screen name="Pix" component={PixScreen} />
+			<DepositoFlowStack.Screen name="Boleto" component={ScreenExample} />
 				
 		</DepositoFlowStack.Navigator>
 	)
