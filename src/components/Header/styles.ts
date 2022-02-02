@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
 	background-color: ${({theme}) => theme.primary};
-	padding: 0 18px; 
+	padding: 2px 24px; 
 
 	shadow-color: #000;
     shadow-offset-width: 0;
