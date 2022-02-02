@@ -50,7 +50,7 @@ const SetValuePage: React.FC = () => {
 						name="value" 
 						headerText="R$" 
 						updateIsFilledParent={updateIsFilledParent}
-						onSubmitEditing={handleFinishedInput}
+						onSubmitEditing={() => formRef.current?.submitForm()}
 						keyboardType="number-pad"
 						returnKeyType= "done"
 					/>	
@@ -59,7 +59,7 @@ const SetValuePage: React.FC = () => {
 
 			<ForwardBottomButtonStyled 
 				canGoNext={isFilledInput} 
-				nextPage={handleFinishedInput}
+				nextPage={() => formRef.current?.submitForm()}
 			/>
 		</Container>
 	)
