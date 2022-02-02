@@ -21,4 +21,5 @@ export const FormContainer = styled.View`
 export const TopBackButtomStyled = styled(TopBackButtom)``;
 export const ForwardBottomButtonStyled = styled(ForwardBottomButton)`
 	padding: 0;
+	padding-bottom: 16px;
 `;
