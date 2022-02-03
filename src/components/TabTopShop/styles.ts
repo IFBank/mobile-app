@@ -16,8 +16,6 @@ export const TabButton = styled.TouchableOpacity<ContainerProps>`
 
 	border-bottom-width: 2px;
 	border-color: ${ ({isFocused}) => (isFocused ? "#32A041" : "#00000000")} ;
-	
-
 `;
 
 export const InputStyled = styled.TextInput`
