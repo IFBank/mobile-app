@@ -18,5 +18,8 @@ export const Container = styled.View`
 export const IconButtonCircle = styled(Icon.Button)`
 	width: 50px;
 	height: 50px;
+
+	justify-content: center;
+	align-items:center;
 `;
 

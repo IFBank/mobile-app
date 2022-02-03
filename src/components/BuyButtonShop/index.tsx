@@ -21,7 +21,7 @@ const BuyButtonShop: React.FC<ArrowNavegatorProps> = ({ onPress, ... rest }) => 
 
 			<IconButtonCircle
 				iconStyle={{marginRight: 8}}
-				name={Platform.OS == "ios"? "arrow-forward-ios" : "arrow-forward" }
+				name="shopping-cart"
 				size={30}
 				backgroundColor={theme.primary} 
 				color="#FFF"
