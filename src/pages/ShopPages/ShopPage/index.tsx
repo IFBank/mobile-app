@@ -9,6 +9,7 @@ import {Container, MenuContainer, ContentContainer,  FormStyled} from './styles'
 import SearchBarInput from "../../../components/SearchBarInput"
 import TabTopShop from "../../../components/TabTopShop"
 import ItemShopBox from "../../../components/ItemShopBox"
+import BuyButtonShop from "../../../components/BuyButtonShop"
 
 const ShopPage = () => {
 	const [ itemType, setItemType ] = useState('salgados')
@@ -59,7 +60,11 @@ const ShopPage = () => {
 
 					/>
 				</ContentContainer>
+
 			</ScrollView>
+		
+			<BuyButtonShop onPress={() => {}}/>
+
 		</Container>
 	);
 }
