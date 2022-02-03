@@ -21,6 +21,8 @@ import DepositoSetValueScreen from '../pages/DepositoFlowPages/SetValuePage';
 import SelectPaymentTypeScreen from '../pages/DepositoFlowPages/SelectPaymentTypePage';
 import PixScreen from '../pages/DepositoFlowPages/PixPage';
 
+import ShopScreen from '../pages/ShopPages/ShopPage';
+
 // Headers
 import HomeHeader from "../components/HomeHeader"
 import BaseHeader from "../components/Header"
@@ -134,7 +136,7 @@ const HomeTabs = () => {
 			initialRouteName="Home"
 		>
 			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
-			<HomeTab.Screen name="Shop" component={ScreenExampleStack} 
+			<HomeTab.Screen name="Shop" component={ShopScreen} 
 				options={{
       				title: "Shop Cantina",
       				tabBarLabel: "Cantina"
