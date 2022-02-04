@@ -20,14 +20,14 @@ const TabTopShop: React.FC = ({ listenChangePage, ... rest }) => {
 				isFocused={currentShow == 'salgados'}
 				onPress={setPageShow('salgados')}
 			>
-				<Icon name="bakery-dining" size={20} color={currentShow === "salgados" ? "#32A041" : "#999999"}/>
+				<Icon name="bakery-dining" size={40} color={currentShow === "salgados" ? "#32A041" : "#999999"}/>
 			</TabButton>
 
 			<TabButton 
 				isFocused={currentShow == 'bebidas'}
 				onPress={setPageShow('bebidas')}
 			>
-				<Icon name="local-drink" size={20} color={currentShow === "bebidas" ? "#32A041" : "#999999"}/>
+				<Icon name="local-drink" size={25} color={currentShow === "bebidas" ? "#32A041" : "#999999"}/>
 			</TabButton>
 
 		</Container>
