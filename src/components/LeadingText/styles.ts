@@ -15,7 +15,7 @@ export const NameText = styled.Text`
 `;
 
 export const ValueText = styled.Text`
-    color: ${ ({isLEQZero=false}) => isLEQZero ? "#FF1F26" : "#000"};
+    color: ${ ({isLEQZero=false, fontColor}) => isLEQZero ? "#FF1F26" : fontColor};
     font-family: "Montserrat-Bold";
     font-size: ${({fontSize=16}) => fontSize}px;
 `;
