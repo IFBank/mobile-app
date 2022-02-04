@@ -1,33 +1,13 @@
 import React from 'react';
 
-import { Modal, Text, View} from "react-native";
+import { Modal, Text, ScrollView} from "react-native";
 
 import Icon from "react-native-vector-icons/MaterialIcons"
 
-import { Container, ModalContainer, CloseIcon, ModalTitle, ItemsConteiner, ItemContainer, ItemContentContainer, ItemImage, ItemTitle, InfoContainer, InfoName, InfoValue, DeleteButton } from "./styles";
+import LeadingText from "../LeadingText"
+import Item from "./Item"
 
-const Item: React.FC = () => {
-	return(
-		<ItemContainer>
-			<ItemTitle> Teste</ItemTitle>	
-
-			<ItemContentContainer>
-				<ItemImage />
-				<InfoContainer>		
-					<InfoName>Quat:<InfoValue> 15</InfoValue>	</InfoName>
-				
-					<InfoName>Quat:<InfoValue> 15</InfoValue>	</InfoName>
-				</InfoContainer>
-
-				<DeleteButton>
-					<Icon  size={40} name="delete" color="#fff"/>
-				</DeleteButton>
-
-			</ItemContentContainer>
-
-		</ItemContainer>
-	)
-}
+import { Container, ModalContainer, CloseIcon, ModalTitle, ItemsConteiner, ActionButtonsContainer, ClearButton, ComboButton ,MakeOrderButton } from "./styles";
 
 const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 
@@ -39,6 +19,8 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 			onRequestClose={onRequestClose}
 		>
 			<Container>
+				<ScrollView style={{flexGrow: 1, width:"100%"}} contentContainerStyle={{paddingTop: 60}}>
+					
 				<ModalContainer>
 					<CloseIcon>
 						<Icon onPress={onRequestClose} name="close" size={20} color="#000"/>
@@ -49,9 +31,27 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 
 					<ItemsConteiner>
 						<Item/>	
+						<Item/>	
 					</ItemsConteiner>
 					
+					<LeadingText fontFamilyName="Bold" textName="Total" textValue="R$ 4,00" integerValue={4} valueColor="#32A041" />
+
+					<ActionButtonsContainer>
+						<ClearButton fontSize={18}>
+							Esvaziar
+						</ClearButton>
+
+						<ComboButton fontSize={18}>
+							Montar Combo
+						</ComboButton>	
+					</ActionButtonsContainer>
+					
+					<MakeOrderButton fontSize={24}>
+						Pedir
+					</MakeOrderButton>
 				</ModalContainer>
+				</ScrollView>
+
 			</Container>
 		</Modal>
 	);

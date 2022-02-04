@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
 import BoxContainer from '../BoxContainer';
+import GenericButton from '../Button';
 import Icon from "react-native-vector-icons/MaterialIcons"
+
+const ActionButton = styled(GenericButton)`
+	padding: 10px 0px;
+	flex-grow: 1;
+	border-radius: 10px;
+`;
 
 export const Container = styled.View`
 	position: absolute;
@@ -9,12 +16,10 @@ export const Container = styled.View`
 	width: 100%;
 	height: 100%;
 
-	padding-top: 60px;
-
 	justify-content: center;
 	align-items: center;
 
-	background-color: #0004;
+	background-color: #00000064;
 `;
 
 export const ModalContainer = styled.View`
@@ -24,14 +29,14 @@ export const ModalContainer = styled.View`
 	height: 100%;
 	align-items: center;
 
-	border-top-left-radius: 36px;
-	border-top-right-radius: 36px;
+	border-top-left-radius: 26px;
+	border-top-right-radius: 26px;
 `;
 
 export const CloseIcon = styled.View`
 	position: absolute;
-	top: 12px;
-	right: 12px;
+	top: 15px;
+	right: 20px;
 
 	border-width: 1px;
 	border-radius: 12px;
@@ -48,63 +53,27 @@ export const ModalTitle = styled.Text`
 	margin-bottom: 32px;
 `;
 
-export const ItemsConteiner = styled.View``;
-
-export const ItemContainer = styled(BoxContainer)`
-	padding: 12px 16px;
-
-	width: 100%;
-
-	align-items: center;
-
-	margin-bottom: 14px;
+export const ItemsConteiner = styled.ScrollView`
+	margin-bottom: 30px;
 `;
 
-export const ItemTitle = styled.Text`
-	color: #000;
-    font-family: "Montserrat-SemiBold";
-	font-size: 18px;
-`;
-
-export const ItemContentContainer = styled.View`
+export const ActionButtonsContainer = styled.View`
 	flex-direction: row;
-	width: 100%;
-	justify-content: space-around;
-	align-items: center;
-`;
+	justify-content: space-evenly;
+	margin-top: 40px;
+	margin-bottom: 30px;
+`
 
-export const ItemImage = styled.Image`
-	background-color: black;
-	width: 110px;
-	height: 76px;
-	border-radius: 10px;
-`;
-
-export const InfoContainer = styled.View`
-	flex-direction: row;
-	flex-wrap: wrap;
-	flex-shrink: 1;
-	justify-content: center;
-`;
-
-export const InfoName = styled.Text`
-	font-size: 18px;
-	color: #000;
-    font-family: "Montserrat-SemiBold"
-`;
-
-export const InfoValue = styled.Text`
-	font-size: 18px;
-	color: #000;
-    font-family: "Montserrat-Regular"
-`;
-
-export const DeleteButton = styled.View`
+export const ClearButton = styled(ActionButton)`
 	background-color: #FF1F26;
-	border-radius: 5px;
-	height: 50px;
-	width: 50px;
+`;
 
-	justify-content: center;
-	align-items: center;
+export const ComboButton = styled(ActionButton)`
+	background-color: #32A041;
+`;
+
+export const MakeOrderButton = styled(GenericButton)`
+	background-color: #32A041;
+	padding: 12px 112px;
+	border-radius: 10px;
 `;
