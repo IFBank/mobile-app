@@ -84,6 +84,7 @@ export const QuantButtonsContainer = styled.View`
 	margin-left: 10px;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 `;
 
 export const QuantiButtonPlus = styled(QuantiButton)`
@@ -94,7 +95,7 @@ export const QuantuNumberText = styled.Text`
 	border-bottom-width: 2px;
 	border-bottom-color: #000;
 
-	margin: -2px 10px;
+	margin: 0px 10px;
 
 	font-family: "Montserrat-SemiBold";
 	font-size: 20px;
