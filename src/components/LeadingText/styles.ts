@@ -10,7 +10,7 @@ export const Container = styled.View`
 export const NameText = styled.Text`
     color: #000;
 
-    font-family: "Montserrat-Regular";
+    font-family: ${({fontFamilyName}) => `Montserrat-${fontFamilyName}`};
     font-size: ${({fontSize=16}) => fontSize}px;
 `;
 
