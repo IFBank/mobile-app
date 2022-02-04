@@ -5,7 +5,6 @@ import { Platform } from "react-native";
 
 import Icon from "react-native-vector-icons/MaterialIcons"
 
-
 import { Container, IconButtonCircle } from "./styles";
 
 
@@ -19,15 +18,13 @@ const BuyButtonShop: React.FC<ArrowNavegatorProps> = ({ onPress, ... rest }) => 
 	return (
 		<Container { ... rest } >
 
-			<IconButtonCircle
-				iconStyle={{marginRight: 8}}
+			<IconButtonCircle>
+				<Icon iconStyle={{marginRight: 8}}
 				name="shopping-cart"
 				size={30}
-				backgroundColor={theme.primary} 
 				color="#FFF"
-				borderRadius={50}
-				onPress={ onPress }
-			/>
+				onPress={ onPress }/>
+			</IconButtonCircle>
 			
 		</Container>
 	)

@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 
-import Icon from "react-native-vector-icons/MaterialIcons"
 
 export const Container = styled.View`
 	position: absolute;
@@ -15,9 +14,13 @@ export const Container = styled.View`
 	align-items: center;
 `;
 
-export const IconButtonCircle = styled(Icon.Button)`
+export const IconButtonCircle = styled.View`
 	width: 50px;
 	height: 50px;
+	
+	background-color: #32A041;
+
+	border-radius: 50px;
 
 	justify-content: center;
 	align-items:center;
