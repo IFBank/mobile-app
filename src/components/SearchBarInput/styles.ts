@@ -5,7 +5,7 @@ interface ContainerProps {
 }
 
 export const Container = styled.View<ContainerProps>`
-	padding: 0 12px;
+	padding: 2px 20px;
 	flex-direction: row;
 	align-items: center;
 	border-radius: 20px;
@@ -15,6 +15,7 @@ export const Container = styled.View<ContainerProps>`
 export const InputStyled = styled.TextInput`
 	padding: 0px;
 	flex-grow: 1;
+	font-size: 15px;
 `;
 
 export const HeaderInput = styled.Text`

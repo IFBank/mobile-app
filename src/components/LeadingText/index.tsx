@@ -9,16 +9,16 @@ interface LeadingTextProps {
 	fontSize: Integer;
 }
 
-const LeadingText: React.FC<LeadingTextProps> = ({textName, textValue, fontSize, integerValue, ... rest}) => {
+const LeadingText: React.FC<LeadingTextProps> = ({textName, textValue, fontSize, fontFamilyName="Regular", integerValue, valueColor="#000", ... rest}) => {
 	return (
 		<Container {... rest} >
-			<NameText fontSize={fontSize}>
+			<NameText fontSize={fontSize} fontFamilyName={fontFamilyName}>
 				{textName}
 			</NameText>
 
 			<DashedLineStyled fontSize={fontSize} dashGap={8} dashLength={2} dashThickness={2} />
 
-			<ValueText fontSize={fontSize} isLEQZero={integerValue <= 0}>
+			<ValueText fontSize={fontSize} isLEQZero={integerValue <= 0} fontColor={valueColor}>
 				{textValue}
 			</ValueText>
 		</Container>

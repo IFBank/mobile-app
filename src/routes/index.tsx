@@ -31,7 +31,9 @@ const AppStack = createNativeStackNavigator()
 
 const CadastroFlowStack = createNativeStackNavigator()
 const DepositoFlowStack = createNativeStackNavigator()
-const FinishsShopStack = createNativeStackNavigator()
+
+const ConfirmBuyShopStack = createNativeStackNavigator()
+const ComboShopStack = createNativeStackNavigator()
 
 const HomeTab = createBottomTabNavigator();
 
@@ -114,20 +116,35 @@ const DepositoFlowStackScreen = () => {
 	)
 }
 
-const FinishsShopStackScreen = () => {
+const ConfirmBuyShopStackScreen = () => {
 	return (
-		<FinishsShopStack.Navigator
+		<ConfirmBuyShopStack.Navigator
 			screenOptions={{
       			header: BaseHeader,
       			title: "Shop Cantina"
     		}}
-    		initialRouteName="Confirm"
+    		initialRouteName="ConfirmPayment"
 		>
-			<FinishsShopStack.Screen name="ConfirmPayment" component={ScreenExample} />
-			<FinishsShopStack.Screen name="ConfirmCombo" component={ScreenExample} />
-			<FinishsShopStack.Screen name="ShowConfirmBeautify" component={ScreenExample} />
+			<ConfirmBuyShopStack.Screen name="ConfirmPayment" component={ScreenExample} />
+			<ConfirmBuyShopStack.Screen name="ShowConfirmBeautify" component={ScreenExample} />
 				
-		</FinishsShopStack.Navigator>
+		</ConfirmBuyShopStack.Navigator>
+	)
+}
+
+const ComboShopStackScreen = () => {
+	return (
+		<ComboShopStack.Navigator
+			screenOptions={{
+      			header: BaseHeader,
+      			title: "Shop Cantina"
+    		}}
+    		initialRouteName="ConfirmCombo"
+		>
+			<ComboShopStack.Screen name="ConfirmCombo" component={ScreenExample} />
+			<ComboShopStack.Screen name="ShowConfirmBeautify" component={ScreenExample} />
+				
+		</ComboShopStack.Navigator>
 	)
 }
 
@@ -178,7 +195,8 @@ const AppRoutes: React.FC = () => (
 
 		<AppStack.Screen name="Deposito" component={DepositoFlowStackScreen} /> 
 
-		<AppStack.Screen name="FinishsShop" component={FinishsShopStackScreen} /> 
+		<AppStack.Screen name="FinishsShopBuy" component={ConfirmBuyShopStackScreen} /> 
+		<AppStack.Screen name="FinishsShopCombo" component={ComboShopStackScreen} /> 
 		
 	</AppStack.Navigator>
 );

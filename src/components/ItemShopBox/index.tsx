@@ -2,13 +2,13 @@ import React from 'react'
 
 import { TouchableOpacity } from "react-native"
 
-import { Container, HeaderItemText, ContentContainer, ImageStyled, BoldText, RegularText, InfoContainer} from './styles'
+import { Container, HeaderItemText, ContentContainer, ImageStyled, ValueText, EstoqueValueText, RegularText, InfoContainer} from './styles'
 
-const ItemShopBox: React.FC = ({nameItem, price, estoqueValue, imageUrl, greenBox=false, onPress, ... rest}) =>{
+const ItemShopBox: React.FC = ({nameItem, price, estoqueValue, imageUrl, onPress, ... rest}) =>{
 	return (
 		<TouchableOpacity onPress={onPress} activeOpacity={0.7}>
-			<Container greenBox={greenBox} { ... rest }>
-				<HeaderItemText greenBox={greenBox}>
+			<Container  { ... rest }>
+				<HeaderItemText >
 					{nameItem}
 				</HeaderItemText>
 
@@ -16,13 +16,13 @@ const ItemShopBox: React.FC = ({nameItem, price, estoqueValue, imageUrl, greenBo
 					<ImageStyled source={imageUrl}/>
 
 					<InfoContainer>
-						<BoldText greenBox={greenBox}>
+						<ValueText >
 							{`R$ ${price}`}
-						</BoldText>
+						</ValueText>
 
-						<RegularText greenBox={greenBox}>
+						<RegularText >
 							Estoque:  
-							<BoldText greenBox={greenBox}> {estoqueValue} unid.</BoldText>
+							<EstoqueValueText > {estoqueValue} unid.</EstoqueValueText>
 						</RegularText>
 					</InfoContainer>
 
