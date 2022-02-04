@@ -17,6 +17,6 @@ export const ContentContainer = styled.View`
 `;
 
 export const FormStyled = styled(Form)`
-	padding: 24px 12px;
+	padding: 24px 26px;
 	justify-content: center;
 `;
