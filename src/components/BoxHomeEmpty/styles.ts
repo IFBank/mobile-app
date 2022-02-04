@@ -11,6 +11,7 @@ export const BoxContainerStyled = styled(BoxContainer)`
 export const ContentContainer = styled.View`
     justify-content: center;
     flex-shrink: 1;
+    width: 100%;
 
     padding-left: 15px;
 `;

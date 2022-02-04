@@ -30,6 +30,7 @@ export const LogoContainer = styled.View`
 
 export const ContentContainer = styled.View`
 	padding: 0px 41px;
+	flex-grow: 1;
 `;
 
 export const Title = styled.Text`

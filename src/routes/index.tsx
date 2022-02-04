@@ -19,14 +19,20 @@ import CadastroStageFourScreen from '../pages/SignupFlowPages/StageFour';
 
 import DepositoSetValueScreen from '../pages/DepositoFlowPages/SetValuePage';
 import SelectPaymentTypeScreen from '../pages/DepositoFlowPages/SelectPaymentTypePage';
+import PixScreen from '../pages/DepositoFlowPages/PixPage';
+
+import ShopScreen from '../pages/ShopPages/ShopPage';
 
 // Headers
 import HomeHeader from "../components/HomeHeader"
 import BaseHeader from "../components/Header"
 
 const AppStack = createNativeStackNavigator()
+
 const CadastroFlowStack = createNativeStackNavigator()
 const DepositoFlowStack = createNativeStackNavigator()
+const FinishsShopStack = createNativeStackNavigator()
+
 const HomeTab = createBottomTabNavigator();
 
 const logado = false
@@ -101,12 +107,29 @@ const DepositoFlowStackScreen = () => {
 		>
 			<DepositoFlowStack.Screen name="SetValue" component={DepositoSetValueScreen} />
 			<DepositoFlowStack.Screen name="SelectPaymentType" component={SelectPaymentTypeScreen} />
-			<DepositoFlowStack.Screen name="Pix" component={ScreenExample} />
+			<DepositoFlowStack.Screen name="Pix" component={PixScreen} />
+			<DepositoFlowStack.Screen name="Boleto" component={ScreenExample} />
 				
 		</DepositoFlowStack.Navigator>
 	)
 }
 
+const FinishsShopStackScreen = () => {
+	return (
+		<FinishsShopStack.Navigator
+			screenOptions={{
+      			header: BaseHeader,
+      			title: "Shop Cantina"
+    		}}
+    		initialRouteName="Confirm"
+		>
+			<FinishsShopStack.Screen name="ConfirmPayment" component={ScreenExample} />
+			<FinishsShopStack.Screen name="ConfirmCombo" component={ScreenExample} />
+			<FinishsShopStack.Screen name="ShowConfirmBeautify" component={ScreenExample} />
+				
+		</FinishsShopStack.Navigator>
+	)
+}
 
 const HomeTabs = () => {
 	return(
@@ -116,7 +139,12 @@ const HomeTabs = () => {
 			initialRouteName="Home"
 		>
 			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
-			<HomeTab.Screen name="Shop" component={ScreenExampleStack} />
+			<HomeTab.Screen name="Shop" component={ShopScreen} 
+				options={{
+      				title: "Shop Cantina",
+      				tabBarLabel: "Cantina"
+				}}
+			/>
 
 			<HomeTab.Screen 
 				name="Home" 
@@ -149,6 +177,8 @@ const AppRoutes: React.FC = () => (
 		<AppStack.Screen name="HomeApp" component={HomeTabs} />
 
 		<AppStack.Screen name="Deposito" component={DepositoFlowStackScreen} /> 
+
+		<AppStack.Screen name="FinishsShop" component={FinishsShopStackScreen} /> 
 		
 	</AppStack.Navigator>
 );

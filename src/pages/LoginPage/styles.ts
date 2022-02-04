@@ -34,7 +34,7 @@ export const ContentContainer = styled.View`
 `;
 
 export const Title = styled.Text`
-	margin-top: 40px;
+	margin-top: 36px;
 
 	font-family: "Montserrat-Bold";
 
@@ -53,7 +53,7 @@ export const Button = styled(GenericButton)`
 	background-color: #32A041;
 	padding: 12px 0px;
 	margin: 0 32px;
-	margin-top: 50px;
+	margin-top: 10%;
 	border-radius: 20px;
 `;
 

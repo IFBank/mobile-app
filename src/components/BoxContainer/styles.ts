@@ -11,5 +11,5 @@ export const Container = styled.View`
     border-right-width: 2.5px;
     border-bottom-width: 4px;
 
-    width: 100%;
+    width: auto;
 `;
