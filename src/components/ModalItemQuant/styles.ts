@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ButtonGeneric from "../Button";
 import Icon from "react-native-vector-icons/MaterialIcons"
 
-const QuantiButton = styled.View`
+const QuantiButton = styled.Pressable`
 	border-radius: 5px;
 	width: 25px;
 	height: 25px;

@@ -38,13 +38,13 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible }) => {
 
 						<QuantButtonsContainer>
 				
-							<QuantiButtonMinus>
+							<QuantiButtonMinus onPress={() => setValue(value -1)} >
 								<Icon name="remove" size={20} color="#fff"/>
 							</QuantiButtonMinus>
 
 							<QuantuNumberText>{value}</QuantuNumberText>
 
-							<QuantiButtonPlus>
+							<QuantiButtonPlus onPress={() => setValue(value +1)} >
 								<Icon name="add" size={20} color="#fff" />
 							</QuantiButtonPlus>
 
