@@ -7,11 +7,10 @@ export const Container = styled(BoxContainer)`
 	justify-content: center;
 	padding: 0px 12px;
 	padding-bottom: 14px;
-	background-color: ${ ({greenBox}) => !greenBox ? "#fff" : "#32A041"};
 `;
 
 export const HeaderItemText = styled.Text`
-	font-family: "Montserrat-SemiBold";
+	font-family: "Montserrat-Medium";
 	font-size: 20px;
 
 	text-align: center;
@@ -19,7 +18,7 @@ export const HeaderItemText = styled.Text`
 	width: auto;
 	padding: 8px 0px
 	
-	color: ${ ({greenBox}) => greenBox ? "#fff" : "#32A041"};
+	color: #000;
 `;
 
 export const ContentContainer = styled.View`
@@ -47,10 +46,17 @@ export const InfoContainer = styled.View`
 export const RegularText = styled.Text`
 	font-family: "Montserrat-Regular";
 	font-size: 16px;
-	color: ${ ({greenBox}) => greenBox ? "#fff" : "#32A041"};
+	color: $000;
 `;
-export const BoldText = styled.Text`
+
+export const ValueText = styled.Text`
 	font-family: "Montserrat-Bold";
 	font-size: 16px;
-	color: ${ ({greenBox}) => greenBox ? "#fff" : "#32A041"};
+	color: #32A041;
+`;
+
+export const EstoqueValueText = styled.Text`
+	font-family: "Montserrat-Medium";
+	font-size: 16px;
+	color: #000;
 `;
