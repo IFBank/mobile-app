@@ -48,7 +48,7 @@ export const ModalTitle = styled.Text`
 	margin-bottom: 32px;
 `;
 
-export const ItemsConteiner = style.View``;
+export const ItemsConteiner = styled.View``;
 
 export const ItemContainer = styled(BoxContainer)`
 	padding: 12px 16px;
