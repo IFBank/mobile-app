@@ -23,7 +23,7 @@ export const Container = styled.View`
 	justify-content: center;
 	align-items: center;
 
-	background-color: #0004;
+	background-color: #00000064;
 `;
 
 export const ModalContainer = styled.View`
