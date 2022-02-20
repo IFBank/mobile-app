@@ -5825,6 +5825,11 @@ react-native-gesture-handler@^2.1.0:
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
+react-native-linear-gradient@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
+  integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
+
 react-native-modal-translucent@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-native-modal-translucent/-/react-native-modal-translucent-5.0.0.tgz#8b35cfa4189dce776c77a925b00ad19d965bd0a2"
