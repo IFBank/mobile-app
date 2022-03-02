@@ -1,21 +1,35 @@
 import React from "react";
 
 export const themes = {
-	light:{
-		primary: "#32A041",
-		secondary: "#FF1F26",
-		secondary_light: "#FF1F26F0",
-		primary_gray: "#C1C1C1",
-		secundary_gray: "#C4C4C4",
-	},
-	dark:{
-		primary: "#B4B4B4",
-		secondary: "#C4C4C4",
-		secondary_light: "#C4C4C4F0",
-		primary_gray: "#C1C1C1",
-		secundary_gray: "#C4C4C4",
+	light: {
+		linear: {
+			primary: ["#32DC32", "#6BE32B"], // green
+			secondary: ["#5E45CC", "#4250E3"], // purple
+			semantic_red: ["#FF1F26", "#FF5512"], // red
+			neutral: ["#3B3A3E", "#373739"], // black
+		},
+		text: {
+			title: "#1A1A1A",
+			text: "#333333",
+		},
+		background: "#FEFFFE",
+		semantic_disable: "#d4d5d4",	
 	},
 
+	dark: {
+		linear: {
+			primary: ["#3B3A3E", "#373739"], // green
+			secondary: ["#F1EFF7", "#EFEDF5"], // purple
+			semantic_red: ["#FF1F26", "#FF5512"], // red
+			neutral: ["#3B3A3E", "#373739"], // black
+		},
+		text: {
+			title: "#1A1A1A",
+			text: "#333333",
+		},
+		background: "#FEFFFE",
+		semantic_disable: "#d4d5d4",
+	}
+	
 };
-
 export const ThemeContext = React.createContext(themes.light);
