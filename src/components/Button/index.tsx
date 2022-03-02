@@ -1,34 +1,55 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
-import { Container, IconStyled, ButtonText } from "./styles";
+import { View } from 'react-native';
+
+import { ThemeContext } from '../../themes.ts'
+
+import { Container, TextView, IconStyled, ButtonText, LinearGradientPadding } from "./styles";
 
 interface ButtonProps{
-	children: string;
-	fontSize?: Integer;
+	text: string;
+	textColor? : string; 
+	textFontSize?: Integer;
 	iconName? : string
 	iconSize? : Integer;
 	iconColor? : string; 
+	gradientColor? : string; 
+	borderRadius? : Integer;
+	style? : any;
+	innerStyle? : any;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, iconName, iconSize, iconColor, fontSize, ... rest }) => {
+const Button: React.FC<ButtonProps> = (
+	{ 
+		text="TESTE", 
+		textColor="#FEFFFE", 
+		textFontSize=16, 
 
-	const Icon: React.FC = () => {
-		if(iconName != undefined){
-			return (
-				<IconStyled name={iconName} size={iconSize} color={iconColor}/>
-			)
-		}
+		iconName, 
+		iconSize, 
+		iconColor, 
 
-		return null;
+		gradientColor="primary",
+		borderRadius=10,
+		innerStyle, 
+		... rest 
 	}
+) => {
+
+	const theme = useContext(ThemeContext)
 
 	return (
-		<Container { ... rest } >
-			<Icon />
-			<ButtonText fontSize={fontSize}>
-				{children}	
-			</ButtonText>
+		<Container borderRadius={borderRadius} { ... rest }  >
+			<LinearGradientPadding colors={theme.linear[gradientColor]} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderRadius}}>
+				<TextView style={{...innerStyle, borderRadius}}>
+					{ iconName != undefined &&
+						<IconStyled name={iconName} size={iconSize} color={iconColor}/>
+					}
+					<ButtonText textFontSize={textFontSize} textColor={textColor} > {text} </ButtonText>
+				</TextView>
+			</LinearGradientPadding>
 		</Container>
+				
 	)
 
 };

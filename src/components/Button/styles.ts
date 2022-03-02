@@ -3,12 +3,12 @@ import styled from 'styled-components/native';
 import Icon from "react-native-vector-icons/MaterialIcons"
 import { RectButton } from "react-native-gesture-handler";
 
-export const Container = styled(RectButton)`
-	margin: 0 13px;
-	
-	justifuy-content: center;
-	align-items: center;
+import LinearGradient from 'react-native-linear-gradient';
 
+import { fonts } from '../../fonts'
+
+// TODO: DROP SHADOW
+export const Container = styled(RectButton)`
 	shadow-color: #000;
     shadow-offset-width: 0;
     shadow-offset-height: 4px;
@@ -16,6 +16,20 @@ export const Container = styled(RectButton)`
     shadow-radius: 4px;
     elevation: 4;
 
+    border-radius: ${ ({borderRadius}) => borderRadius }px;
+
+    background-color: #00000FF;
+`;
+
+export const LinearGradientPadding = styled(LinearGradient)`
+	padding: 1px;
+	width: 100%;
+`;
+
+export const TextView = styled.View`
+	justifuy-content: center;
+	align-items: center;
+	width: 100%;
 `;
 
 export const IconStyled = styled(Icon)`
@@ -23,7 +37,7 @@ export const IconStyled = styled(Icon)`
 `;
 
 export const ButtonText = styled.Text`
-	color: #FFF;
-	font-family: "Montserrat-Bold";
-	font-size: ${ ({fontSize=20}) => fontSize }px;
+	color: ${({textColor}) => textColor};
+	font-family: ${ fonts.title.bold };
+	font-size: ${ ({textFontSize}) => textFontSize }px;
 `;
