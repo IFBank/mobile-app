@@ -8,7 +8,7 @@ import BaseHeader from "../components/Header"
 import HomePageScreen from '../pages/HomePage';
 import ProfilePageScreen from '../pages/ProfilePage';
 
-import ShopScreen from '../pages/ShopPages/ConfirmPaymentPage';
+import ShopScreen from '../pages/ShopPages/ShopPage';
 
 import ScreenExample from '../pages/ScreenExample';
 
