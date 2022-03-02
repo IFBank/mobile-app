@@ -59,7 +59,7 @@ const AppRoutes: React.FC = () => (
       		headerShown: false,
       		cardStyle: { backgroundColor: '#312E36' },
     	}}
-		initialRouteName={logado == true ? "HomeApp" : "CadastroFlow"}
+		initialRouteName={logado == true ? "HomeApp" : "Login"}
 
 	>
 		<AppStack.Screen name="Login" component={LoginPageScreen} />
