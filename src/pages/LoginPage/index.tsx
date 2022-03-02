@@ -1,5 +1,12 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useContext } from "react";
 import { Image, View, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
+
+import { useNavigation } from '@react-navigation/native';
+
+import { Form } from "@unform/mobile"
+import { FormHandles } from "@unform/core"
+
+import { ThemeContext } from '../../themes.ts'
 
 import { 
 	Container, 
@@ -7,17 +14,16 @@ import {
 	ContentContainer, 
 	Title, 
 	Button, 
-	ButtonText, 
 	Input 
 } from "./styles"
 
-import { Form } from "@unform/mobile"
-import { FormHandles } from "@unform/core"
-
-import logoIFbank from "../../assets/logo.png"
+import Logo from "../../assets/logo.svg"
 
 
 const LoginPage: React.FC = () => {
+	const navigation = useNavigation();
+	const theme = useContext(ThemeContext)
+
 	const formRef = useRef<FormHandles>(null)
 
 	const handleLogin = useCallback((data: object) => {
@@ -35,18 +41,17 @@ const LoginPage: React.FC = () => {
 				keyboardShouldPersistTaps="handled"
 				contentContainerStyle={{ flexGrow: 1 }}
 			>
-				<Container>
+				<Container colors={theme.linear.primary} start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
 					<LogoContainer>
-						<Image source={logoIFbank}/>
+						<Logo />
 					</LogoContainer>
 
-					<ContentContainer>
-						<View style={{ alignItems: "center"}}>
-							<Title>
-								Login
-							</Title>
-						</View>
-
+					<ContentContainer theme={theme}>
+					
+						<Title theme={theme}>
+							Login
+						</Title>
+				
 						<Form ref={formRef} onSubmit={handleLogin}>
 							
 							<Input 
@@ -58,6 +63,7 @@ const LoginPage: React.FC = () => {
 								returnKeyType="next" 
 								
 							/>
+
 							<Input 
 								name="password" 
 								headerText="Digite sua senha"
@@ -66,19 +72,44 @@ const LoginPage: React.FC = () => {
 							/>
 
 							<Button 
-								fontSize={24}
+								text="LOGIN"
+								textColor={theme.background}
+								textFontSize={16}
+								borderRadius={30}
+								innerStyle={{
+									paddingHorizontal: 80,
+									paddingVertical: 15,
+								}}
+								gradientColor="primary"
+
 								onPress={
 									() => {
 										formRef.current?.submitForm()
 									}
 								}
-							>
-								Iniciar Sessão	
-							</Button>	
+							/>
+
+							<Button 
+								text="NÃO TENHO CADASTRO"
+								textColor={theme.linear.secondary[0]}
+								textFontSize={14}
+								borderRadius={30}
+								innerStyle={{
+									paddingHorizontal: 20,
+									paddingVertical: 15,
+									backgroundColor: theme.background
+								}}
+								gradientColor="secondary"
+
+								onPress={
+									() => {
+										navigation.navigate("CadastroFlow")
+									}
+								}
+							/>
 
 						</Form>
 						
-
 					</ContentContainer>
 					
 				</Container>
