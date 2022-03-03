@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { ThemeContext } from '../themes.ts'
 
 import Icon from "react-native-vector-icons/MaterialIcons"
 
@@ -15,6 +17,8 @@ import ScreenExample from '../pages/ScreenExample';
 const HomeTab = createBottomTabNavigator();
 
 const homeTabNavegatorOptions = ({route}) => {
+
+	const theme = useContext(ThemeContext);
 
 	const homeTabIcons = ({ focused, color, size }) => {
 		let iconName;
@@ -39,6 +43,7 @@ const homeTabNavegatorOptions = ({route}) => {
     			console.log(`Nome de rota inesperado: ${route.name}`);
 		}
 
+		// TODO: Linear gradient icon (acho que  aqui nãp te como)
 		return(
 			<Icon name={iconName}  color={color} size={size}/>
 		)
@@ -48,8 +53,8 @@ const homeTabNavegatorOptions = ({route}) => {
 		tabBarIcon: homeTabIcons,
 		header: BaseHeader,
 
-		tabBarInactiveTintColor:"#0000004c",
-		tabBarActiveTintColor: "#32A041"
+		tabBarInactiveTintColor: theme.semantic_disable,
+		tabBarActiveTintColor: theme.linear.primary[0]
 	}
 }
 
