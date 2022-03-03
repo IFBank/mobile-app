@@ -19,7 +19,7 @@ const ArrowNavegator: React.FC<ArrowNavegatorProps> = ({ hasBackScreen, backPage
 	const theme = useContext(ThemeContext)
 
 	return (
-		<Container { ... rest } >
+		<Container theme={theme} { ... rest } >
 			{/*Left Icon*/}
 			<IconButtonCircle
 				iconStyle={{marginRight: 8}}

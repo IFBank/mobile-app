@@ -11,7 +11,6 @@ export const Container = styled.View`
 	flex: 1;
 	padding: 0 16px;
 	padding-bottom: 25px;
-	background-color: ${({theme}) => theme.background};
 `
 
 export const StageContainer = styled.View`

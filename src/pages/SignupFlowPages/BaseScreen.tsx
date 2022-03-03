@@ -80,7 +80,7 @@ const BaseScreen: React.FC = ({children=null}) => {
 
 	return (
 		<KeyboardAvoidingView
-			style={{ flex: 1 }}
+			style={{ flex: 1, backgroundColor: theme.background }}
 			behavior={Platform.OS === "ios" ? "padding" : undefined}
 			enabled
 		>
@@ -88,7 +88,7 @@ const BaseScreen: React.FC = ({children=null}) => {
 				keyboardShouldPersistTaps="handled"
 				contentContainerStyle={{ flexGrow: 1 }}
 			>
-				<Container theme={theme}>
+				<Container>
 
 				<StageHeader stage={stage.stageNumber} theme={theme} navigation={navigation}/>
 
