@@ -5,17 +5,14 @@ import GenericButton from "../../components/Button"
 import GenericInput from '../../components/Input';
 import ArrowNavegator from '../../components/ArrowNavegator';
 
+import { fonts } from '../../fonts'
+
 export const Container = styled.View`
 	flex: 1;
 	padding: 0 16px;
 	padding-bottom: 25px;
+	background-color: ${({theme}) => theme.background};
 `
-
-export const TextHeader = styled.Text`
-	font-family: "Montserrat-Bold";
-	font-size: 20px;
-	color: #FFF;
-`;
 
 export const StageContainer = styled.View`
 	flex-direction: row;
@@ -24,13 +21,13 @@ export const StageContainer = styled.View`
 	align-items: center;
 `;
 
-export const StageText = styled.Text``;
+export const StageText = styled.Text`
+	font-size: 16px;
+	color: #333333;
+	font-family: ${ fonts.text.regular }
+`;
 
-export const StageCancelButton = styled(GenericButton)`
-	background-color: ${ ({theme}) => theme.secondary};
-	border-radius: 20px;
-	padding: 6px 14px;
-`
+export const StageCancelButton = styled(GenericButton)``;
 
 export const TitleHeaderStyled = styled(TitleHeader)`
 	padding-top: 6px;
