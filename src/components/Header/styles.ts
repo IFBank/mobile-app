@@ -1,7 +1,11 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-	background-color: ${({theme}) => theme.primary};
+import LinearGradient from 'react-native-linear-gradient';
+
+import { fonts } from '../../fonts'
+
+// TODO: drop shadow 
+export const Container = styled(LinearGradient)`
 	padding: 2px 24px; 
 
 	shadow-color: #000;
@@ -15,13 +19,10 @@ export const Container = styled.View`
     align-items: center;
 
     justify-content: space-between;
-
-	border-bottom-right-radius: 20px;
-	border-bottom-left-radius: 20px;
 `
 
 export const TextHeader = styled.Text`
-    font-family: "Montserrat-Bold";
+    font-family: ${ fonts.title.bold };
     font-size: 20px;
-    color: #FFF;
+    color: ${ ({textColor}) => textColor};
 `;

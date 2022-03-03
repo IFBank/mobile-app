@@ -1,7 +1,10 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-	background-color: ${({theme}) => theme.primary};
+import LinearGradient from 'react-native-linear-gradient';
+
+import { fonts } from '../../fonts'
+
+export const Container = styled(LinearGradient)`
 	padding: 0 18px; 
 
 	shadow-color: #000;
@@ -15,10 +18,7 @@ export const Container = styled.View`
     align-items: center;
 
     justify-content: space-between;
-
-	border-bottom-right-radius: 20px;
-	border-bottom-left-radius: 20px;
-`
+`;
 
 export const PerfilContainer = styled.View`
     flex-direction: row;
@@ -30,12 +30,12 @@ export const PerfilContainer = styled.View`
 
 export const TextPerfilNormal = styled.Text`
     margin-left: 15px;
-    color: #FFF;
-    font-size: 18px;
-    font-family: "Montserrat-Regular";
+    color: ${({textColor}) => textColor};
+    font-size: 20px;
+    font-family: ${ fonts.title.regular };
 
 `;
 
 export const TextPerfilName = styled(TextPerfilNormal)`
-    font-family: "Montserrat-Bold";
+    font-family: ${ fonts.title.bold };
 `;

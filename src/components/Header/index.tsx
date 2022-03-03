@@ -15,8 +15,8 @@ const Header: React.FC<HeaderProps> = ({ options, route, ... rest }) => {
 	const theme = useContext(ThemeContext);
 
 	return (
-		<Container theme={theme} { ... rest}>
-			<TextHeader>
+		<Container colors={theme.linear.primary} start={{x: 0, y: 0}} end={{x: 1, y: 0}} { ... rest}>
+			<TextHeader textColor={theme.background}>
 				{options?.title || route?.name} 
 			</TextHeader>
 			<Image source={logoIFbank} />
