@@ -19,7 +19,7 @@ export const themes = {
 	dark: {
 		linear: {
 			primary: ["#3B3A3E", "#373739"], // green
-			secondary: ["#F1EFF7", "#EFEDF5"], // purple
+			secondary: ["#5E45CC", "#4250E3"], // purple
 			semantic_red: ["#FF1F26", "#FF5512"], // red
 			neutral: ["#3B3A3E", "#373739"], // black
 		},
