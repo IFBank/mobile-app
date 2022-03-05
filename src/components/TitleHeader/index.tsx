@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useContext}from "react";
+
+import { ThemeContext } from '../../themes.ts'
 
 import {Container, Title, SubTitle} from './styles';
 
@@ -10,10 +12,12 @@ interface TitleHeaderProps {
 }
 
 const TitleHeader: React.FC<TitleHeaderProps> = ({ mainTitle, subTitle, fontSizeMain=20, marginBottomMain=9, ... rest}) => {
+	const theme = useContext(ThemeContext);
+
 	return (
 		<Container { ... rest }>
-			<Title fontSize={fontSizeMain} marginBottom={marginBottomMain} >{mainTitle}</Title>
-			{(subTitle!=="") && <SubTitle>{subTitle}</SubTitle>}
+			<Title textColor={theme.text.title} fontSize={fontSizeMain} marginBottom={marginBottomMain} >{mainTitle}</Title>
+			{(subTitle!=="") && <SubTitle textColor={theme.text.text} >{subTitle}</SubTitle>}
 			
 		</Container>
 	)
