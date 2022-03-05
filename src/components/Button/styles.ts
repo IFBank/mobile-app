@@ -18,7 +18,7 @@ export const Container = styled(RectButton)`
 
     border-radius: ${ ({borderRadius}) => borderRadius }px;
 
-    background-color: #00000FF;
+    background-color: white;
 `;
 
 export const LinearGradientPadding = styled(LinearGradient)`

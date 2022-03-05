@@ -38,9 +38,16 @@ const Button: React.FC<ButtonProps> = (
 
 	const theme = useContext(ThemeContext)
 
+	// FIX: No visual response on press event
+
 	return (
-		<Container borderRadius={borderRadius} { ... rest }  >
-			<LinearGradientPadding colors={theme.linear[gradientColor]} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderRadius}}>
+		<Container borderRadius={borderRadius}  { ... rest }  >
+			<LinearGradientPadding 
+				colors={theme.linear[gradientColor]} 
+				start={{x: 0, y: 0}} 
+				end={{x: 1, y: 0}} 
+				style={{borderRadius}}
+			>
 				<TextView style={{...innerStyle, borderRadius}}>
 					{ iconName != undefined &&
 						<IconStyled name={iconName} size={iconSize} color={iconColor}/>
