@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import {fonts} from '../../fonts'
+
 interface ContainerProps {
 	isFocused: boolean;
 }
@@ -19,6 +21,6 @@ export const InputStyled = styled.TextInput`
 
 export const HeaderInput = styled.Text`
 	font-size: 30px;
-	font-family: "Montserrat-SemiBold";
+	font-family: ${ fonts.text.regular };
 	color: #000;
 `
