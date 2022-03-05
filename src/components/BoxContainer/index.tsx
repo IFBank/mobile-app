@@ -2,9 +2,6 @@ import React, { useContext } from "react";
 
 import { ThemeContext } from '../../themes.ts'
 
-import { Text } from 'react-native'
-
-
 import { Container, BorderLinearGradient} from "./styles"
 
 interface BoxContainerProps {
@@ -17,7 +14,7 @@ const BoxContainer: React.FC<BoxContainerProps> = ({children, gradientColor="pri
 
 	const theme = useContext(ThemeContext);
 
-	
+	//TODO: Drop Shadow
 
 	return (
 		<BorderLinearGradient colors={theme.linear[gradientColor]} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={outerStyle}>
