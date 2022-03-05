@@ -9,15 +9,15 @@ import Icon from "react-native-vector-icons/MaterialIcons"
 import TitleHeader from '../TitleHeader'
 import { Container,  PaymentIconStyled, CustomPaymentIconStyled, SendIconContainer } from './styles'
 
-const PaymentTypeBox: React.FC = ({iconName, mainTitle, subTitle, onPress, ... rest}) => {
+const PaymentTypeBox: React.FC = ({iconName, mainTitle, subTitle, onPress, gradientColor, ... rest}) => {
 	const theme = useContext(ThemeContext);
 
 	const IconOrSvg = () => {
 		if(iconName == "pix"){
-			return <CustomPaymentIconStyled name='pix_black_24dp' size={40} color={theme.primary} />
+			return <CustomPaymentIconStyled name='pix_black_24dp' size={40} color={theme.linear[gradientColor][0]} />
 		}
 
-		return <PaymentIconStyled size={40} color={theme.primary} name={iconName}/>
+		return <PaymentIconStyled size={40} color={theme.linear[gradientColor][0]} name={iconName}/>
 	}
 
 	return (
@@ -27,7 +27,7 @@ const PaymentTypeBox: React.FC = ({iconName, mainTitle, subTitle, onPress, ... r
 			onPress={onPress}
 		>
 			
-			<Container { ... rest}>
+			<Container gradientColor={gradientColor} { ... rest}>
 				<IconOrSvg />
 				<TitleHeader 
 					mainTitle={mainTitle} 
@@ -36,13 +36,9 @@ const PaymentTypeBox: React.FC = ({iconName, mainTitle, subTitle, onPress, ... r
 					fontSizeMain={16} 
 				/>
 				<SendIconContainer>
-					<Icon size={30} color="#000" name="chevron-right"/>	
+					<Icon size={30} color={theme.linear.neutral[0]} name="chevron-right"/>	
 				</SendIconContainer>
 				
-
-
-				
-
 			</Container>
 
 		</TouchableOpacity>
