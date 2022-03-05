@@ -3,6 +3,8 @@ import styled from "styled-components/native"
 import BoxContainer from '../BoxContainer';
 import GenericButton from "../Button"
 
+import { fonts } from '../../fonts';
+
 export const BoxContainerStyled = styled(BoxContainer)`
     flex-direction: row;
     padding: 20px ${({typeOfEmpty}) => typeOfEmpty=="combos"? 10 : 18}px;
@@ -19,15 +21,15 @@ export const ContentContainer = styled.View`
 export const MainText = styled.Text`
     color: #FF1F26;
 
-    font-family: "Montserrat-Bold";
-    font-size: 16px;
+    font-family: ${ fonts.title.bold };
+    font-size: 18px;
 
     text-align: center;
 `;
 
 export const SubTitleText = styled.Text`
     color: #000;
-    font-family: "Montserrat-Light";
+    font-family: ${ fonts.text.light };
     font-size: 10px;
 
     ${
@@ -38,9 +40,6 @@ export const SubTitleText = styled.Text`
 `;
 
 export const StyledButton = styled(GenericButton)`
-    background-color: ${ ({theme}) => theme.primary};
-    border-radius: 10px;
-    padding: 8px 6px;
     margin: 0 24px;
     margin-top: 19px;
 `;
