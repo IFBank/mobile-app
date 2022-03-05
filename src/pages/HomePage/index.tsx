@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext}from "react";
 
 import { ScrollView, Image, View } from "react-native";
 
@@ -7,14 +7,22 @@ import HomeHeader from '../../components/HomeHeader';
 import BoxSaldo from '../../components/BoxSaldo';
 import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
+import { ThemeContext } from '../../themes'
+
 import { Container, ContentSection, TitleHeaderStyled } from "./styles"
 
 import imageEmptyCombos from "../../assets/imageEmptyCombos.png"
 import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
 
 const HomePage: React.FC = () => {
+
+	const theme = useContext(ThemeContext)
+
+	// TODO: Button of hide saldo
+	// TODO: Funçoes do box empty e renderização condicional para o flat list
+
 	return (
-		<ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
 			<Container style={{flex: 1}}>
 				<HomeHeader />
 
@@ -34,6 +42,8 @@ const HomePage: React.FC = () => {
 						imageSource={imageEmptyCombos} 
 						mainText="Sem combos registrados!" 
 						subTitleText="Você pode registrá-los na finalização de seus pedidos!"
+						buttonText="Montar um combo"
+						gradientColor="secondary"
 						typeOfEmpty="combos"
 					/>
 				</ContentSection>
@@ -48,6 +58,7 @@ const HomePage: React.FC = () => {
 						imageSource={imageEmptyPedidos} 
 						mainText="Sem pedios pendentes!" 
 						subTitleText="Vá a aba cantina e faça o seu!"
+						buttonText="Fazer um pedido"
 						typeOfEmpty="pedidos"
 					/>
 				</ContentSection>
