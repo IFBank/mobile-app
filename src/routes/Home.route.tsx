@@ -54,7 +54,8 @@ const homeTabNavegatorOptions = ({route}) => {
 		header: BaseHeader,
 
 		tabBarInactiveTintColor: theme.semantic_disable,
-		tabBarActiveTintColor: theme.linear.primary[0]
+		tabBarActiveTintColor: theme.linear.primary[0],
+		tabBarItemStyle: {paddingVertical: 6}
 	}
 }
 
