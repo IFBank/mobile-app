@@ -17,18 +17,21 @@ const BuyButtonShop: React.FC<ArrowNavegatorProps> = ({ onPress, ... rest }) => 
 
 	return (
 		<Container { ... rest } >
-
 			<IconButtonCircle>
-			<LinearGradientStyled colors={theme.linear.secondary} start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
-				<Icon iconStyle={{marginRight: 8}}
-				name="shopping-cart"
-				size={30}
-				color={theme.background}
-				onPress={ onPress }/>
-			</LinearGradientStyled>
+
+				<LinearGradientStyled colors={theme.linear.secondary} start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
+					
+					<Icon 
+						iconStyle={{marginRight: 8}}
+						name="shopping-cart"
+						size={30}
+						color={theme.background}
+						onPress={ onPress }
+					/>
+
+				</LinearGradientStyled>
 				
 			</IconButtonCircle>
-			
 		</Container>
 	)
 
