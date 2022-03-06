@@ -38,8 +38,9 @@ const SelectPaymentTypePage: React.FC = () => {
 					iconName="receipt" 
 					mainTitle="Boleto" 
 					subTitle="Pague em até 3x"
+					gradientColor="secondary"
 					onPress={() => {navigation.navigate("Boleto")}}
-					style={{marginTop: 32}}
+					outerStyle={{marginTop: 32}}
 				/>
 			</SelectContainer>
 
