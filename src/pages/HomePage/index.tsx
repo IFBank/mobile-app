@@ -4,6 +4,7 @@ import { ScrollView, Image, View } from "react-native";
 
 import HomeHeader from '../../components/HomeHeader';
 
+import HideSaldoButton from '../../components/HideSaldoButton';
 import BoxSaldo from '../../components/BoxSaldo';
 import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
@@ -15,6 +16,12 @@ import imageEmptyCombos from "../../assets/imageEmptyCombos.png"
 import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
 
 const HomePage: React.FC = () => {
+
+	const [hideSaldo, setHideSaldo] = useStatus(false);
+
+	useEffect( () => {
+		setHideSaldo(false) // Value from asyncStorage (cache)
+	}, [])
 
 	const theme = useContext(ThemeContext)
 
@@ -29,7 +36,9 @@ const HomePage: React.FC = () => {
 				<ContentSection>
 					<TitleHeaderStyled mainTitle="Conta" subTitle="Para mais informações vá à aba dashboard."/>
 
-					<BoxSaldo />
+					<HideSaldoButton onPress={() = {setHideSaldo(!hideSaldo)}}/>
+
+					<BoxSaldo hideSaldo={hideSaldo}/>
 				</ContentSection>
 
 				<ContentSection>
@@ -56,7 +65,7 @@ const HomePage: React.FC = () => {
 
 					<BoxHomeEmpty 
 						imageSource={imageEmptyPedidos} 
-						mainText="Sem pedios pendentes!" 
+						mainText="Sem pedidos pendentes!" 
 						subTitleText="Vá a aba cantina e faça o seu!"
 						buttonText="Fazer um pedido"
 						typeOfEmpty="pedidos"
