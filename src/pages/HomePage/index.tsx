@@ -4,7 +4,7 @@ import { ScrollView, Image, View } from "react-native";
 
 import HomeHeader from '../../components/HomeHeader';
 
-// import HideSaldoButton from '../../components/HideSaldoButton';
+import HideSaldoButton from '../../components/HideSaldoButton';
 import BoxSaldo from '../../components/BoxSaldo';
 import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
 				<ContentSection>
 					<TitleHeaderStyled mainTitle="Conta" subTitle="Para mais informações vá à aba dashboard."/>
 
-					{/*<HideSaldoButton onPress={() =>{setHideSaldo(!hideSaldo)}}/>*/}
+					<HideSaldoButton onPress={(value) =>{setHideSaldo(value)}}/>
 
 					<BoxSaldo hideSaldo={hideSaldo}/>
 				</ContentSection>
