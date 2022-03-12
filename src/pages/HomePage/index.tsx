@@ -1,10 +1,10 @@
-import React, {useContext}from "react";
+import React, {useContext, useEffect, useState}from "react";
 
 import { ScrollView, Image, View } from "react-native";
 
 import HomeHeader from '../../components/HomeHeader';
 
-import HideSaldoButton from '../../components/HideSaldoButton';
+// import HideSaldoButton from '../../components/HideSaldoButton';
 import BoxSaldo from '../../components/BoxSaldo';
 import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
@@ -17,7 +17,7 @@ import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
 
 const HomePage: React.FC = () => {
 
-	const [hideSaldo, setHideSaldo] = useStatus(false);
+	const [hideSaldo, setHideSaldo] = useState(false);
 
 	useEffect( () => {
 		setHideSaldo(false) // Value from asyncStorage (cache)
@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
 				<ContentSection>
 					<TitleHeaderStyled mainTitle="Conta" subTitle="Para mais informações vá à aba dashboard."/>
 
-					<HideSaldoButton onPress={() = {setHideSaldo(!hideSaldo)}}/>
+					{/*<HideSaldoButton onPress={() =>{setHideSaldo(!hideSaldo)}}/>*/}
 
 					<BoxSaldo hideSaldo={hideSaldo}/>
 				</ContentSection>
