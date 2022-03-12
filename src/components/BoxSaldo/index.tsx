@@ -10,7 +10,12 @@ interface BoxSaldoProps{
 	hideSaldo: boolean;
 };
 
-const numberToRealString: string = (value: Number) => {
+const numberToRealString: string = (value: Number, hideSaldo) => {
+
+	if (hideSaldo){
+		return "*****"
+	}
+
 	let stringValue = value.toString();
 
 	const [integerPart, floatPart] = stringValue.includes('.') ? stringValue.split('.') : [stringValue, '00']
@@ -25,11 +30,13 @@ const numberToRealString: string = (value: Number) => {
 const BoxSaldo: React.FC<BoxSaldoProps> = ({ hideSaldo, ... rest}) => {
 	const navigation = useNavigation();
 
-	const value = 0;
+	const value = !hideSaldo ? 0 : 0.01;
+
+	// TODO: Implement Blur
 
 	return (
 		<BoxContainer { ... rest} >
-			<LeadingTextStyled fontSize={16} textName="Saldo Atual" textValue={numberToRealString(value)} integerValue={value}/>
+			<LeadingTextStyled fontSize={16} textName="Saldo Atual" textValue={numberToRealString(value, hideSaldo)} integerValue={value}/>
 
 			<StyledButton 
 				text="Fazer um deposito"
