@@ -56,16 +56,32 @@ const ProfilePage = () => {
 							<Button 
 								text="Sair"
 								textFontSize={20}
+								borderRadius={30}
 								iconName="logout"
-								iconSize={40}
+								iconSize={30}
 								iconColor={theme.background}
 								gradientColor="semantic_red"
 								innerStyle={{
-									paddingVertical: 10
+									paddingHorizontal: 36,
+									paddingVertical: 14,
+
 								}}
-							>
-								
-							</Button>	
+							/>
+							<Button 
+								text="Noturno"
+								textFontSize={20}
+								textColor={theme.linear.neutral[0]}
+								borderRadius={30}
+								iconName="brightness-2"
+								iconSize={30}
+								iconColor={theme.linear.neutral[0]}
+								gradientColor="neutral"
+								innerStyle={{
+									paddingVertical: 14,
+									paddingHorizontal: 14,
+									backgroundColor: theme.background
+								}}
+							/>	
 						</ButtonContainer>
 
 						
