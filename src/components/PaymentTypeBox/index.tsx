@@ -9,7 +9,7 @@ import Icon from "react-native-vector-icons/MaterialIcons"
 import TitleHeader from '../TitleHeader'
 import { Container,  PaymentIconStyled, CustomPaymentIconStyled, SendIconContainer } from './styles'
 
-const PaymentTypeBox: React.FC = ({iconName, mainTitle, subTitle, onPress, gradientColor, ... rest}) => {
+const PaymentTypeBox: React.FC = ({iconName, mainTitle, subTitle, onPress, gradientColor="primary", ... rest}) => {
 	const theme = useContext(ThemeContext);
 
 	const IconOrSvg = () => {
