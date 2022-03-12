@@ -23,7 +23,7 @@ const HideSaldoButton: React.FC<HideSaldoButtonProps> = ({ onPress, ... rest }) 
 				iconStyle={{marginRight: 8}}
 				name={hidden?"visibility-off":"visibility"}
 				size={30}
-				color={theme.semantic_disable}
+				color={theme.text.title}
 				onPress={ 
 					() => {
 						setHidden(!hidden);
