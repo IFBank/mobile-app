@@ -33,10 +33,7 @@ export const ButtonContainer = styled.View`
 `;
 
 export const Button = styled(GenericButton)`
-	background-color: ${({theme}) => theme.secondary};
-	padding: 10px 0px;
 	margin-top: 30px;
-	border-radius: 10px;
 	width: 120px;
 `;
 

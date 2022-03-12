@@ -15,7 +15,7 @@ const ProfilePage = () => {
 
 	return (
 		<KeyboardAvoidingView
-			style={{ flex: 1 }}
+			style={{ flex: 1, backgroundColor: theme.background}}
 			behavior={Platform.OS === "ios" ? "padding" : undefined}
 			enabled
 		>
@@ -54,13 +54,17 @@ const ProfilePage = () => {
 
 						<ButtonContainer>
 							<Button 
-								fontSize={20}
-								theme={theme} 
+								text="Sair"
+								textFontSize={20}
 								iconName="logout"
 								iconSize={40}
-								iconColor={"#FFF"}
+								iconColor={theme.background}
+								gradientColor="semantic_red"
+								innerStyle={{
+									paddingVertical: 10
+								}}
 							>
-								Sair
+								
 							</Button>	
 						</ButtonContainer>
 
