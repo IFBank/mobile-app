@@ -27,9 +27,9 @@ export const LinearGradientPadding = styled(LinearGradient)`
 `;
 
 export const TextView = styled.View`
-	justifuy-content: center;
+	justify-content: center;
+	flex-direction: row;
 	align-items: center;
-	width: 100%;
 `;
 
 export const IconStyled = styled(Icon)`
