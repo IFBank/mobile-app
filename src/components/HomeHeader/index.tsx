@@ -29,7 +29,7 @@ const HomeHeader: React.FC = () => {
 				</View>
 			</PerfilContainer>
 
-			{<Image source={logoIFBank} style={{marginRight: -18}}/>}
+			{<Image source={logoIFBank} style={{marginRight: 0}}/>}
 		</Container>
 	)
 

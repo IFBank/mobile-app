@@ -6,7 +6,7 @@ import { fonts } from '../../fonts'
 
 // TODO: drop shadow 
 export const Container = styled(LinearGradient)`
-	padding: 2px 24px; 
+	padding: 10px 24px; 
 
 	shadow-color: #000;
     shadow-offset-width: 0;
