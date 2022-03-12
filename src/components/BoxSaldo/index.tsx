@@ -6,6 +6,10 @@ import BoxContainer from '../BoxContainer';
 
 import { LeadingTextStyled, StyledButton} from "./styles"
 
+interface BoxSaldoProps{
+	hideSaldo: boolean;
+};
+
 const numberToRealString: string = (value: Number) => {
 	let stringValue = value.toString();
 
@@ -18,7 +22,7 @@ const numberToRealString: string = (value: Number) => {
 	return `R$ ${realString}`
 }
 
-const BoxSaldo: React.FC = ({ ... rest}) => {
+const BoxSaldo: React.FC<BoxSaldoProps> = ({ hideSaldo, ... rest}) => {
 	const navigation = useNavigation();
 
 	const value = 0;
