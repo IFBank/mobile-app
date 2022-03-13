@@ -13,7 +13,8 @@ export const themes = {
 			text: "#333333",
 		},
 		background: "#FEFFFE",
-		semantic_disable: "#d4d5d4",	
+		semantic_disable: "#d4d5d4",
+		shadow: "#BFBFBF",
 	},
 
 	dark: {
@@ -29,6 +30,7 @@ export const themes = {
 		},
 		background: "#FEFFFE",
 		semantic_disable: "#d4d5d4",
+		shadow: "#BFBFBF",
 	}
 	
 };
