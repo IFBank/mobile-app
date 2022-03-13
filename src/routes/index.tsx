@@ -14,6 +14,9 @@ import CadastroStackScreen from './Cadastro.route';
 import DepositoStackScreen from './Deposito.route';
 import HomeTabsScreen from './Home.route';
 
+import ConfirmComboPage from '../pages/ShopPages/ConfirmComboPage';
+import ConfirmPaymentPage from '../pages/ShopPages/ConfirmPaymentPage';
+
 const AppStack = createNativeStackNavigator()
 
 const ConfirmBuyShopStack = createNativeStackNavigator()
@@ -30,7 +33,7 @@ const ConfirmBuyShopStackScreen = () => {
     		}}
     		initialRouteName="ConfirmPayment"
 		>
-			<ConfirmBuyShopStack.Screen name="ConfirmPayment" component={ScreenExample} />
+			<ConfirmBuyShopStack.Screen name="ConfirmPayment" component={ConfirmPaymentPage} />
 			<ConfirmBuyShopStack.Screen name="ShowConfirmBeautify" component={ScreenExample} />
 				
 		</ConfirmBuyShopStack.Navigator>
@@ -46,7 +49,7 @@ const ComboShopStackScreen = () => {
     		}}
     		initialRouteName="ConfirmCombo"
 		>
-			<ComboShopStack.Screen name="ConfirmCombo" component={ScreenExample} />
+			<ComboShopStack.Screen name="ConfirmCombo" component={ConfirmComboPage} />
 			<ComboShopStack.Screen name="ShowConfirmBeautify" component={ScreenExample} />
 				
 		</ComboShopStack.Navigator>
