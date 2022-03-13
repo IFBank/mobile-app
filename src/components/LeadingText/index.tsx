@@ -9,7 +9,7 @@ interface LeadingTextProps {
 	fontSize: Integer;
 }
 
-const LeadingText: React.FC<LeadingTextProps> = ({textName, textValue, fontSize, fontFamilyName="Regular", integerValue, valueColor="#000", ... rest}) => {
+const LeadingText: React.FC<LeadingTextProps> = ({textName, textValue, fontSize, fontFamilyName="Regular", integerValue=1, valueColor="#000", ... rest}) => {
 	return (
 		<Container {... rest} >
 			<NameText fontSize={fontSize} fontFamilyName={fontFamilyName}>
