@@ -57,6 +57,7 @@
 		CD4679992B2A4AA6B4EC1BA6 /* Mukta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20C12F9F58AF4892927481A6 /* Mukta-SemiBold.ttf */; };
 		C49BEC7DB7074EEE8E2ED945 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7CBD9FDF49440B5B4CB2411 /* Ubuntu-Bold.ttf */; };
 		1FA0D3ED72264CCFB841DB51 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7148B3AA14694B5C99CEFF7E /* Ubuntu-Regular.ttf */; };
+		B4A191D78FE044EDA60AC26F /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AA56F17FD0F4628AF923078 /* Ubuntu-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		20C12F9F58AF4892927481A6 /* Mukta-SemiBold.ttf */ = {isa = PBXFileReference; name = "Mukta-SemiBold.ttf"; path = "../assets/fonts/Mukta-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F7CBD9FDF49440B5B4CB2411 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Bold.ttf"; path = "../assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7148B3AA14694B5C99CEFF7E /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Regular.ttf"; path = "../assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7AA56F17FD0F4628AF923078 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 				20C12F9F58AF4892927481A6 /* Mukta-SemiBold.ttf */,
 				F7CBD9FDF49440B5B4CB2411 /* Ubuntu-Bold.ttf */,
 				7148B3AA14694B5C99CEFF7E /* Ubuntu-Regular.ttf */,
+				7AA56F17FD0F4628AF923078 /* Ubuntu-Medium.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				CD4679992B2A4AA6B4EC1BA6 /* Mukta-SemiBold.ttf in Resources */,
 				C49BEC7DB7074EEE8E2ED945 /* Ubuntu-Bold.ttf in Resources */,
 				1FA0D3ED72264CCFB841DB51 /* Ubuntu-Regular.ttf in Resources */,
+				B4A191D78FE044EDA60AC26F /* Ubuntu-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

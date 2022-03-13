@@ -1,6 +1,7 @@
 export const fonts = {
 	title: {
 		regular: "Ubuntu-Regular",
+		medium: "Ubuntu-Medium",
 		bold: "Ubuntu-Bold",
 	},
 	text: {
