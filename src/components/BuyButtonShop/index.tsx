@@ -5,7 +5,7 @@ import { Platform } from "react-native";
 
 import Icon from "react-native-vector-icons/MaterialIcons"
 
-import { Container, IconButtonCircle } from "./styles";
+import { Container, IconButtonCircle, LinearGradientStyled } from "./styles";
 
 
 interface BuyButtonShopProps {
@@ -17,15 +17,21 @@ const BuyButtonShop: React.FC<ArrowNavegatorProps> = ({ onPress, ... rest }) => 
 
 	return (
 		<Container { ... rest } >
-
 			<IconButtonCircle>
-				<Icon iconStyle={{marginRight: 8}}
-				name="shopping-cart"
-				size={30}
-				color="#FFF"
-				onPress={ onPress }/>
+
+				<LinearGradientStyled colors={theme.linear.secondary} start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
+					
+					<Icon 
+						iconStyle={{marginRight: 8}}
+						name="shopping-cart"
+						size={30}
+						color={theme.background}
+						onPress={ onPress }
+					/>
+
+				</LinearGradientStyled>
+				
 			</IconButtonCircle>
-			
 		</Container>
 	)
 

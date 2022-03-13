@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
 
+import { fonts } from '../../fonts'
+
 import DashedLine from 'react-native-dashed-line';
 
 export const Container = styled.View`
@@ -7,16 +9,18 @@ export const Container = styled.View`
     justify-content: space-between;
 `;
 
+
+// TODO: Refatorar essa merda
 export const NameText = styled.Text`
     color: #000;
 
-    font-family: ${({fontFamilyName}) => `Montserrat-${fontFamilyName}`};
+    font-family: ${({fontFamilyName}) => `Ubuntu-${fontFamilyName}`};
     font-size: ${({fontSize=16}) => fontSize}px;
 `;
 
 export const ValueText = styled.Text`
     color: ${ ({isLEQZero=false, fontColor}) => isLEQZero ? "#FF1F26" : fontColor};
-    font-family: "Montserrat-Bold";
+    font-family: ${fonts.title.bold};
     font-size: ${({fontSize=16}) => fontSize}px;
 `;
 

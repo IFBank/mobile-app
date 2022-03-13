@@ -19,14 +19,14 @@ const ArrowNavegator: React.FC<ArrowNavegatorProps> = ({ hasBackScreen, backPage
 	const theme = useContext(ThemeContext)
 
 	return (
-		<Container { ... rest } >
+		<Container theme={theme} { ... rest } >
 			{/*Left Icon*/}
 			<IconButtonCircle
 				iconStyle={{marginRight: 8}}
 				name={Platform.OS == "ios"? "arrow-back-ios" : "arrow-back" }
 				size={30}
-				backgroundColor={hasBackScreen == true ? theme.primary : theme.secundary_gray} 
-				color="#FFF"
+				backgroundColor={hasBackScreen == true ? theme.linear.primary[0] : theme.semantic_disable} 
+				color={theme.background}
 				borderRadius={50}
 				onPress={ hasBackScreen ? backPage : null}
 			/>
@@ -36,8 +36,8 @@ const ArrowNavegator: React.FC<ArrowNavegatorProps> = ({ hasBackScreen, backPage
 				iconStyle={{marginRight: 8}}
 				name={Platform.OS == "ios"? "arrow-forward-ios" : "arrow-forward" }
 				size={30}
-				backgroundColor={theme.primary}
-				color="#FFF"
+				backgroundColor={theme.linear.primary[0]}
+				color={theme.background}
 				borderRadius={50}
 				onPress={nextPage}
 			/>

@@ -10,10 +10,6 @@ export const LeadingTextStyled = styled(LeadingText)`
 `;
 
 export const StyledButton = styled(GenericButton)`
-    background-color: ${ ({theme}) => theme.primary};
-    border-radius: 10px;
-
-    padding: 10px 20px;
     margin: 0 70px;
     margin-bottom: 14px;
 

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import ButtonGeneric from "../Button";
 import Icon from "react-native-vector-icons/MaterialIcons"
 
+import { fonts } from '../../fonts'
+
 const QuantiButton = styled.Pressable`
 	border-radius: 5px;
 	width: 25px;
@@ -10,6 +12,8 @@ const QuantiButton = styled.Pressable`
 
 	align-items: center;
 	justify-content: center;
+
+	background-color: ${({bgColor}) => bgColor} ;
 `;
 
 export const Container = styled.View`
@@ -64,9 +68,9 @@ export const ItemImage = styled.Image`
 `;
 
 export const ItemText = styled.Text`
-	font-family: "Montserrat-SemiBold";
+	font-family: ${ fonts.text.semibold };
 	font-size: 20px;
-	color: #32A041;
+	color: ${ ({textColor}) => textColor };
 	text-align: center;
 `
 export const QuantContainer = styled.View`
@@ -75,7 +79,7 @@ export const QuantContainer = styled.View`
 `;
 
 export const QuantiText = styled.Text`
-	font-family: "Montserrat-Regular";
+	font-family: ${ fonts.text.regular };
 	font-size: 18px;
 	color: #000;
 `;
@@ -88,7 +92,6 @@ export const QuantButtonsContainer = styled.View`
 `;
 
 export const QuantiButtonPlus = styled(QuantiButton)`
-	background-color: #32A041;
 `;
 
 export const QuantuNumberText = styled.Text`
@@ -97,17 +100,13 @@ export const QuantuNumberText = styled.Text`
 
 	margin: 0px 10px;
 
-	font-family: "Montserrat-SemiBold";
+	font-family: ${ fonts.title.regular };
 	font-size: 20px;
 	color: #000;
 `
 
 export const QuantiButtonMinus = styled(QuantiButton)`
-	background-color: #FF1F26;
 `;
 
 export const Button = styled(ButtonGeneric)`
-	background-color: #32A041;
-	border-radius: 10px;
-	padding: 6px 18px;
 `;

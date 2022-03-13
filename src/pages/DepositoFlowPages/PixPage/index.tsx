@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
+
+import {ThemeContext} from '../../../themes'
 
 import { Image, View } from "react-native"
 import { useNavigation } from '@react-navigation/native';
@@ -16,7 +18,7 @@ import qrCodeExample from '../../../assets/qrCodeExample.png';
 const PixPage: React.FC = () => {
 
 	const navigation = useNavigation();
-
+	const theme = useContext(ThemeContext);
 	return (
 		<Container>
 			<TopBackButtomStyled />
@@ -42,14 +44,14 @@ const PixPage: React.FC = () => {
 			<QrCodeHeaderStyled 
 				mainTitle="QR Code" 
 				subTitle=""
-				fontSizeMain={14} 
+				fontSizeMain={16} 
 				marginBottomMain={18}	
 			/>
 
-			<QRCodeBox>
+			<QRCodeBox outerStyle={{marginHorizontal: 40}}>
 				<Image source={qrCodeExample} />
 
-				<IconCircle>
+				<IconCircle circleBgColor={theme.linear.primary[0]}>
 					<Icon name="qr-code-scanner" size={40} color="#FFF"/>		
 				</IconCircle>
 					

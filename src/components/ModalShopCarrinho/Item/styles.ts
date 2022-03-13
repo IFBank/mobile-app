@@ -4,27 +4,26 @@ import BoxContainer from '../../BoxContainer';
 import GenericButton from '../../Button';
 import Icon from "react-native-vector-icons/MaterialIcons"
 
+import LinearGradient from 'react-native-linear-gradient';
+
+import { fonts } from '../../../fonts'
+
 export const ItemContainer = styled(BoxContainer)`
-	padding: 12px 16px;
-
-	width: 100%;
-
+	padding: 12px 0px;
 	align-items: center;
-
-	margin-bottom: 14px;
 `;
 
 export const ItemTitle = styled.Text`
-	color: #000;
-    font-family: "Montserrat-SemiBold";
+	color: ${({textColor}) => textColor};
+    font-family: ${ fonts.title.medium };
 	font-size: 18px;
 `;
 
 export const ItemContentContainer = styled.View`
 	flex-direction: row;
-	width: 100%;
-	justify-content: space-around;
 	align-items: center;
+	width: 100%;
+	justify-content: space-evenly;
 `;
 
 export const ItemImage = styled.Image`
@@ -35,25 +34,23 @@ export const ItemImage = styled.Image`
 `;
 
 export const InfoContainer = styled.View`
-	flex-direction: row;
 	flex-wrap: wrap;
-	flex-shrink: 1;
 	justify-content: center;
 `;
 
-export const InfoName = styled.Text`
-	font-size: 18px;
-	color: #000;
-    font-family: "Montserrat-SemiBold"
+export const InfoUnid = styled.Text`
+	font-size: 20px;
+	color: ${({textColor}) => textColor};
+    font-family: ${ fonts.text.regular };
 `;
 
-export const InfoValue = styled.Text`
-	font-size: 18px;
-	color: #000;
-    font-family: "Montserrat-Regular"
+export const InfoPrice = styled.Text`
+	font-size: 20px;
+	color: ${({textColor}) => textColor};
+    font-family: ${ fonts.text.medium };
 `;
 
-export const DeleteButton = styled.View`
+export const DeleteButton = styled(LinearGradient)`
 	background-color: #FF1F26;
 	border-radius: 5px;
 	height: 50px;

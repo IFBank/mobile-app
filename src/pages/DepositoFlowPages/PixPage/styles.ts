@@ -9,7 +9,6 @@ export const QRCodeBox = styled(BoxContainer)`
 	align-items: center;
 
 	padding: 5px 40px;
-	margin: 0 40px;
 `;
 
 export const TitleHeaderStyled = styled(TitleHeader)`
@@ -38,7 +37,7 @@ export const IconCircle = styled.View`
 	height: 60px;
 	
 	border-radius: 60px;	
-	background-color:"#32A041"; 
+	background-color: ${ ({circleBgColor})=> circleBgColor}; 
 	
 	align-items: center;
 	justify-content: center;

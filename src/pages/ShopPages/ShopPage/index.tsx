@@ -1,4 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useContext } from 'react';
+
+import { ThemeContext } from '../../../themes.ts';
 
 import { ScrollView } from "react-native";
 
@@ -32,14 +34,18 @@ const ShopPage = () => {
 		setItemType(value)
 	}, [])
 
+	const theme = useContext(ThemeContext);
+
+	// TODO: passar dados sobre qual salgado foi clicado
 	return (
-		<Container>
+		<Container style={{backgroundColor: theme.background}}>
 			<ModalItemQuant modalVisible={modalItem} onRequestClose={onRequestCloseItem} />
 			<ModalShopCarrinho modalVisible={modalCarrinho} onRequestClose={onRequestCloseCarrinho} />
 
 			<MenuContainer>
 
 				<FormStyled>
+					{/*TODO: Drop shadow no input*/}
 					<SearchBarInput name="search"/>
 				</FormStyled>
 
@@ -51,6 +57,7 @@ const ShopPage = () => {
 				
 			
 				<ContentContainer>
+					{/*TODO: FLAT LIST*/}
 					<ItemShopBox 
 						nameItem="Jose" 
 						price="23" 
@@ -65,7 +72,7 @@ const ShopPage = () => {
 						imageUrl="" 
 						greenBox
 						onPress={() => {setModalItem(true)}}
-						style={{marginTop: 20}}
+						outerStyle={{marginTop: 20}}
 					/>
 					<ItemShopBox 
 						nameItem="Jose" 
@@ -73,7 +80,7 @@ const ShopPage = () => {
 						estoqueValue="228" 
 						imageUrl=""
 						onPress={() => {setModalItem(true)}}
-						style={{marginTop: 20}}
+						outerStyle={{marginTop: 20}}
 
 					/>
 				</ContentContainer>

@@ -20,16 +20,20 @@ const StageHeader: React.FC = ({stage, theme, navigation}) => {
 		stepIndicatorSize: 25,
 		currentStepIndicatorSize: 35,
 		stepIndicatorLabelFontSize: 0,
-		currentStepIndicatorLabelFontSize: 13,
+		currentStepIndicatorLabelFontSize: 14,
 		// stepStrokeWidth: 50,
-		stepStrokeCurrentColor: theme.primary,
-		stepStrokeFinishedColor: theme.primary,
-		stepStrokeUnFinishedColor: theme.primary_gray,
-		separatorFinishedColor: theme.primary,
-		separatorUnFinishedColor: theme.primary_gray,
-		stepIndicatorFinishedColor: theme.primary,
-		stepIndicatorUnFinishedColor: theme.primary_gray,
-		// stepIndicatorCurrentColor: theme.primary,
+		stepStrokeCurrentColor: theme.linear.primary[0],
+		stepStrokeFinishedColor: theme.linear.primary[0],
+		stepIndicatorCurrentColor: theme.linear.primary[0],
+	
+		stepIndicatorLabelCurrentColor: theme.background,
+
+		stepStrokeUnFinishedColor: theme.semantic_disable,
+		separatorUnFinishedColor: theme.semantic_disable,
+		stepIndicatorUnFinishedColor: theme.semantic_disable,
+
+		separatorFinishedColor: theme.linear.secondary[0],
+		stepIndicatorFinishedColor: theme.linear.secondary[0],
 	}
 
 
@@ -39,17 +43,24 @@ const StageHeader: React.FC = ({stage, theme, navigation}) => {
 				<StageText>
 					{`${stage-1}/${maxStage} etapas concluídas`}
 				</StageText>
-				<StageCancelButton 
-					theme={theme} 
-					fontSize={14}
+				<StageCancelButton
+					text="Cancelar" 
+					textColor={theme.background}
+					textFontSize={14}
+					borderRadius={20} 
+					innerStyle={{
+						paddingHorizontal: 14,
+						paddingVertical: 6,
+					}}
+					gradientColor="semantic_red"
+
 					onPress={
 						() => {
 							navigation.navigate('InitApp')
 						}	
 					}
-				>
-					Cancelar
-				</StageCancelButton>
+				/>
+					
 			</StageContainer>
 			<StepIndicator 
 				currentPosition={stage-1}
@@ -69,7 +80,7 @@ const BaseScreen: React.FC = ({children=null}) => {
 
 	return (
 		<KeyboardAvoidingView
-			style={{ flex: 1 }}
+			style={{ flex: 1, backgroundColor: theme.background }}
 			behavior={Platform.OS === "ios" ? "padding" : undefined}
 			enabled
 		>

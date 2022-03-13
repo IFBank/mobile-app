@@ -50,6 +50,13 @@
 		13EB925732BF4CFFAEED506D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CDB6197F5CA4969B329B475 /* SimpleLineIcons.ttf */; };
 		8343ABCF98A048CC8543CB08 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 909FEAAA240E47B88B91D9E0 /* Zocial.ttf */; };
 		B30306CADF1E48F7AF7B518E /* pix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10467D50F21490EB4E2F177 /* pix.ttf */; };
+		7DE97D531D94419B9A74A91E /* Mukta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB48DEE7D26C483487082804 /* Mukta-Bold.ttf */; };
+		3A1B49683C8245CC81CC60CE /* Mukta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 635ADE5838074C9C8B1E39FC /* Mukta-Light.ttf */; };
+		4F9EF149CF7246749DD002E3 /* Mukta-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 702D15D9F02A45ED801FF4D6 /* Mukta-Medium.ttf */; };
+		672DE06F348244FCB0771E9D /* Mukta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD5C45E95D6C467390DF536A /* Mukta-Regular.ttf */; };
+		CD4679992B2A4AA6B4EC1BA6 /* Mukta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20C12F9F58AF4892927481A6 /* Mukta-SemiBold.ttf */; };
+		C49BEC7DB7074EEE8E2ED945 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7CBD9FDF49440B5B4CB2411 /* Ubuntu-Bold.ttf */; };
+		1FA0D3ED72264CCFB841DB51 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7148B3AA14694B5C99CEFF7E /* Ubuntu-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +123,13 @@
 		7CDB6197F5CA4969B329B475 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		909FEAAA240E47B88B91D9E0 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F10467D50F21490EB4E2F177 /* pix.ttf */ = {isa = PBXFileReference; name = "pix.ttf"; path = "../assets/fonts/pix.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CB48DEE7D26C483487082804 /* Mukta-Bold.ttf */ = {isa = PBXFileReference; name = "Mukta-Bold.ttf"; path = "../assets/fonts/Mukta-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		635ADE5838074C9C8B1E39FC /* Mukta-Light.ttf */ = {isa = PBXFileReference; name = "Mukta-Light.ttf"; path = "../assets/fonts/Mukta-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		702D15D9F02A45ED801FF4D6 /* Mukta-Medium.ttf */ = {isa = PBXFileReference; name = "Mukta-Medium.ttf"; path = "../assets/fonts/Mukta-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AD5C45E95D6C467390DF536A /* Mukta-Regular.ttf */ = {isa = PBXFileReference; name = "Mukta-Regular.ttf"; path = "../assets/fonts/Mukta-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		20C12F9F58AF4892927481A6 /* Mukta-SemiBold.ttf */ = {isa = PBXFileReference; name = "Mukta-SemiBold.ttf"; path = "../assets/fonts/Mukta-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F7CBD9FDF49440B5B4CB2411 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Bold.ttf"; path = "../assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7148B3AA14694B5C99CEFF7E /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Regular.ttf"; path = "../assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +275,13 @@
 				7CDB6197F5CA4969B329B475 /* SimpleLineIcons.ttf */,
 				909FEAAA240E47B88B91D9E0 /* Zocial.ttf */,
 				F10467D50F21490EB4E2F177 /* pix.ttf */,
+				CB48DEE7D26C483487082804 /* Mukta-Bold.ttf */,
+				635ADE5838074C9C8B1E39FC /* Mukta-Light.ttf */,
+				702D15D9F02A45ED801FF4D6 /* Mukta-Medium.ttf */,
+				AD5C45E95D6C467390DF536A /* Mukta-Regular.ttf */,
+				20C12F9F58AF4892927481A6 /* Mukta-SemiBold.ttf */,
+				F7CBD9FDF49440B5B4CB2411 /* Ubuntu-Bold.ttf */,
+				7148B3AA14694B5C99CEFF7E /* Ubuntu-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -398,6 +419,13 @@
 				13EB925732BF4CFFAEED506D /* SimpleLineIcons.ttf in Resources */,
 				8343ABCF98A048CC8543CB08 /* Zocial.ttf in Resources */,
 				B30306CADF1E48F7AF7B518E /* pix.ttf in Resources */,
+				7DE97D531D94419B9A74A91E /* Mukta-Bold.ttf in Resources */,
+				3A1B49683C8245CC81CC60CE /* Mukta-Light.ttf in Resources */,
+				4F9EF149CF7246749DD002E3 /* Mukta-Medium.ttf in Resources */,
+				672DE06F348244FCB0771E9D /* Mukta-Regular.ttf in Resources */,
+				CD4679992B2A4AA6B4EC1BA6 /* Mukta-SemiBold.ttf in Resources */,
+				C49BEC7DB7074EEE8E2ED945 /* Ubuntu-Bold.ttf in Resources */,
+				1FA0D3ED72264CCFB841DB51 /* Ubuntu-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

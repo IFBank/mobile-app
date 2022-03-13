@@ -4,11 +4,7 @@ import BoxContainer from '../BoxContainer';
 import GenericButton from '../Button';
 import Icon from "react-native-vector-icons/MaterialIcons"
 
-const ActionButton = styled(GenericButton)`
-	padding: 10px 0px;
-	flex-grow: 1;
-	border-radius: 10px;
-`;
+import { fonts } from '../../fonts'
 
 export const Container = styled.View`
 	position: absolute;
@@ -47,8 +43,8 @@ export const CloseIcon = styled.View`
 
 export const ModalTitle = styled.Text`
 	color: #000;
-    font-family: "Montserrat-Bold";
-	font-size: 20px;
+    font-family: ${ fonts.title.bold };
+	font-size: 22px;
 
 	margin-bottom: 32px;
 `;
@@ -60,20 +56,16 @@ export const ItemsConteiner = styled.ScrollView`
 export const ActionButtonsContainer = styled.View`
 	flex-direction: row;
 	justify-content: space-evenly;
+	width: 100%;
 	margin-top: 40px;
 	margin-bottom: 30px;
 `
 
-export const ClearButton = styled(ActionButton)`
-	background-color: #FF1F26;
+export const ClearButton = styled(GenericButton)`
 `;
 
-export const ComboButton = styled(ActionButton)`
-	background-color: #32A041;
+export const ComboButton = styled(GenericButton)`
 `;
 
 export const MakeOrderButton = styled(GenericButton)`
-	background-color: #32A041;
-	padding: 12px 112px;
-	border-radius: 10px;
 `;

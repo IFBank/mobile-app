@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 import BoxContainer from '../BoxContainer'
 
+import {fonts} from '../../fonts'
 
 export const Container = styled(BoxContainer)`
 	justify-content: center;
@@ -10,8 +11,8 @@ export const Container = styled(BoxContainer)`
 `;
 
 export const HeaderItemText = styled.Text`
-	font-family: "Montserrat-Medium";
-	font-size: 20px;
+	font-family: ${ fonts.title.regular };
+	font-size: 22px;
 
 	text-align: center;
 
@@ -44,19 +45,19 @@ export const InfoContainer = styled.View`
 `;
 
 export const RegularText = styled.Text`
-	font-family: "Montserrat-Regular";
-	font-size: 16px;
-	color: $000;
+	font-family: ${ fonts.text.regular };
+	font-size: 20px;
+	color: ${({textColor}) => textColor};
 `;
 
 export const ValueText = styled.Text`
-	font-family: "Montserrat-Bold";
-	font-size: 16px;
-	color: #32A041;
+	font-family: ${ fonts.text.semibold };
+	font-size: 20px;
+	color: ${({textColor}) => textColor};
 `;
 
 export const EstoqueValueText = styled.Text`
-	font-family: "Montserrat-Medium";
-	font-size: 16px;
-	color: #000;
+	font-family: ${ fonts.text.semibold };
+	font-size: 20px;
+	color: ${({textColor}) => textColor};
 `;

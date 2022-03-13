@@ -3,58 +3,43 @@ import styled from 'styled-components/native';
 import GenericButton from '../../components/Button';
 import GenericInput from '../../components/Input';
 
-export const Container = styled.View`
+import LinearGradient from 'react-native-linear-gradient';
+
+import {fonts} from '../../fonts'
+
+export const Container = styled(LinearGradient)`
 	flex: 1;
+	padding: 6px 32px;
 
 	align-items: center;
+	justify-content: space-around;
 `;
 
 export const LogoContainer = styled.View`
-	height: 40%;
-	width: 100%;
-
-	background-color: #32A041;
-
-	border-bottom-right-radius: 10px; 
-	border-bottom-left-radius: 10px; 
-	
-	shadow-color: #000;
-    shadow-offset-width: 4px;
-    shadow-offset-height: 4px;
-    shadow-opacity: 0.5;
-    shadow-radius: 4px;
-    elevation: 4;
-
 	align-items: center;
 	justify-content: center;
 `;
 
 export const ContentContainer = styled.View`
 	width: 100%;
+	padding: 16px 0px;
+
+	background-color: ${({theme}) => theme.background}
+
+	border-radius: 10px;
 `;
 
 export const Title = styled.Text`
-	margin-top: 36px;
-
-	font-family: "Montserrat-Bold";
+	font-family: ${fonts.title.bold};
 
 	font-size: 24px;
 	text-align: center;
-	color: #000000;
-
-	width: 87px;
-
-	border-bottom-width: 2px;
-	border-bottom-color: #000;
-
-`
+	color: ${({theme}) => theme.text.title};
+`;
 
 export const Button = styled(GenericButton)`
-	background-color: #32A041;
-	padding: 12px 0px;
-	margin: 0 32px;
-	margin-top: 10%;
-	border-radius: 20px;
+	margin: 0 30px;
+	margin-top: 16px;
 `;
 
 export const Input = styled(GenericInput)`

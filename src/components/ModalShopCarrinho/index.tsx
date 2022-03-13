@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{ useContext }from 'react';
 
 import { Modal, Text, ScrollView} from "react-native";
 
 import Icon from "react-native-vector-icons/MaterialIcons"
+
+import { ThemeContext } from '../../themes'
 
 import LeadingText from "../LeadingText"
 import Item from "./Item"
@@ -10,6 +12,8 @@ import Item from "./Item"
 import { Container, ModalContainer, CloseIcon, ModalTitle, ItemsConteiner, ActionButtonsContainer, ClearButton, ComboButton ,MakeOrderButton } from "./styles";
 
 const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
+
+	const theme = useContext(ThemeContext);
 
 	return (
 		<Modal
@@ -19,7 +23,7 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 			onRequestClose={onRequestClose}
 		>
 			<Container>
-				<ScrollView style={{flexGrow: 1, width:"100%"}} contentContainerStyle={{paddingTop: 60}}>
+				<ScrollView style={{flexGrow: 1, width:"100%"}} contentContainerStyle={{paddingTop: "10%"}}>
 					
 				<ModalContainer>
 					<CloseIcon>
@@ -34,19 +38,45 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 						<Item/>	
 					</ItemsConteiner>
 					
-					<LeadingText fontFamilyName="Bold" textName="Total" textValue="R$ 4,00" integerValue={4} valueColor="#32A041" />
+					<LeadingText fontFamilyName="Bold" textName="Total" textValue="R$ 4,00" integerValue={4} valueColor={theme.linear.primary[0]} />
 
 					<ActionButtonsContainer>
-						<ClearButton fontSize={18}>
-							Esvaziar
-						</ClearButton>
+						<ClearButton 
+							text="Esvaziar"
+							textColor={theme.linear.semantic_red[0]}
+							textFontSize={18}
+							gradientColor="semantic_red"
+							innerStyle={{
+								paddingVertical: 10,
+								paddingHorizontal: 40,
+								backgroundColor: theme.background
+							}}
+						/>
 
-						<ComboButton fontSize={18}>
-							Montar Combo
-						</ComboButton>	
+						<ComboButton 
+							text="Montar Combo"
+							textColor={theme.linear.secondary[0]}
+							textFontSize={18}
+							gradientColor="secondary"
+							innerStyle={{
+								paddingVertical: 10,
+								paddingHorizontal: 14,
+								backgroundColor: theme.background
+							}}
+						/>
+							
 					</ActionButtonsContainer>
 					
-					<MakeOrderButton fontSize={24}>
+					<MakeOrderButton 
+						text="Pedir"
+						textFontSize={24}
+						borderRadius={30}
+						innerStyle={{
+							paddingVertical: 12,
+							paddingHorizontal: 118,
+						}}
+					>
+
 						Pedir
 					</MakeOrderButton>
 				</ModalContainer>

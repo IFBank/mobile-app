@@ -24,7 +24,7 @@ const ArrowNavegator: React.FC<ArrowNavegatorProps> = ({ canGoNext, nextPage, ..
 				iconStyle={{marginRight: 8}}
 				name={Platform.OS == "ios"? "arrow-forward-ios" : "arrow-forward" }
 				size={30}
-				backgroundColor={canGoNext == true ? theme.primary : theme.secundary_gray} 
+				backgroundColor={canGoNext == true ? theme.linear.primary[0] : theme.semantic_disable} 
 				color="#FFF"
 				borderRadius={50}
 				onPress={ canGoNext ? nextPage : null }

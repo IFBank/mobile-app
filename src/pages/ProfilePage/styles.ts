@@ -29,14 +29,15 @@ export const Input = styled(GenericInput)`
 
 export const ButtonContainer = styled.View`
 	width: 100%;
+	flex-direction: row;
+
 	align-items: center;
+	justify-content: center;
+
+	margin-top: 30px;
 `;
 
 export const Button = styled(GenericButton)`
-	background-color: ${({theme}) => theme.secondary};
-	padding: 10px 0px;
-	margin-top: 30px;
-	border-radius: 10px;
-	width: 120px;
+	margin: 0 12px;
 `;
 

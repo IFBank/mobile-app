@@ -15,9 +15,9 @@ const App: React.FC  = ( ) => {
 		<NavigationContainer>
 
 			<ThemeContext.Provider value={theme}>
-				<StatusBar barStyle="light-content" backgroundColor={theme.primary} hidden={true} />
+				<StatusBar barStyle="light-content" backgroundColor={theme.linear.primary[0]} hidden={true} />
 				<GestureHandlerRootView style={{flex:1}} >
-					<View style={{flex:1, backgroundColor: "#312E36"}}>
+					<View style={{flex:1, backgroundColor: theme.background}}>
 						<Routes />
 					</View>	
 				</GestureHandlerRootView>
