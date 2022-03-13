@@ -15,7 +15,6 @@ const CadastroFlowStackScreen = () => {
 		<CadastroFlowStack.Navigator
 			screenOptions={{
       			header: BaseHeader,
-      			cardStyle: { backgroundColor: '#312E36' },
       			title: "Cadastramento"
     		}}
     		initialRouteName="StageOne"
