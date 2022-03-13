@@ -48,7 +48,7 @@ const Button: React.FC<ButtonProps> = (
 					width: 0,
 					height: 4,
 				},
-				shadowOpacity: 0.25,
+				shadowOpacity: 0.20,
 				shadowRadius: 1,
 			}}
 		>
