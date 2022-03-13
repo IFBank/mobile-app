@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import { fonts } from '../../fonts'
 
-// TODO: DROP SHADOW
+// FIX: Not responde on modal
 export const Container = styled(RectButton)`
     border-radius: ${ ({borderRadius}) => borderRadius }px;
 
