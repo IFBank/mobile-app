@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import { View } from 'react-native';
+import DropShadow from "react-native-drop-shadow";
 
 import { ThemeContext } from '../../themes.ts'
 
@@ -41,22 +41,33 @@ const Button: React.FC<ButtonProps> = (
 	// FIX: No visual response on press event
 
 	return (
-		<Container borderRadius={borderRadius}  { ... rest }  >
-			<LinearGradientPadding 
-				colors={theme.linear[gradientColor]} 
-				start={{x: 0, y: 0}} 
-				end={{x: 1, y: 0}} 
-				style={{borderRadius}}
-			>
-				<TextView style={{...innerStyle, borderRadius}}>
-					{ iconName != undefined &&
-						<IconStyled name={iconName} size={iconSize} color={iconColor}/>
-					}
-					<ButtonText textFontSize={textFontSize} textColor={textColor} > {text} </ButtonText>
-				</TextView>
-			</LinearGradientPadding>
-		</Container>
-				
+		<DropShadow
+			style={{
+				shadowColor: "#000",
+				shadowOffset: {
+					width: 0,
+					height: 4,
+				},
+				shadowOpacity: 0.25,
+				shadowRadius: 1,
+			}}
+		>
+			<Container borderRadius={borderRadius}  { ... rest }  >
+				<LinearGradientPadding 
+					colors={theme.linear[gradientColor]} 
+					start={{x: 0, y: 0}} 
+					end={{x: 1, y: 0}} 
+					style={{borderRadius}}
+				>
+					<TextView style={{...innerStyle, borderRadius}}>
+						{ iconName != undefined &&
+							<IconStyled name={iconName} size={iconSize} color={iconColor}/>
+						}
+						<ButtonText textFontSize={textFontSize} textColor={textColor} > {text} </ButtonText>
+					</TextView>
+				</LinearGradientPadding>
+			</Container>
+		</DropShadow>
 	)
 
 };

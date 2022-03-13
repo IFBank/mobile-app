@@ -9,13 +9,6 @@ import { fonts } from '../../fonts'
 
 // TODO: DROP SHADOW
 export const Container = styled(RectButton)`
-	shadow-color: #000;
-    shadow-offset-width: 0;
-    shadow-offset-height: 4px;
-    shadow-opacity: 0.25;
-    shadow-radius: 4px;
-    elevation: 4;
-
     border-radius: ${ ({borderRadius}) => borderRadius }px;
 
     background-color: white;
