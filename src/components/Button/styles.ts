@@ -7,8 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import { fonts } from '../../fonts'
 
-// FIX: Not responde on modal
-export const Container = styled(RectButton)`
+export const Container = styled.TouchableOpacity`
     border-radius: ${ ({borderRadius}) => borderRadius }px;
 
     background-color: white;
