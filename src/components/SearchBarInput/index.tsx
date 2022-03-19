@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { TextInputProps } from "react-native"
 import { useField } from '@unform/core'
 
+import DropShadow from "react-native-drop-shadow";
+
 import Icon from "react-native-vector-icons/MaterialIcons"
 
 import { Container, InputStyled} from './styles';
@@ -40,6 +42,17 @@ const SearchBarInput: React.FC = ({ name, style, ... rest}) =>{
 	}, [fieldName, registerField])
 
 	return (
+	<DropShadow
+			style={{
+				shadowColor: "#000",
+				shadowOffset: {
+					width: 0,
+					height: 4,
+				},
+				shadowOpacity: 0.20,
+				shadowRadius: 1,
+			}}
+		>
 		<Container style={style} isFocused={isFocused} >
 			<InputStyled
 				ref={inputElementRef}
@@ -56,6 +69,7 @@ const SearchBarInput: React.FC = ({ name, style, ... rest}) =>{
 			<Icon name="search" size={20} color="#000"/>		
 		
 		</Container>
+	</DropShadow>
 	);
 }
 
