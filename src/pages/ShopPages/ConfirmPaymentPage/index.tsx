@@ -15,6 +15,8 @@ const ConfirmPaymentPage: React.Fc = () => {
 
 	const theme = useContext(ThemeContext);
 
+	// TODO: Deixar os dados dinamicos
+
 	return (
 		<ScrollView>
 			

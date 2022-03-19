@@ -19,6 +19,8 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 
 	const navigation = useNavigation();
 
+	// TODO: Deixar os dados dinamicos
+
 	return (
 		<Modal
 			animationType="slide"
