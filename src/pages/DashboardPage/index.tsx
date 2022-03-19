@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState}from "react";
 
-import { ToastAndroid } from "react-native"
 import { ScrollView, Image, View } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';
