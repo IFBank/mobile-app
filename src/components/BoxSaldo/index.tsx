@@ -40,7 +40,7 @@ const BoxSaldo: React.FC<BoxSaldoProps> = ({ hideSaldo, ... rest}) => {
 
 			<StyledButton 
 				text="Fazer um deposito"
-				textFontSize={12} 
+				textFontSize={14} 
 				gradientColor="primary"
 				innerStyle={{
 					paddingHorizontal: 20,

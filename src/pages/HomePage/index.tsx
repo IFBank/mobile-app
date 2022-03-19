@@ -2,6 +2,8 @@ import React, {useContext, useEffect, useState}from "react";
 
 import { ScrollView, Image, View } from "react-native";
 
+import { useNavigation } from '@react-navigation/native';
+
 import HomeHeader from '../../components/HomeHeader';
 
 import HideSaldoButton from '../../components/HideSaldoButton';
@@ -16,6 +18,7 @@ import imageEmptyCombos from "../../assets/imageEmptyCombos.png"
 import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
 
 const HomePage: React.FC = () => {
+	const navigation = useNavigation();
 
 	const [hideSaldo, setHideSaldo] = useState(false);
 
@@ -25,8 +28,7 @@ const HomePage: React.FC = () => {
 
 	const theme = useContext(ThemeContext)
 
-	// TODO: Button of hide saldo
-	// TODO: Funçoes do box empty e renderização condicional para o flat list
+	// TODO: Renderização condicional para o flat list
 
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
@@ -54,6 +56,10 @@ const HomePage: React.FC = () => {
 						buttonText="Montar um combo"
 						gradientColor="secondary"
 						typeOfEmpty="combos"
+						onButtonPress={ () => {
+							navigation.navigate("Shop");
+
+						}}
 					/>
 				</ContentSection>
 
@@ -69,6 +75,10 @@ const HomePage: React.FC = () => {
 						subTitleText="Vá a aba cantina e faça o seu!"
 						buttonText="Fazer um pedido"
 						typeOfEmpty="pedidos"
+
+						onButtonPress={ () => {
+							navigation.navigate("Shop");
+						}}
 					/>
 				</ContentSection>
 

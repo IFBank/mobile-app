@@ -38,8 +38,6 @@ const Button: React.FC<ButtonProps> = (
 
 	const theme = useContext(ThemeContext)
 
-	// FIX: No visual response on press event
-
 	return (
 		<DropShadow
 			style={{
@@ -52,7 +50,7 @@ const Button: React.FC<ButtonProps> = (
 				shadowRadius: 1,
 			}}
 		>
-			<Container borderRadius={borderRadius}  { ... rest }  >
+			<Container borderRadius={borderRadius} activeOpacity={0.7} { ... rest }  >
 				<LinearGradientPadding 
 					colors={theme.linear[gradientColor]} 
 					start={{x: 0, y: 0}} 

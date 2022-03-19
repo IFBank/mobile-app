@@ -26,6 +26,8 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible }) => {
 
 	// TODO: Linear bg
 
+	// TODO: Deixar os dados dinamicos
+	
 	return (
 		<Modal
 			animationType="fade"

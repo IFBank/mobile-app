@@ -14,14 +14,14 @@ export const Container = styled.View`
 export const NameText = styled.Text`
     color: #000;
 
-    font-family: ${({fontFamilyName}) => `Ubuntu-${fontFamilyName}`};
-    font-size: ${({fontSize=16}) => fontSize}px;
+    font-family: ${({fontFamilyName}) => `Mukta-${fontFamilyName}`};
+    font-size: ${({fontSize=18}) => fontSize}px;
 `;
 
 export const ValueText = styled.Text`
     color: ${ ({isLEQZero=false, fontColor}) => isLEQZero ? "#FF1F26" : fontColor};
-    font-family: ${fonts.title.bold};
-    font-size: ${({fontSize=16}) => fontSize}px;
+    font-family: ${fonts.text.medium};
+    font-size: ${({fontSize=18}) => fontSize}px;
 `;
 
 export const DashedLineStyled = styled(DashedLine)`

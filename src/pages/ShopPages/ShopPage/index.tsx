@@ -37,6 +37,7 @@ const ShopPage = () => {
 	const theme = useContext(ThemeContext);
 
 	// TODO: passar dados sobre qual salgado foi clicado
+	// TODO: Deixar os dados dinamicos
 	return (
 		<Container style={{backgroundColor: theme.background}}>
 			<ModalItemQuant modalVisible={modalItem} onRequestClose={onRequestCloseItem} />

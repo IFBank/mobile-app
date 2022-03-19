@@ -4,6 +4,8 @@ import { Modal, Text, ScrollView} from "react-native";
 
 import Icon from "react-native-vector-icons/MaterialIcons"
 
+import { useNavigation } from '@react-navigation/native';
+
 import { ThemeContext } from '../../themes'
 
 import LeadingText from "../LeadingText"
@@ -14,6 +16,10 @@ import { Container, ModalContainer, CloseIcon, ModalTitle, ItemsConteiner, Actio
 const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 
 	const theme = useContext(ThemeContext);
+
+	const navigation = useNavigation();
+
+	// TODO: Deixar os dados dinamicos
 
 	return (
 		<Modal
@@ -63,6 +69,11 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 								paddingHorizontal: 14,
 								backgroundColor: theme.background
 							}}
+
+							onPress={ () =>	{
+								onRequestClose()
+								navigation.navigate("FinishsShopCombo")
+							}}
 						/>
 							
 					</ActionButtonsContainer>
@@ -75,10 +86,13 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 							paddingVertical: 12,
 							paddingHorizontal: 118,
 						}}
-					>
 
-						Pedir
-					</MakeOrderButton>
+						onPress={ () =>	{
+							onRequestClose()
+							navigation.navigate("FinishsShopBuy")
+						}}
+					/>
+
 				</ModalContainer>
 				</ScrollView>
 
