@@ -9,6 +9,7 @@ import BaseHeader from "../components/Header"
 
 import HomePageScreen from '../pages/HomePage';
 import ProfilePageScreen from '../pages/ProfilePage';
+import DashboardPageScreen from '../pages/DashboardPage';
 
 import ShopScreen from '../pages/ShopPages/ShopPage';
 
@@ -81,7 +82,7 @@ const HomeTabs = () => {
 					headerShown: false
 				}}
 			/>
-			<HomeTab.Screen name="Dashboard" component={ScreenExample} /> 
+			<HomeTab.Screen name="Dashboard" component={DashboardPageScreen} /> 
 			<HomeTab.Screen name="Perfil" component={ProfilePageScreen} /> 
 
 		</HomeTab.Navigator>
