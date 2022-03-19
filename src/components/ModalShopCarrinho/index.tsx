@@ -69,6 +69,7 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 							}}
 
 							onPress={ () =>	{
+								onRequestClose()
 								navigation.navigate("FinishsShopCombo")
 							}}
 						/>
@@ -85,6 +86,7 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 						}}
 
 						onPress={ () =>	{
+							onRequestClose()
 							navigation.navigate("FinishsShopBuy")
 						}}
 					/>
