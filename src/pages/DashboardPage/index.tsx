@@ -28,6 +28,8 @@ const DashboardPage: React.FC = () => {
 
 	// TODO: Renderização condicional para o flat list
 
+	// TODO: Modals
+
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
 			<Container style={{flex: 1}}>
