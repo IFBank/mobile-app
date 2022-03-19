@@ -58,9 +58,8 @@ const HomePage: React.FC = () => {
 						gradientColor="secondary"
 						typeOfEmpty="combos"
 						onButtonPress={ () => {
-							ToastAndroid.show("Selecione os produtos que deseja para o novo combo", ToastAndroid.SHORT)
-
 							navigation.navigate("Shop");
+
 						}}
 					/>
 				</ContentSection>
@@ -79,7 +78,6 @@ const HomePage: React.FC = () => {
 						typeOfEmpty="pedidos"
 
 						onButtonPress={ () => {
-							ToastAndroid.show("Selecione os produtos que deseja para o pedido", ToastAndroid.SHORT)
 							navigation.navigate("Shop");
 						}}
 					/>
