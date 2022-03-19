@@ -10,10 +10,9 @@ import BaseHeader from "../components/Header"
 import HomePageScreen from '../pages/HomePage';
 import ProfilePageScreen from '../pages/ProfilePage';
 import DashboardPageScreen from '../pages/DashboardPage';
+import HelpPageScreen from '../pages/HelpPage';
 
 import ShopScreen from '../pages/ShopPages/ShopPage';
-
-import ScreenExample from '../pages/ScreenExample';
 
 const HomeTab = createBottomTabNavigator();
 
@@ -67,7 +66,7 @@ const HomeTabs = () => {
 			backBehavior="initialRoute"
 			initialRouteName="Home"
 		>
-			<HomeTab.Screen name="Ajuda" component={ScreenExample} /> 
+			<HomeTab.Screen name="Ajuda" component={HelpPageScreen} /> 
 			<HomeTab.Screen name="Shop" component={ShopScreen} 
 				options={{
       				title: "Shop Cantina",
