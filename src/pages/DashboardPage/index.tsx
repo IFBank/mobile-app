@@ -94,7 +94,7 @@ const DashboardPage: React.FC = () => {
 					}}
 
 					onPress={() => {
-						setModalEstatistica(true;)
+						setModalEstatistica(true);
 					}}
 				/>
 
