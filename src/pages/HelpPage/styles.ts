@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 
 import { fonts } from '../../fonts';
 
+import { Form } from "@unform/mobile"
+
 export const Container = styled.View`
 	flex: 1;
 	paddingTop: 5px;
@@ -16,4 +18,9 @@ export const Title = styled.Text`
 	text-align: center;
 
 	color: ${({textColor}) => textColor};
+`;
+
+export const FormStyled = styled(Form)`
+	padding: 24px 26px;
+	justify-content: center;
 `;

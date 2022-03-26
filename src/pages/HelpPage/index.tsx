@@ -4,14 +4,18 @@ import { ScrollView, Image, View } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';
 
+import DropShadow from "react-native-drop-shadow";
+import { FormHandles } from "@unform/core"
+
 import TabTopHelp from "../../components/TabTopHelp"
 import QuestionBox from "../../components/QuestionBox"
+import SearchBarInput from "../../components/SearchBarInput"
 
 import TitleHeader from '../../components/TitleHeader';
 
 import { ThemeContext } from '../../themes'
 
-import { Container, Title } from "./styles"
+import { Container, Title, FormStyled } from "./styles"
 
 const HelpPage: React.FC = () => {
 	const [ viewShow, setViewShow ] = useState('questions')
@@ -32,23 +36,41 @@ const HelpPage: React.FC = () => {
 					mainTitle={viewShow == 'questions' ? "FAQ - Perguntas frequentes" : 'Sobre os desenvolvedores'}
 					subTitle={ viewShow == 'questions' ? "Explore e retire suas dúvidas a respeito do funcionamento do app.":""}
 				/>	
-			</View>
-			
-			
+
 			{
 				viewShow == 'questions' && 
-				
-				<>
-					<Title textColor={theme.text.title}>
-						Como podemos te ajudar?
-					</Title>
+				<Title textColor={theme.text.title}>
+					Como podemos te ajudar?
+				</Title>}
+			{
+				viewShow == 'questions' && 
+				<DropShadow
+					style={{
+						shadowColor: theme.shadow,
+						shadowOffset: {
+							width: 0,
+							height: 4,
+						},
+						shadowOpacity: 0.75,
+						shadowRadius: 4,
+					}}
+				>
+				<View style={{paddingHorizontal: 16, backgroundColor: "#fff", borderRadius: 10}}>
+					<FormStyled>
+						{/*TODO: Drop shadow no input*/}
+						<SearchBarInput name="search"/>
+					</FormStyled>
+					
 					<QuestionBox 
 						question="O que acontece se eu não conseguir retirar meu pedido até o horário limite?" 
 						resposta="O valor total do pedido será reembolsado com 30% de desconto para compensar a possibilidade de outros estudantes terem adquirido o produto que estava reservado a você."
 					/>
-				</>
-				
+				</View>
+				</DropShadow>
 			}
+			</View>
+			
+
 			
 			{
 				viewShow == 'group' &&

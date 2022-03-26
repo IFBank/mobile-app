@@ -7,6 +7,9 @@ import { useNavigation } from '@react-navigation/native';
 import BoxSaldo from '../../components/BoxSaldo';
 import BoxDashboardEmpty from '../../components/BoxDashboardEmpty';
 
+import ModalEstatiticaCompras from '../../components/ModalEstatiticaCompras';
+import ModalInfoPedido from '../../components/ModalInfoPedido';
+
 import { ThemeContext } from '../../themes'
 
 import { Container, ContentSection, TitleHeaderStyled, StyledButton } from "./styles"
@@ -23,15 +26,28 @@ const DashboardPage: React.FC = () => {
 		setHideSaldo(false) // Value from asyncStorage (cache)
 	}, [])
 
+	const [ modalPedido, setModalPedido ] = useState(false)
+	const [ modalEstatistica, setModalEstatistica ] = useState(true)
+
+	const onRequestClosePedido = () => {
+		setModalPedido(!modalPedido);
+	}
+
+	const onRequestCloseEsatistica = () => {
+		setModalEstatistica(!modalEstatistica);
+	}
+
 	const theme = useContext(ThemeContext)
 
-	// TODO: Renderização condicional para o flat list
+	// TODO: Renderização condicional para o flat list e click pra mostra pedido
 
 	// TODO: Modals
 
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
 			<Container style={{flex: 1}}>
+				<ModalEstatiticaCompras modalVisible={modalEstatistica} onRequestClose={onRequestCloseEsatistica} />
+				<ModalInfoPedido modalVisible={modalPedido} onRequestClose={onRequestClosePedido} />
 
 				<ContentSection>
 
@@ -77,7 +93,9 @@ const DashboardPage: React.FC = () => {
 						paddingVertical: 5,
 					}}
 
-					onPress={() => {}}
+					onPress={() => {
+						setModalEstatistica(true);
+					}}
 				/>
 
 			</Container>
