@@ -39,7 +39,7 @@ const ModalInfoPedido: React.FC = ({ onRequestClose, modalVisible, idPedido="tes
 					
 					{
 						pedidoData.items.map( (value, key) => {
-							return (<LeadingText textName={value.name} textValue={`R$ ${value.price}`} integerValue={value.price}/>)	
+							return (<LeadingText key={key} textName={value.name} textValue={`R$ ${value.price}`} integerValue={value.price}/>)	
 						})
 						
 					}
