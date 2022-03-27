@@ -6,7 +6,8 @@ import { Form } from "@unform/mobile"
 
 export const Container = styled.View`
 	flex: 1;
-	paddingTop: 5px;
+	padding-top: 5px;
+	padding-bottom: 16px;
 `;
 
 export const Title = styled.Text`

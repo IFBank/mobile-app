@@ -6,6 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export const Container = styled.View`
 	width: 100%;
+	margin-bottom: 2px;
 `;
 
 export const Question = styled(LinearGradient)`

@@ -29,7 +29,7 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 			onRequestClose={onRequestClose}
 		>
 			<Container>
-				<ScrollView style={{flexGrow: 1, width:"100%"}} contentContainerStyle={{paddingTop: "10%"}}>
+				<ScrollView style={{flexGrow: 1, width:"100%"}} contentContainerStyle={{position: "relative", bottom: "-10%", paddingVertical: "15%"}}>
 					
 				<ModalContainer>
 					<CloseIcon>
