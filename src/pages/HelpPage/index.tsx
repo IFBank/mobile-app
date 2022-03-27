@@ -9,6 +9,7 @@ import { FormHandles } from "@unform/core"
 
 import TabTopHelp from "../../components/TabTopHelp"
 import QuestionBox from "../../components/QuestionBox"
+import BoxDevs from "../../components/BoxDevs"
 import SearchBarInput from "../../components/SearchBarInput"
 
 import TitleHeader from '../../components/TitleHeader';
@@ -44,6 +45,7 @@ const HelpPage: React.FC = () => {
 				<TabTopHelp listenChangePage={changeView} />				
 				<View style={{paddingHorizontal: 16, paddingTop: 16}}>
 					<TitleHeader 
+						marginBottomMain={viewShow == 'questions' ? 9:24}
 						mainTitle={viewShow == 'questions' ? "FAQ - Perguntas frequentes" : 'Sobre os desenvolvedores'}
 						subTitle={ viewShow == 'questions' ? "Explore e retire suas dúvidas a respeito do funcionamento do app.":""}
 					/>	
@@ -82,16 +84,20 @@ const HelpPage: React.FC = () => {
 					</View>
 					</DropShadow>
 				}
+
+				{
+					viewShow == 'group' &&
+					devs.map( (value, key) => {
+						return (
+							<BoxDevs { ... value } key={key} />
+						)
+					})
+				}
 				</View>
 				
 
 				
-				{
-					viewShow == 'group' &&
-					<Title textColor={theme.text.title}>
-						TODO: Deves
-					</Title>	
-				}
+
 
 			</Container>
 			</ScrollView>

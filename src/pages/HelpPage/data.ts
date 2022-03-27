@@ -17,6 +17,22 @@ const asks = [
 	}
 ]
 
-const devs = []
+const devs = [
+	{
+	    name: "Êxodo Jaffar de Marques Melo",
+	    mail:"exodo.melo@estudante.ifms.edu.br",
+	    github:"exodojaffar",
+	    bio:"Acadêmico do curso Técnico Integrado a Informática - Instituto Federal de Mato Grosso do Sul. Jovem, curiososo por  tecnologias, gosto de criar facilitadores."
+	}, {
+	    name: "Maike Mendes Silva",
+	    mail:"maike.silva@estudante.ifms.edu.br",
+	    github:"MaikolaMS",
+	    bio:"Acadêmico do curso Técnico Integrado a Informática - Instituto Federal de Mato Grosso do Sul. Jovem, curiososo por  tecnologias, gosto de criar facilitadores."
+	}, {
+	    name: "Robson Gabriel Batista dos Santos",
+	    mail:"robson.santos@estudante.ifms.edu.br",
+	    github:"robson.santos",
+	    bio:"Acadêmico do curso Técnico Integrado a Informática - Instituto Federal de Mato Grosso do Sul. Jovem, curiososo por  tecnologias, gosto de criar facilitadores."
+	}, ]
 
 export {asks, devs};
