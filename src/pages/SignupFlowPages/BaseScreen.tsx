@@ -56,7 +56,7 @@ const StageHeader: React.FC = ({stage, theme, navigation}) => {
 
 					onPress={
 						() => {
-							navigation.navigate('InitApp')
+							navigation.navigate('Login')
 						}	
 					}
 				/>
