@@ -27,7 +27,7 @@ const DashboardPage: React.FC = () => {
 	}, [])
 
 	const [ modalPedido, setModalPedido ] = useState(false)
-	const [ modalEstatistica, setModalEstatistica ] = useState(true)
+	const [ modalEstatistica, setModalEstatistica ] = useState(false)
 
 	const onRequestClosePedido = () => {
 		setModalPedido(!modalPedido);
