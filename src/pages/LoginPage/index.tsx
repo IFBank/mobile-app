@@ -6,6 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
 
+import {apiIFBANK} from '../../services/api'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { ThemeContext } from '../../themes.ts'
 
 import { 
@@ -27,9 +30,17 @@ const LoginPage: React.FC = () => {
 	const formRef = useRef<FormHandles>(null)
 
 	const handleLogin = useCallback((data: object) => {
-		// TODO: consulta na API e ações necessarias
-		console.log(data)
-	}, [])
+		apiIFBANK.post('/user/authenticate', {data: JSON.stringify(data)}).then( (response) => {
+			if(response.status != 200) return;
+
+			const data = JSON.parse(response.data);
+
+			AsyncStorage.setItem('auth_token', data.token);
+
+			navigation.navigate("HomeApp")
+
+		})
+	}, [navigation])
 
 	return (
 		<KeyboardAvoidingView 
