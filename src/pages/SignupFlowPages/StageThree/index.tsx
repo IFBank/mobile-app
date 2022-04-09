@@ -5,10 +5,11 @@ import BaseScreen from '../BaseScreen';
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
 
+import useHandleSubmitCadastro from '../../../hooks/useHandleSubmitCadastro'
+
 import { stages, StageContext } from '../stages';
 
 import { Input } from '../styles'
-
 
 const StageThree: React.FC = () => {
 	const stageNumber = 2;
@@ -16,15 +17,17 @@ const StageThree: React.FC = () => {
 
 	const formRef = useRef<FormHandles>(null)
 
-	const handleSubmit = useCallback((data) => {
-		console.log(data)
-	}, [])
+	const extraAction = useCallback(() => {
+		navigation.navigate(stageOfPage.nextPage);
+	}, []) 
+
+	const {handleSubmit, errors} = useHandleSubmitCadastro("perfil_cadastro", "mail", extraAction);
 
 	return (
 		<StageContext.Provider
 			value={stageOfPage}
 		>
-			<BaseScreen>
+			<BaseScreen formRef={formRef}>
 				<Form
 					ref={formRef}
 					onSubmit={handleSubmit}

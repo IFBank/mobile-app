@@ -12,6 +12,8 @@ import { Container,StageContainer, StageText, StageCancelButton , TitleHeaderSty
 import logoIFbank from "../../assets/minilogo.png"
 import {stages} from './stages'
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const maxStage = stages.maxStages;
 
 const StageHeader: React.FC = ({stage, theme, navigation}) => {
@@ -56,6 +58,7 @@ const StageHeader: React.FC = ({stage, theme, navigation}) => {
 
 					onPress={
 						() => {
+							AsyncStorage.clear();
 							navigation.navigate('Login')
 						}	
 					}
@@ -72,7 +75,7 @@ const StageHeader: React.FC = ({stage, theme, navigation}) => {
 	);
 }
 
-const BaseScreen: React.FC = ({children=null}) => {
+const BaseScreen: React.FC = ({children=null, formRef}) => {
 	const theme = useContext(ThemeContext);
 	const stage = useContext(StageContext);
 
@@ -122,7 +125,7 @@ const BaseScreen: React.FC = ({children=null}) => {
 					nextPage={
 						// TODO: Customizar nextPage para o handleSubmit do Form
 						() => {
-							navigation.navigate(stage.nextPage)
+							formRef.current?.submitForm()
 						}
 					}
 				/>
