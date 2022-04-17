@@ -8,12 +8,16 @@ import { Container, PerfilContainer, TextPerfilNormal, TextPerfilName} from "./s
 
 import { ThemeContext } from '../../themes.ts'
 
+import useCacheState from '../../hooks/useCacheState'
+
 import fotoPerfil from "../../assets/miniFotoPerfil.png"
 import logoIFBank from "../../assets/miniLogo2.png"
 
 const HomeHeader: React.FC = () => {
 	// TODO: Custom hook for use date
 	const theme = useContext(ThemeContext);
+
+	const {state: userData } = useCacheState<any>("user_data");
 
 	return (
 		<DropShadow
@@ -35,7 +39,7 @@ const HomeHeader: React.FC = () => {
 					<TextPerfilNormal textColor={theme.background}>
 						Ola,  
 						<TextPerfilName>
-						 {" Exodo Jaffar!"}
+						 {userData?.name}
 						</TextPerfilName>
 					</TextPerfilNormal>
 					
