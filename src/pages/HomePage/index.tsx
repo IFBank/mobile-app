@@ -10,6 +10,8 @@ import HideSaldoButton from '../../components/HideSaldoButton';
 import BoxSaldo from '../../components/BoxSaldo';
 import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
+import useCacheState from '../../hooks/useCacheState';
+
 import { ThemeContext } from '../../themes'
 
 import { Container, ContentSection, TitleHeaderStyled } from "./styles"
@@ -18,14 +20,9 @@ import imageEmptyCombos from "../../assets/imageEmptyCombos.png"
 import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
 
 const HomePage: React.FC = () => {
+	const {state: hideSaldo, setCacheState: setHideSaldo} = useCacheState<boolean>("hiddenSaldo", false);
+
 	const navigation = useNavigation();
-
-	const [hideSaldo, setHideSaldo] = useState(false);
-
-	useEffect( () => {
-		setHideSaldo(false) // Value from asyncStorage (cache)
-	}, [])
-
 	const theme = useContext(ThemeContext)
 
 	// TODO: Renderização condicional para o flat list
