@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+// HOOKS
+import useCacheState from '../hooks/useCacheState'
 
 import ScreenExample from '../pages/ScreenExample';
 import ScreenExampleStack from '../pages/ScreenExample';
@@ -56,26 +59,45 @@ const ComboShopStackScreen = () => {
 	)
 }
 
-const AppRoutes: React.FC = () => (
-	<AppStack.Navigator
-		screenOptions={{
-      		headerShown: false,
-      		cardStyle: { backgroundColor: '#312E36' },
-    	}}
-		initialRouteName={logado == true ? "HomeApp" : "Login"}
 
-	>
-		<AppStack.Screen name="Login" component={LoginPageScreen} />
-		<AppStack.Screen name="CadastroFlow" component={CadastroStackScreen} />
+const AppRoutes: React.FC = () => {
+	const [ isLogged, setIsLogged ] = useState(false);
+	const { state: authToken, isLoadding } = useCacheState('auth_token');
 
-		<AppStack.Screen name="HomeApp" component={HomeTabsScreen} />
+	useEffect( () => {
+		console.log(`Value of Login: ${authToken != undefined}`)
+		setIsLogged( authToken != undefined);
+	}, [authToken]);
 
-		<AppStack.Screen name="Deposito" component={DepositoStackScreen} /> 
+	// TODO: SplashScreen or some loading
 
-		<AppStack.Screen name="FinishsShopBuy" component={ConfirmBuyShopStackScreen} /> 
-		<AppStack.Screen name="FinishsShopCombo" component={ComboShopStackScreen} /> 
-		
-	</AppStack.Navigator>
-);
+	if(isLoadding){
+		return <ScreenExample/>
+	}
+
+	return (
+		<AppStack.Navigator
+			screenOptions={{
+	      		headerShown: false,
+	      		cardStyle: { backgroundColor: '#312E36' },
+	    	}}
+		>
+		{ isLogged ? (
+			<>
+				<AppStack.Screen name="HomeApp" component={HomeTabsScreen} />
+				<AppStack.Screen name="Deposito" component={DepositoStackScreen} /> 
+				<AppStack.Screen name="FinishsShopBuy" component={ConfirmBuyShopStackScreen} /> 
+				<AppStack.Screen name="FinishsShopCombo" component={ComboShopStackScreen} /> 
+			</>
+			) : (
+			<>
+				<AppStack.Screen name="Login" component={LoginPageScreen} /> 
+				<AppStack.Screen name="CadastroFlow" component={CadastroStackScreen} /> 
+			</>)
+		}
+			
+		</AppStack.Navigator>
+	)
+};
 
 export default AppRoutes;
