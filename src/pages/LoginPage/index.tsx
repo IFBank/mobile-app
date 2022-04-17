@@ -20,7 +20,7 @@ import {
 	Input 
 } from "./styles"
 
-import Logo from "../../assets/logo.svg"
+import logoImage from "../../assets/Logo.png"
 
 
 const LoginPage: React.FC = () => {
@@ -54,7 +54,7 @@ const LoginPage: React.FC = () => {
 			>
 				<Container colors={theme.linear.primary} start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
 					<LogoContainer>
-						<Logo />
+						<Image source={logoImage} style={{width:195, height:226}}/>
 					</LogoContainer>
 
 					<ContentContainer theme={theme}>
