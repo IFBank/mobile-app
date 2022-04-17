@@ -2,12 +2,12 @@ import React, { useRef, useCallback, useContext } from "react";
 import { Image, View, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';
+import useCacheState from '../../hooks/useCacheState'
 
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
 
-import {apiIFBANK} from '../../services/api'
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { apiIFBANK } from '../../services/api'
 
 import { ThemeContext } from '../../themes.ts'
 
@@ -27,20 +27,20 @@ const LoginPage: React.FC = () => {
 	const navigation = useNavigation();
 	const theme = useContext(ThemeContext)
 
+	const { setCacheState: setAuthToken } = useCacheState('auth_token');
+
 	const formRef = useRef<FormHandles>(null)
 
 	const handleLogin = useCallback((data: object) => {
+
 		apiIFBANK.post('/user/authenticate', {data: JSON.stringify(data)}).then( (response) => {
 			if(response.status != 200) return;
 
 			const data = JSON.parse(response.data);
-
-			AsyncStorage.setItem('auth_token', data.token);
-
-			navigation.navigate("HomeApp")
-
+			setAuthToken(data.token)
 		})
-	}, [navigation])
+
+	}, [])
 
 	return (
 		<KeyboardAvoidingView 
