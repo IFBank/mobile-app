@@ -20,11 +20,7 @@ import imageEmptyDepositos from "../../assets/questionImage.png"
 const DashboardPage: React.FC = () => {
 	const navigation = useNavigation();
 
-	const [hideSaldo, setHideSaldo] = useState(false);
-
-	useEffect( () => {
-		setHideSaldo(false) // Value from asyncStorage (cache)
-	}, [])
+	const { state: hideSaldo } = useCacheState<boolean>("hiddenSaldo", false);
 
 	const [ modalPedido, setModalPedido ] = useState(false)
 	const [ modalEstatistica, setModalEstatistica ] = useState(false)
