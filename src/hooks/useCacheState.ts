@@ -3,21 +3,46 @@ import React, {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 async function getCachedValue(name: string) {
-	let cachedValue = await AsyncStorage.getItem('@storage_Key')
-	
-	if(!cachedValue) return undefined
-	
-	return cachedValue == "sim";
+	let cachedValue;
+
+	try{
+		cachedValue = await AsyncStorage.getItem(name);
+
+		if(cachedValue == null) return undefined;
+
+		console.log(`Result value is ${cachedValue}`)
+
+		return JSON.parse(cachedValue);
+
+	}catch(err){
+
+	}
 }
 
-export default function useCacheState<T = unknow> (name: string, initialValue: T) {
-	let cachedValue = getCachedValue(name);
-	let [ state, setState ] =  useState<T>(cachedValue || initialValue);
+export default function useCacheState<T = unknow> (name: string, initialValue?: T) {
+	let [ state, setState ] =  useState<T>(initialValue);
+	let [ isLoadding, setIsLoadding ] =  useState<boolean>(true);
+
+	const setCacheState = (value) => {
+		if(value == undefined) return;
+
+		const cachedValue = JSON.stringify(value);
+
+		AsyncStorage.setItem(name, cachedValue).then( () => {
+			console.log(`Value ${cachedValue} has been save on "${name}"`)
+		})
+
+		setState(value);
+	}
 
 	useEffect( () => {
-		let value = state ? "sim" : "nao";
-		AsyncStorage.setItem(name, value);
-	}, [state])
+		getCachedValue(name).then( (cachedValue) => {
+			setState(cachedValue);
+			setIsLoadding(false);
+		})	
+	}, [])
 
-	return [state, setState];
+	console.log(`Value state ${name} : ${state}`)
+
+	return {state, setCacheState, isLoadding};
 }
