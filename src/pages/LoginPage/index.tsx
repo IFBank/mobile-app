@@ -32,7 +32,7 @@ const LoginPage: React.FC = () => {
 	const formRef = useRef<FormHandles>(null)
 
 	const handleLogin = useCallback((data: object) => {
-		setAuthToken('teste')
+	
 		apiIFBANK.post('/user/authenticate', {data: JSON.stringify(data)}).then( (response) => {
 			if(response.status != 200) return;
 
