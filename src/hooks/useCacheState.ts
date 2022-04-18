@@ -10,7 +10,7 @@ async function getCachedValue(name: string) {
 
 		if(cachedValue == null) return undefined;
 
-		console.log(`Result value is ${cachedValue}`)
+		console.debug(`CacheStateHook: Result value of ${name} is ${cachedValue}.`)
 
 		return JSON.parse(cachedValue);
 
@@ -28,21 +28,25 @@ export default function useCacheState<T = unknow> (name: string, initialValue?: 
 
 		const cachedValue = JSON.stringify(value);
 
+		setIsLoadding(true);
+
 		AsyncStorage.setItem(name, cachedValue).then( () => {
-			console.log(`Value ${cachedValue} has been save on "${name}"`)
+			console.debug(`CacheStateHook: Value ${cachedValue} has been save on "${name}"`);
+			setIsLoadding(false);
 		})
 
 		setState(value);
 	}
 
 	useEffect( () => {
+
 		getCachedValue(name).then( (cachedValue) => {
 			setState(cachedValue);
 			setIsLoadding(false);
 		})	
-	}, [])
+	})
 
-	console.log(`Value state ${name} : ${state}`)
+	console.debug(`CacheStateHook: Value state ${name}: ${state}`)
 
 	return {state, setCacheState, isLoadding};
 }

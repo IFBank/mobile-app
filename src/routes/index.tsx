@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // HOOKS
-import useCacheState from '../hooks/useCacheState'
+import useCacheContext from '../hooks/useCacheContext'
 
 import ScreenExample from '../pages/ScreenExample';
 import ScreenExampleStack from '../pages/ScreenExample';
@@ -62,7 +62,7 @@ const ComboShopStackScreen = () => {
 
 const AppRoutes: React.FC = () => {
 	const [ isLogged, setIsLogged ] = useState(false);
-	const { state: authToken, isLoadding } = useCacheState('auth_token');
+	const { state: authToken, isLoadding } = useCacheContext('auth_token');
 
 	useEffect( () => {
 		console.log(`Value of Login: ${authToken != undefined}`)

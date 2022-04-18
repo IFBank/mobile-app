@@ -20,8 +20,6 @@ import imageEmptyCombos from "../../assets/imageEmptyCombos.png"
 import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
 
 const HomePage: React.FC = () => {
-	const {state: hideSaldo, setCacheState: setHideSaldo} = useCacheState<boolean>("hiddenSaldo", false);
-
 	const navigation = useNavigation();
 	const theme = useContext(ThemeContext)
 
@@ -35,9 +33,9 @@ const HomePage: React.FC = () => {
 				<ContentSection>
 					<TitleHeaderStyled mainTitle="Conta" subTitle="Para mais informações vá à aba dashboard."/>
 
-					<HideSaldoButton onPress={(value) =>{setHideSaldo(value)}}/>
+					<HideSaldoButton/>
 
-					<BoxSaldo hideSaldo={hideSaldo}/>
+					<BoxSaldo/>
 				</ContentSection>
 
 				<ContentSection>

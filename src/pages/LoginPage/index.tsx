@@ -2,7 +2,7 @@ import React, { useRef, useCallback, useContext } from "react";
 import { Image, View, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';
-import useCacheState from '../../hooks/useCacheState'
+import useCacheContext from '../../hooks/useCacheContext'
 
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
@@ -27,12 +27,12 @@ const LoginPage: React.FC = () => {
 	const navigation = useNavigation();
 	const theme = useContext(ThemeContext)
 
-	const { setCacheState: setAuthToken } = useCacheState('auth_token');
+	const { setCacheState: setAuthToken } = useCacheContext('auth_token');
 
 	const formRef = useRef<FormHandles>(null)
 
 	const handleLogin = useCallback((data: object) => {
-
+		setAuthToken('teste')
 		apiIFBANK.post('/user/authenticate', {data: JSON.stringify(data)}).then( (response) => {
 			if(response.status != 200) return;
 

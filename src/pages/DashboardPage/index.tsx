@@ -12,6 +12,8 @@ import ModalInfoPedido from '../../components/ModalInfoPedido';
 
 import { ThemeContext } from '../../themes'
 
+import useCacheState from '../../hooks/useCacheState'
+
 import { Container, ContentSection, TitleHeaderStyled, StyledButton } from "./styles"
 
 import imageEmptyPedidos from "../../assets/emptyCard.png"
@@ -19,8 +21,6 @@ import imageEmptyDepositos from "../../assets/questionImage.png"
 
 const DashboardPage: React.FC = () => {
 	const navigation = useNavigation();
-
-	const { state: hideSaldo } = useCacheState<boolean>("hiddenSaldo", false);
 
 	const [ modalPedido, setModalPedido ] = useState(false)
 	const [ modalEstatistica, setModalEstatistica ] = useState(false)
@@ -47,7 +47,7 @@ const DashboardPage: React.FC = () => {
 
 				<ContentSection>
 
-					<BoxSaldo hideSaldo={hideSaldo}/>
+					<BoxSaldo/>
 				</ContentSection>
 
 				<ContentSection>

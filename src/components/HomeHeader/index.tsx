@@ -8,7 +8,7 @@ import { Container, PerfilContainer, TextPerfilNormal, TextPerfilName} from "./s
 
 import { ThemeContext } from '../../themes.ts'
 
-import useCacheState from '../../hooks/useCacheState'
+import useCacheContext from '../../hooks/useCacheContext'
 
 import fotoPerfil from "../../assets/miniFotoPerfil.png"
 import logoIFBank from "../../assets/miniLogo2.png"
@@ -17,7 +17,7 @@ const HomeHeader: React.FC = () => {
 	// TODO: Custom hook for use date
 	const theme = useContext(ThemeContext);
 
-	const {state: userData } = useCacheState<any>("user_data");
+	const { state: userData } = useCacheContext('user_data');
 
 	return (
 		<DropShadow
