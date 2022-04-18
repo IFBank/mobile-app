@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 import {ThemeContext} from '../../../themes'
 
@@ -6,6 +6,8 @@ import { Image, View } from "react-native"
 import { useNavigation } from '@react-navigation/native';
 
 import Icon from "react-native-vector-icons/MaterialIcons"
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import PaymentTypeBox from '../../../components/PaymentTypeBox';
 import PixKeyFakeInput from '../../../components/PixKeyFakeInput';
@@ -16,6 +18,18 @@ import { TopBackButtomStyled, TitleHeaderStyled, PixKeyFakeInputContainer, PixKe
 import qrCodeExample from '../../../assets/qrCodeExample.png';
 
 const PixPage: React.FC = () => {
+	const [pixData, setPixData] = useState({
+      qrCodeText: "processando... ",
+      qrCodeImage: qrCodeExample,
+    })
+
+	useEffect( () => {
+		AsyncStorage.getItem("pix_data").then( (stringData) => {
+			const data = JSON.parse(stringData);
+
+			setPixData(data)
+		})
+	}, [])
 
 	const navigation = useNavigation();
 	const theme = useContext(ThemeContext);
@@ -36,7 +50,7 @@ const PixPage: React.FC = () => {
 					marginBottomMain={16}
 				/>
 
-				<PixKeyFakeInput headerText="Chave PIX" content="41226f99-2f4f-486d-b515-b0" />
+				<PixKeyFakeInput headerText="Chave PIX" content={pixData.qrCodeText} />
 			</PixKeyFakeInputContainer>
 
 				
@@ -49,7 +63,7 @@ const PixPage: React.FC = () => {
 			/>
 
 			<QRCodeBox outerStyle={{marginHorizontal: 40}}>
-				<Image source={qrCodeExample} />
+				<Image source={{uri: `data:image/png;base64,${pixData.qrCodeImage}`}} />
 
 				<IconCircle circleBgColor={theme.linear.primary[0]}>
 					<Icon name="qr-code-scanner" size={40} color="#FFF"/>		

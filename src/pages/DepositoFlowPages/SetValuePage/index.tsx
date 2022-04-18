@@ -5,6 +5,8 @@ import { Image } from "react-native"
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { useNavigation } from '@react-navigation/native';
 
 import TitleHeader from '../../../components/TitleHeader';
@@ -24,13 +26,14 @@ const SetValuePage: React.FC = () => {
 		setIsFilledInput(value)
 	}) 
 
+	const navigation = useNavigation();
+
 	const handleFinishedInput = useCallback((data: object) => {
 		// TODO: consulta na API e ações necessarias
-		console.log(data)
+		AsyncStorage.setItem("deposito_data", JSON.stringify(data));
+		// console.log(data)
 		navigation.navigate("SelectPaymentType")
 	}, [])
-
-	const navigation = useNavigation();
 
 	return (
 		<Container>

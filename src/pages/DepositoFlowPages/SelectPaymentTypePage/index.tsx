@@ -5,6 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 
 import PaymentTypeBox from '../../../components/PaymentTypeBox';
 
+import {apiIFBANK} from '../../../services/api'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { Container } from '../styles'
 import { TopBackButtomStyled, TitleHeaderStyled, ImageContainer, SelectContainer } from './styles'
 
@@ -31,7 +34,17 @@ const SelectPaymentTypePage: React.FC = () => {
 					iconName="pix" 
 					mainTitle="Pix" 
 					subTitle="Prático e instantâneo"
-					onPress={() => {navigation.navigate("Pix")}}
+					onPress={() => {
+						AsyncStorage.getItem("deposito_data").then( (data) => {
+							apiIFBANK.post('/deposit/pix', {data: data}).then( (response) => {
+								if(response.status != 200) return;
+
+								AsyncStorage.setItem("pix_data", response.data).then( () => navigation.navigate("Pix"));
+							});
+							AsyncStorage.removeItem("deposito_data");
+						})
+						
+					}}
 				/>
 
 				<PaymentTypeBox 
