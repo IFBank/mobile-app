@@ -3,6 +3,8 @@ import React from "react";
 import { Image } from "react-native"
 import { useNavigation } from '@react-navigation/native';
 
+import { ToastAndroid } from "react-native"
+
 import PaymentTypeBox from '../../../components/PaymentTypeBox';
 
 import {apiIFBANK} from '../../../services/api'
@@ -52,7 +54,10 @@ const SelectPaymentTypePage: React.FC = () => {
 					mainTitle="Boleto" 
 					subTitle="Pague em até 3x"
 					gradientColor="secondary"
-					onPress={() => {navigation.navigate("Boleto")}}
+					onPress={() => {
+						ToastAndroid.show("Ainda será implementado! Use PIX!", ToastAndroid.SHORT)
+						//navigation.navigate("Boleto")
+					}}
 					outerStyle={{marginTop: 32}}
 				/>
 			</SelectContainer>
