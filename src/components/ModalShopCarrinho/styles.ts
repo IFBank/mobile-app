@@ -49,7 +49,7 @@ export const ModalTitle = styled.Text`
 	margin-bottom: 32px;
 `;
 
-export const ItemsConteiner = styled.ScrollView`
+export const ItemsConteiner = styled.FlatList`
 	margin-bottom: 30px;
 `;
 

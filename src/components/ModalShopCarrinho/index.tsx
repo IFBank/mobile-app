@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/MaterialIcons"
 import { useNavigation } from '@react-navigation/native';
 
 import { ThemeContext } from '../../themes'
+import useCacheContext from '../../hooks/useCacheContext';
 
 import LeadingText from "../LeadingText"
 import Item from "./Item"
@@ -19,7 +20,26 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 
 	const navigation = useNavigation();
 
+	const { state: itemsShop, setCacheState: setItemsShop } = useCacheContext('items_shop');
+
 	// TODO: Deixar os dados dinamicos
+
+	const createDeleteItem = useCallback( (itemId) => {
+		return () => {
+			setItemsShop( (prevState) => {
+				return prevState.filter( (item) => {
+					return item_id != itemId
+				})
+			})
+		}
+	}, []) 
+
+	const renderItem = ({item}) = (
+		<ItemShopBox 
+			{... item}
+			onDelete={createDeleteItem(item.item_id)}
+		/>
+	);
 
 	return (
 		<Modal
@@ -39,10 +59,12 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 						Carrinho
 					</ModalTitle>
 
-					<ItemsConteiner>
-						<Item/>	
-						<Item/>	
-					</ItemsConteiner>
+					<ItemsConteiner
+						data={itemsShop}
+						renderItem={renderItem}
+						keyExtractor={item => item.item_id}
+					/>
+						
 					
 					<LeadingText fontFamilyName="Bold" textName="Total" textValue="R$ 4,00" integerValue={4} valueColor={theme.linear.primary[0]} />
 
@@ -56,6 +78,9 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 								paddingVertical: 10,
 								paddingHorizontal: 40,
 								backgroundColor: theme.background
+							}}
+							onPress={() => { 
+								setItemsShop({}); onRequestClose()
 							}}
 						/>
 

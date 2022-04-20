@@ -5,13 +5,32 @@ import { Modal, Text } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons"
 
 import { ThemeContext } from '../../themes';
+import useCacheContext from '../../hooks/useCacheContext';
 
 import { Container, ModalContainer, CloseIcon, ItemContainer, ItemImage, ItemText, QuantContainer, QuantiText, QuantButtonsContainer, QuantiButtonPlus, QuantuNumberText, QuantiButtonMinus, Button} from "./styles";
 
-const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible }) => {
+const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible, selectItem }) => {
+
+	const { item: itemData } = selectItem;
+
+	const { state: itemsShop, setCacheState: setItemsShop } = useCacheContext('items_shop');
+	const [ value, setValue ] = useState(0);
+
 	const theme = useContext(ThemeContext);
 
-	const [value, setValue] = useState(0)
+	const updateItemsShop = useCallback( () => {
+		const newItem = {
+			... itemData ,
+			['item_id']: selectItem.item_id,
+			['amount']: value
+			
+		}
+
+		setItemsShop( (prevState) => {
+			return prevState.push(newItem)
+		})
+
+	}, [value])
 
 	const updateLessQuant = useCallback(() => {
 		if(value != 0){
@@ -26,25 +45,28 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible }) => {
 
 	// TODO: Linear bg
 
-	// TODO: Deixar os dados dinamicos
-	
+	const onRequestCloseInner = useCallback( () => {
+		updateItemsShop();
+		onRequestClose();
+	})
+
 	return (
 		<Modal
 			animationType="fade"
 			transparent={true}
 			visible={modalVisible}
-			onRequestClose={onRequestClose}
+			onRequestClose={onRequestCloseInner}
 		>
 			<Container>
 				<ModalContainer>
 					<CloseIcon>
-						<Icon onPress={onRequestClose} name="close" size={20} color="#000"/>
+						<Icon onPress={onRequestCloseInner} name="close" size={20} color="#000"/>
 					</CloseIcon>
 
 					<ItemContainer>
 						<ItemImage />
 						<ItemText textColor={theme.linear.primary[0]}>
-							Suco de Laranja 250mL
+							{selectItem.item.name}
 						</ItemText>
 					</ItemContainer>
 

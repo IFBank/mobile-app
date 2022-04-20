@@ -6,11 +6,8 @@ import { ThemeContext } from '../../../themes'
 
 import { ItemContainer, ItemContentContainer, ItemImage, ItemTitle, InfoContainer, InfoUnid, InfoPrice, DeleteButton } from "./styles";
 
-const Item: React.FC = () => {
+const Item: React.FC = ({name, price, amount, avatar_url, item_id, onDelete}) => {
 	const theme = useContext(ThemeContext);
-
-	const unidValue = 2;
-	const priceValue = 2.5;
 
 	return(
 		<ItemContainer
@@ -18,16 +15,16 @@ const Item: React.FC = () => {
 				marginBottom: 14
 			}}
 		>
-			<ItemTitle textColor={theme.text.title}> Teste</ItemTitle>	
+			<ItemTitle textColor={theme.text.title}> {name}</ItemTitle>	
 
 			<ItemContentContainer>
-				<ItemImage />
+				<ItemImage source={avatar_url}/>
 				<InfoContainer>		
-					<InfoUnid textColor={theme.text.title}>{`${unidValue} unid.`}</InfoUnid>
-					<InfoPrice textColor={theme.text.title}>{`R$ ${priceValue}`}</InfoPrice>
+					<InfoUnid textColor={theme.text.title}>{`${amount} unid.`}</InfoUnid>
+					<InfoPrice textColor={theme.text.title}>{`R$ ${price}`}</InfoPrice>
 				</InfoContainer>
 
-				<DeleteButton colors={theme.linear.semantic_red} start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
+				<DeleteButton colors={theme.linear.semantic_red} start={{x: 0, y: 0}} end={{x: 1, y: 0}} onPress={onDelete}>
 					<Icon  size={40} name="delete" color="#fff"/>
 				</DeleteButton>
 
