@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 
 import { fonts } from '../../fonts'
 
+import Icon from "react-native-vector-icons/MaterialIcons"
+
 interface ContainerProps {
 	isFocused: boolean;
 }
@@ -21,3 +23,12 @@ export const HeaderInput = styled.Text`
 	font-size: 14px;
 	font-family: ${ fonts.text.regular };
 `
+
+export const InputContainer = styled.View`
+	flex-direction: row;
+	width: 100%;
+`;
+
+export const IconStyled = styled(Icon)`
+	
+`;
