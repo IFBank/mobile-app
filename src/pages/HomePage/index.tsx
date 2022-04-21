@@ -74,7 +74,7 @@ const HomePage: React.FC = () => {
 							navigation.navigate("Shop");
 
 						}}
-					/>): (<FlatList horizontal={true} data={TESTE_DATA}
+					/>): (<FlatList horizontal={true} data={dataCombo}
 							renderItem={renderItemCombo}
 							keyExtractor={item => item.name}
 						/>)
@@ -101,9 +101,9 @@ const HomePage: React.FC = () => {
 						onButtonPress={ () => {
 							navigation.navigate("Shop");
 						}}
-					/>): (<FlatList horizontal={true} data={TESTE_DATA}
+					/>): (<FlatList horizontal={true} data={dataPedidos}
 							renderItem={renderItemPedido}
-							keyExtractor={item => item.item_id}
+							keyExtractor={item => item.name}
 						/>)
 					}
 
