@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useContext, useEffect } from 'react';
 
 import useSWR from 'swr'
-import { apiIFBANK } from '../../services/api'
+import { apiIFBANK } from '../../../services/api'
 
 import { ThemeContext } from '../../../themes.ts';
 
@@ -59,7 +59,7 @@ const ShopPage = () => {
 
 	const theme = useContext(ThemeContext);
 
-	const renderItem = ({item}) = (
+	const renderItem = ({item}) => (
 		<ItemShopBox 
 			nameItem={item.item.name}
 			price={item.item.name}

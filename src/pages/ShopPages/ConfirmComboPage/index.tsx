@@ -78,7 +78,7 @@ const ConfirmComboPage: React.Fc = () => {
 		
 	}, [])
 
-	const renderItem = ({item}) = (
+	const renderItem: React.FC = ({item}) => (
 		<Item 
 			{... item}
 			theme={theme}

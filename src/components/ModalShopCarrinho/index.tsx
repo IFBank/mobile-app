@@ -34,7 +34,7 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 		}
 	}, []) 
 
-	const renderItem = ({item}) = (
+	const renderItem = ({item}) => (
 		<ItemShopBox 
 			{... item}
 			onDelete={createDeleteItem(item.item_id)}
