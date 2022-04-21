@@ -15,15 +15,16 @@ import CacheContext from './CacheContext';
 import Routes from "./routes"
 
 const App: React.FC  = ( ) => {
-	const userTheme = useCacheState('theme');
-
-	let theme = (userTheme.state || useColorScheme()) == "dark" ? themes.dark : themes.light;
 
 	/*
 	 Quando o auth_token for mudando em qualquer parte da aplicação
 	 ou quando a aplicação iniciar, será feita a atualização do 
 	 token no axios para o uso na API.
 	*/
+	
+	const userTheme = useCacheState('theme', useColorScheme());
+
+	let theme =  userTheme.state == 'dark' ? themes.dark : themes.light;
 
 	const authToken = useCacheState('auth_token');
 	const userData = useCacheState('user_data');
@@ -43,7 +44,7 @@ const App: React.FC  = ( ) => {
 	}, [authToken.state]);
 
 	useEffect( () => {
-		let theme = (userTheme.state || useColorScheme()) == "dark" ? themes.dark : themes.light;
+		
 	}, [userTheme.state]);
 
 	return (
