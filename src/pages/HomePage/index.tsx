@@ -14,6 +14,7 @@ import BoxSaldo from '../../components/BoxSaldo';
 import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
 import BoxPedido from '../../components/BoxPedido';
+import BoxCombo from '../../components/BoxCombo';
 
 import useCacheState from '../../hooks/useCacheState';
 
@@ -36,7 +37,7 @@ const HomePage: React.FC = () => {
 	// TODO: Renderização condicional para o flat list
 
 	const renderItemCombo = ({item}) => (
-		<BoxPedido orderName={item.name} value={null} endDate={item.withdraw_date}/>
+		<BoxCombo comboName={item.name} comboItems={item.combos_item} />
 	)
 
 	const renderItemPedido = ({item}) => (
