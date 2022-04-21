@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState}from "react";
 
-import { ScrollView, Image, View } from "react-native";
+import { ScrollView, Image, View, FlatList } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,24 +10,29 @@ import BoxDashboardEmpty from '../../components/BoxDashboardEmpty';
 import ModalEstatiticaCompras from '../../components/ModalEstatiticaCompras';
 import ModalInfoPedido from '../../components/ModalInfoPedido';
 
+import BoxPedido from '../../components/BoxPedido';
+import BoxDeposito from '../../components/BoxDeposito';
+
+import useSWR from 'swr'
+import { apiIFBANK } from '../../services/api'
+
 import { ThemeContext } from '../../themes'
+
+import useCacheState from '../../hooks/useCacheState'
 
 import { Container, ContentSection, TitleHeaderStyled, StyledButton } from "./styles"
 
 import imageEmptyPedidos from "../../assets/emptyCard.png"
 import imageEmptyDepositos from "../../assets/questionImage.png"
 
+const fetcher = url => apiIFBANK.get(url).then(res => res.data)
+
+
 const DashboardPage: React.FC = () => {
 	const navigation = useNavigation();
 
-	const [hideSaldo, setHideSaldo] = useState(false);
-
-	useEffect( () => {
-		setHideSaldo(false) // Value from asyncStorage (cache)
-	}, [])
-
 	const [ modalPedido, setModalPedido ] = useState(false)
-	const [ modalEstatistica, setModalEstatistica ] = useState(true)
+	const [ modalEstatistica, setModalEstatistica ] = useState(false)
 
 	const onRequestClosePedido = () => {
 		setModalPedido(!modalPedido);
@@ -39,9 +44,20 @@ const DashboardPage: React.FC = () => {
 
 	const theme = useContext(ThemeContext)
 
-	// TODO: Renderização condicional para o flat list e click pra mostra pedido
-
 	// TODO: Modals
+
+	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/list', fetcher)
+	// const { data: dataDeposito, error: errorDeposito} = useSWR('/order/list', fetcher)
+	const dataDeposito = undefined;
+	// AINDÃ NÃO TEM API NO BACK END PRA ISSO
+
+	const renderItemPedido = ({item}) => (
+		<BoxPedido orderName={item.name} value={null} endDate={item.withdraw_date}/>
+	)
+
+	const renderItemDeposito = ({item}) => (
+		<BoxDeposito orderName={item.name} value={null} endDate={item.withdraw_date}/>
+	)
 
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
@@ -51,7 +67,7 @@ const DashboardPage: React.FC = () => {
 
 				<ContentSection>
 
-					<BoxSaldo hideSaldo={hideSaldo}/>
+					<BoxSaldo/>
 				</ContentSection>
 
 				<ContentSection>
@@ -60,11 +76,15 @@ const DashboardPage: React.FC = () => {
 						marginBottomMain={0}
 					/>
 
-					<BoxDashboardEmpty 
+					{dataPedidos == undefined ? (<BoxDashboardEmpty 
 						imageSource={imageEmptyPedidos} 
 						mainText="Nenhum pedido foi feito ainda!" 
 						gradientColor="secondary"
-					/>
+					/>):(<FlatList horizontal={true} data={dataPedidos}
+							renderItem={renderItemPedido}
+							keyExtractor={item => item.name}
+						/>)}
+
 				</ContentSection>
 
 				<ContentSection>
@@ -73,10 +93,13 @@ const DashboardPage: React.FC = () => {
 						marginBottomMain={0}
 					/>
 
-					<BoxDashboardEmpty 
+					{dataDeposito == undefined ? (<BoxDashboardEmpty 
 						imageSource={imageEmptyDepositos} 
 						mainText="Nenhum depósito foi feito ainda!" 
-					/>
+					/>) : (<FlatList horizontal={true} data={dataDeposito}
+							renderItem={renderItemDeposito}
+							keyExtractor={item => item.name}
+						/>)}
 				</ContentSection>
 
 				<StyledButton 

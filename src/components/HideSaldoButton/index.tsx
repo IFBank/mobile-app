@@ -1,6 +1,7 @@
-import React, {useContext, useState} from 'react';
+import React, { useState, useContext} from 'react';
 
 import { ThemeContext } from '../../themes.ts';
+import CacheContext from '../../CacheContext';
 
 import Icon from "react-native-vector-icons/MaterialIcons";
 
@@ -10,8 +11,9 @@ interface HideSaldoButtonProps{
 	onPress: () => {};
 }
 
-const HideSaldoButton: React.FC<HideSaldoButtonProps> = ({ onPress, ... rest }) => {
-	const [hidden, setHidden] = useState(false);
+const HideSaldoButton: React.FC<HideSaldoButtonProps> = ({ ... rest }) => {
+	const cacheContext = useContext(CacheContext);
+	const {state: hidden, setCacheState: setHidden} = cacheContext['hiddenSaldo']
 
 	const theme = useContext(ThemeContext);
 
@@ -27,7 +29,6 @@ const HideSaldoButton: React.FC<HideSaldoButtonProps> = ({ onPress, ... rest }) 
 				onPress={ 
 					() => {
 						setHidden(!hidden);
-						onPress(!hidden);
 					} 
 				}
 			/>

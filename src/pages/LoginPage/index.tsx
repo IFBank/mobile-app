@@ -2,9 +2,12 @@ import React, { useRef, useCallback, useContext } from "react";
 import { Image, View, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';
+import useCacheContext from '../../hooks/useCacheContext'
 
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
+
+import { apiIFBANK } from '../../services/api'
 
 import { ThemeContext } from '../../themes.ts'
 
@@ -17,18 +20,26 @@ import {
 	Input 
 } from "./styles"
 
-import Logo from "../../assets/logo.svg"
+import logoImage from "../../assets/Logo.png"
 
 
 const LoginPage: React.FC = () => {
 	const navigation = useNavigation();
 	const theme = useContext(ThemeContext)
 
+	const { setCacheState: setAuthToken } = useCacheContext('auth_token');
+
 	const formRef = useRef<FormHandles>(null)
 
 	const handleLogin = useCallback((data: object) => {
-		// TODO: consulta na API e ações necessarias
-		console.log(data)
+	
+		apiIFBANK.post('/user/authenticate', {data: JSON.stringify(data)}).then( (response) => {
+			if(response.status != 200) return;
+
+			const data = JSON.parse(response.data);
+			setAuthToken(data.token)
+		})
+
 	}, [])
 
 	return (
@@ -43,7 +54,7 @@ const LoginPage: React.FC = () => {
 			>
 				<Container colors={theme.linear.primary} start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
 					<LogoContainer>
-						<Logo />
+						<Image source={logoImage} style={{width:195, height:226}}/>
 					</LogoContainer>
 
 					<ContentContainer theme={theme}>

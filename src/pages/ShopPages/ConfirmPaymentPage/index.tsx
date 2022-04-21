@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState, useCallback} from "react";
 
 import {ScrollView} from 'react-native';
 
@@ -7,15 +7,59 @@ import TitleHeader from '../../../components/TitleHeader'
 import LeadingText from '../../../components/LeadingText'
 import TopBackButton from '../../../components/TopBackButton'
 
+import { useNavigation } from '@react-navigation/native';
+
 import { ThemeContext } from '../../../themes';
+import { apiIFBANK } from '../../../services/api';
+import useCacheContext from '../../../hooks/useCacheContext';
 
 import {Container, SectionContainer, UnderLineTitle, PedidosLeadingConteiner, InfoLeadingConteiner, LimitTimeText, Button} from "./styles";
 
 const ConfirmPaymentPage: React.Fc = () => {
+	const [total, setTotal] = useState(0);
+
+	const { state: itemsShop } = useCacheContext('items_shop');
 
 	const theme = useContext(ThemeContext);
 
-	// TODO: Deixar os dados dinamicos
+	const navegation =  useNavigation();
+
+	const saldoAtual = 10;
+
+	// TODO: Pegar saldo via API
+
+	/*
+	  NÃO SERÁ POSSIVEL FAZER ESSA PAGINA POR ENQUANDO, NECESSARIO DISCUSSÃO
+	  - Horario limite aparecendo aqui
+	*/
+
+	const onOrderItems = useCallback( ()=> {
+
+		const data = itemsShop.reduce( (newObj, item) => {
+			const {item_id, amount} =  item;
+
+			newObj[item_id] = amount;
+
+			return newObj
+		}, {})
+
+		apiIFBANK.post('/order/create', {data: JSON.stringify(data)}).then( (r) => {
+			if (r.status != 200) return;
+			navegation.navigate("HomeApp");
+		})
+		
+	}, [itemsShop])
+
+	useEffect( () => {
+		let total = 0.00;
+
+		itemsShop.forEach( (item) => {
+			total = item.amout * item.price
+		}) 
+
+		setTotal(total);
+
+	}, [itemsShop])
 
 	return (
 		<ScrollView>
@@ -29,13 +73,23 @@ const ConfirmPaymentPage: React.Fc = () => {
 
 				<BoxContainer style={{paddingVertical: 12, paddingHorizontal: 10, width:"100%"}}>
 					<PedidosLeadingConteiner>
-						<LeadingText textName="2 Coxinhas de Frango" textValue="R$ 5,00"  style={{marginBottom: 16}}/>
-						<LeadingText textName="2 Coxinhas de Coxa" textValue="R$ 5,00" style={{marginBottom: 20}}/>	
+
+					{
+						itemsShop.map( (item, index) => {
+							const {amout, name, item_id, price} = item;
+							mB = index == (itemsShop.lenght - 1) ? 20 : 16
+
+							return (
+								<LeadingText textName={`${amout} ${name}`} textValue={`R$ ${price}`}  style={{marginBottom: mB}} key={item_id}/>
+							)
+						})
+					}
+				
 					</PedidosLeadingConteiner>
 
 					<InfoLeadingConteiner>
-						<LeadingText textName="Total" textValue="R$ 10,00" valueColor={theme.linear.primary[0]} fontFamilyName="Bold" style={{marginBottom: 16}}/>
-						<LimitTimeText textColor={theme.text.text}>Horário limite para retirada: {"10h30min"}</LimitTimeText>
+						<LeadingText textName="Total" textValue={`R$ ${total}`} valueColor={theme.linear.primary[0]} fontFamilyName="Bold" style={{marginBottom: 16}}/>
+						{/*<LimitTimeText textColor={theme.text.text}>Horário limite para retirada: {"10h30min"}</LimitTimeText>*/}
 					</InfoLeadingConteiner>
 					
 				</BoxContainer>
@@ -47,8 +101,8 @@ const ConfirmPaymentPage: React.Fc = () => {
 
 				<BoxContainer style={{paddingVertical: 12, paddingHorizontal: 10, width:"100%"}}>
 
-					<LeadingText textName="Saldo atual" textValue="R$ 10,00" style={{marginBottom: 9}}/>
-					<LeadingText textName="Saldo apos" textValue="R$ 0,00" />	
+					<LeadingText textName="Saldo atual" textValue={`R$ ${saldoAtual}`} style={{marginBottom: 9}}/>
+					<LeadingText textName="Saldo apos" textValue={`R$ ${saldoAtual - total}`} />	
 				</BoxContainer>
 			</SectionContainer>
 
@@ -60,6 +114,8 @@ const ConfirmPaymentPage: React.Fc = () => {
 					paddingVertical: 14,
 					paddingHorizontal: 56,
 				}}
+
+				onPress={onOrderItems}
 			/>
 			
 		</Container>

@@ -3,12 +3,16 @@ import React, {useRef, useCallback, useContext}from "react";
 import { Form } from "@unform/mobile"
 import { FormHandles } from "@unform/core"
 
+import { FlatList } from 'react-native'
+
 import TopBackButton from '../../../components/TopBackButton';
 import TitleHeader from '../../../components/TitleHeader';
 import BoxContainer from '../../../components/BoxContainer';
 import Input from '../../../components/Input';
 
 import { ThemeContext } from '../../../themes';
+import { apiIFBANK } from '../../../services/api'
+import useCacheContext from '../../../hooks/useCacheContext';
 
 import { 
 	Container, 
@@ -25,19 +29,19 @@ import {
 	RegularText,
 } from "./styles";
 
-const Item: React.FC = ({nameItem, quantItem, imageUrl, theme}) => {
+const Item: React.FC = ({name, amount, avatar_url, theme}) => {
 	return (
 		<ItemContainer gradientColor="secondary" outerStyle={{marginBottom: 14}}>
 			<HeaderItemText textColor={theme.text.title}>
-				{nameItem}
+				{name}
 			</HeaderItemText>
 
 			<ItemContent>
-				<ImageStyled source={imageUrl}/>
+				<ImageStyled source={avatar_url}/>
 
 				<InfoContainer>
 					<RegularText textColor={theme.text.text}>Quantidade: </RegularText>
-					<RegularText textColor={theme.text.text}> {quantItem} unid.</RegularText>
+					<RegularText textColor={theme.text.text}> {amount} unid.</RegularText>
 				</InfoContainer>
 
 			</ItemContent>
@@ -54,10 +58,32 @@ const ConfirmComboPage: React.Fc = () => {
 
 	const formRef = useRef<FormHandles>(null)
 
+	const { state: itemsShop, setCacheState: setItemsShop } = useCacheContext('items_shop');
+
 	const handleSaveCombo = useCallback((data: object) => {
-		// TODO: consulta na API e ações necessarias
-		console.log(data)
+
+		apiIFBANK.post('/combo/create', { data: JSON.stringify(data) }).then( (response) => {
+			if(response.status != 200) return;
+
+			const { data: { combo_id } } = response;
+
+			const items = Object.keys(itemsShop);
+
+			items.forEach( (item) => {
+				apiIFBANK.post(`/combo/add/${combo_id}`, { data: JSON.stringify(item)} )
+			})
+
+			navigation.navigate("Shop");	
+		})
+		
 	}, [])
+
+	const renderItem: React.FC = ({item}) => (
+		<Item 
+			{... item}
+			theme={theme}
+		/>
+	);
 
 	return (
 		<Container>
@@ -67,7 +93,11 @@ const ConfirmComboPage: React.Fc = () => {
 			<SectionContainer>
 				<UnderLineTitle textColor={theme.text.title}>Pedido</UnderLineTitle>			
 
-				<Item nameItem="Pamonha" quantItem={10} theme={theme}/>
+				<FlatList 
+					data={dataFilter}
+					renderItem={renderItem}
+					keyExtractor={item => item.item_id}
+				/>
 			</SectionContainer>
 			
 			
@@ -75,7 +105,7 @@ const ConfirmComboPage: React.Fc = () => {
 			<Form ref={formRef} onSubmit={handleSaveCombo}>
 
 				<Input 
-					name="combo-name"
+					name="name"
 					headerText="Insira um nome para o combo."
 				/>
 				<StyledButton 

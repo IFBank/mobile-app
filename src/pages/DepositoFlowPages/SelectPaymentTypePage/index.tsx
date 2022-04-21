@@ -3,7 +3,12 @@ import React from "react";
 import { Image } from "react-native"
 import { useNavigation } from '@react-navigation/native';
 
+import { ToastAndroid } from "react-native"
+
 import PaymentTypeBox from '../../../components/PaymentTypeBox';
+
+import {apiIFBANK} from '../../../services/api'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Container } from '../styles'
 import { TopBackButtomStyled, TitleHeaderStyled, ImageContainer, SelectContainer } from './styles'
@@ -31,7 +36,17 @@ const SelectPaymentTypePage: React.FC = () => {
 					iconName="pix" 
 					mainTitle="Pix" 
 					subTitle="Prático e instantâneo"
-					onPress={() => {navigation.navigate("Pix")}}
+					onPress={() => {
+						AsyncStorage.getItem("deposito_data").then( (data) => {
+							apiIFBANK.post('/deposit/pix', {data: data}).then( (response) => {
+								if(response.status != 200) return;
+
+								AsyncStorage.setItem("pix_data", response.data).then( () => navigation.navigate("Pix"));
+							});
+							AsyncStorage.removeItem("deposito_data");
+						})
+						
+					}}
 				/>
 
 				<PaymentTypeBox 
@@ -39,7 +54,10 @@ const SelectPaymentTypePage: React.FC = () => {
 					mainTitle="Boleto" 
 					subTitle="Pague em até 3x"
 					gradientColor="secondary"
-					onPress={() => {navigation.navigate("Boleto")}}
+					onPress={() => {
+						ToastAndroid.show("Ainda será implementado! Use PIX!", ToastAndroid.SHORT)
+						//navigation.navigate("Boleto")
+					}}
 					outerStyle={{marginTop: 32}}
 				/>
 			</SelectContainer>

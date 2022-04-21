@@ -3,13 +3,14 @@ import React, { useEffect, useRef, useState, useCallback, useImperativeHandle, f
 import { TextInputProps } from "react-native"
 import { useField } from '@unform/core'
 
-import { Container, InputStyled, HeaderInput} from "./styles";
+import { Container, InputStyled, HeaderInput, IconStyled, InputContainer} from "./styles";
 
 
 interface InputProps extends TextInputProps{
 	name: string
 	headerText: string;
 	style: any;
+	onClickIcon(): void; 
 }
 
 interface InputValueReference{
@@ -20,7 +21,7 @@ interface InputRef{
 	focus(): void;
 }
 
-const Input: React.RefForwardingComponent<InputRef, InputProps> = ({ name, headerText, style, ... rest}, ref) => {
+const Input: React.RefForwardingComponent<InputRef, InputProps> = ({ name, headerText, style, onPressIcon, iconData, ... rest}, ref) => {
 	const inputElementRef = useRef<any>(null)
 
 	const { registerField, defaultValue = '', fieldName, error } = useField(name)
@@ -63,16 +64,20 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = ({ name, heade
 			<HeaderInput>
 				{headerText}
 			</HeaderInput>
-			<InputStyled
-				ref={inputElementRef}
-				defaultValue={defaultValue}
-				onFocus={handleInputFocus} 
-				onBlur={handleInputBlur} 
-				onChangeText={(value) => {
-					inputValueRef.current.value = value;
-				}}
-				{... rest} 
-			/>
+			<InputContainer>
+				<InputStyled
+					ref={inputElementRef}
+					defaultValue={defaultValue}
+					onFocus={handleInputFocus} 
+					onBlur={handleInputBlur} 
+					onChangeText={(value) => {
+						inputValueRef.current.value = value;
+					}}
+					{... rest} 
+				/>
+				{iconData?.name && <IconStyled onPress={onPressIcon} {... iconData} />}
+			</InputContainer>
+				
 		</Container>
 	)
 

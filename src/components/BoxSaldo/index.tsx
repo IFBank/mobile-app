@@ -2,6 +2,8 @@ import React from "react";
 
 import { useNavigation } from '@react-navigation/native';
 
+import useCacheContext from '../../hooks/useCacheContext'
+
 import BoxContainer from '../BoxContainer';
 
 import { LeadingTextStyled, StyledButton} from "./styles"
@@ -27,8 +29,10 @@ const numberToRealString: string = (value: Number, hideSaldo) => {
 	return `R$ ${realString}`
 }
 
-const BoxSaldo: React.FC<BoxSaldoProps> = ({ hideSaldo, ... rest}) => {
+const BoxSaldo: React.FC<BoxSaldoProps> = ({ ... rest}) => {
 	const navigation = useNavigation();
+
+	const { state: hideSaldo } = useCacheContext('hiddenSaldo');
 
 	const value = !hideSaldo ? 0 : 0.01;
 

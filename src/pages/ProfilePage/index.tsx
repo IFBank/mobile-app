@@ -1,5 +1,6 @@
 import React, { useContext, useCallback, useRef } from "react";
 import { ThemeContext } from '../../themes'
+import useCacheContext from '../../hooks/useCacheContext'
 
 import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
 
@@ -10,8 +11,13 @@ import { Container, ImageContainer, Input, ButtonContainer, IconStyled, Button }
 
 import fotoPerfilExample from "../../assets/fotoPerfil.png"
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const ProfilePage = () => {
 	const theme = useContext(ThemeContext)
+
+	const {setCacheState: setAuth} = useCacheContext('auth_token');
+	const {state: themeState, setCacheState: setTheme} = useCacheContext('theme');
 
 	return (
 		<KeyboardAvoidingView
@@ -66,6 +72,13 @@ const ProfilePage = () => {
 									paddingVertical: 14,
 
 								}}
+
+								onPress = {
+									() => {
+										setCacheState(null);
+										AsyncStorage.clear();
+									}
+								}
 							/>
 							<Button 
 								text="Noturno"
@@ -80,6 +93,10 @@ const ProfilePage = () => {
 									paddingVertical: 14,
 									paddingHorizontal: 14,
 									backgroundColor: theme.background
+								}}
+
+								onPress={() => {
+									setTheme(themeState == 'dark' ? "light" : 'dark');
 								}}
 							/>	
 						</ButtonContainer>

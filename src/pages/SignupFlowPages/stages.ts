@@ -28,7 +28,7 @@ export const stages = {
 			inputs: [
 				{
 					headerText: "Insira seu nome completo",
-					name: 'student-name',
+					name: 'name',
 					returnKeyType: "next"
 				},
 				{
@@ -39,7 +39,7 @@ export const stages = {
 				},
 				{
 					headerText: "Insira sua data de nascimento",
-					name: 'birthdate',
+					name: 'born_date',
 					returnKeyType: "done"
 				},
 			]
@@ -67,7 +67,7 @@ export const stages = {
 			title: "Seu Perfil",
 			description: "Tudo pronto! Agora somente é necessário criar o seu perfil. Coloque o seu apelido e a senha que usará.",
 			hasBackScreen: true,
-			nextPage: "HomeApp",
+			nextPage: "Login",
 			inputs: [
 				{
 					headerText: "Insira seu nome de exibição (Apelido)",

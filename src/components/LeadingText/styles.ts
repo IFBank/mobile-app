@@ -12,7 +12,7 @@ export const Container = styled.View`
 
 // TODO: Refatorar essa merda
 export const NameText = styled.Text`
-    color: #000;
+    color: ${ ({colorNameText}) => colorNameText};
 
     font-family: ${({fontFamilyName}) => `Mukta-${fontFamilyName}`};
     font-size: ${({fontSize=18}) => fontSize}px;

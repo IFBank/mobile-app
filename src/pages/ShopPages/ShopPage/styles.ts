@@ -11,7 +11,7 @@ export const MenuContainer = styled.View`
 
 `;
 
-export const ContentContainer = styled.View`
+export const ContentContainer = styled.FlatList`
 	flex: 1;
 	padding: 16px 16px;
 `;

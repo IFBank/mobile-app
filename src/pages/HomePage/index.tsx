@@ -1,6 +1,9 @@
 import React, {useContext, useEffect, useState}from "react";
 
-import { ScrollView, Image, View } from "react-native";
+import useSWR from 'swr'
+import { apiIFBANK } from '../../services/api'
+
+import { ScrollView, Image, View, FlatList } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,6 +13,11 @@ import HideSaldoButton from '../../components/HideSaldoButton';
 import BoxSaldo from '../../components/BoxSaldo';
 import BoxHomeEmpty from '../../components/BoxHomeEmpty';
 
+import BoxPedido from '../../components/BoxPedido';
+import BoxCombo from '../../components/BoxCombo';
+
+import useCacheState from '../../hooks/useCacheState';
+
 import { ThemeContext } from '../../themes'
 
 import { Container, ContentSection, TitleHeaderStyled } from "./styles"
@@ -17,18 +25,24 @@ import { Container, ContentSection, TitleHeaderStyled } from "./styles"
 import imageEmptyCombos from "../../assets/imageEmptyCombos.png"
 import imageEmptyPedidos from "../../assets/imageEmptyPedidos.png"
 
+const fetcher = url => apiIFBANK.get(url).then(res => res.data)
+
 const HomePage: React.FC = () => {
 	const navigation = useNavigation();
-
-	const [hideSaldo, setHideSaldo] = useState(false);
-
-	useEffect( () => {
-		setHideSaldo(false) // Value from asyncStorage (cache)
-	}, [])
-
 	const theme = useContext(ThemeContext)
 
+	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/list', fetcher)
+	const { data: dataCombo, error: errorCombo} = useSWR('/order/list', fetcher)
+
 	// TODO: Renderização condicional para o flat list
+
+	const renderItemCombo = ({item}) => (
+		<BoxCombo comboName={item.name} comboItems={item.combos_item} />
+	)
+
+	const renderItemPedido = ({item}) => (
+		<BoxPedido orderName={item.name} value={null} endDate={item.withdraw_date}/>
+	)
 
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
@@ -38,9 +52,9 @@ const HomePage: React.FC = () => {
 				<ContentSection>
 					<TitleHeaderStyled mainTitle="Conta" subTitle="Para mais informações vá à aba dashboard."/>
 
-					<HideSaldoButton onPress={(value) =>{setHideSaldo(value)}}/>
+					<HideSaldoButton/>
 
-					<BoxSaldo hideSaldo={hideSaldo}/>
+					<BoxSaldo/>
 				</ContentSection>
 
 				<ContentSection>
@@ -49,7 +63,8 @@ const HomePage: React.FC = () => {
 						subTitle="Encontre seus pedidos salvos e facilite seu processo de compra."
 					/>
 
-					<BoxHomeEmpty 
+					{
+					dataCombo == undefined ? (<BoxHomeEmpty 
 						imageSource={imageEmptyCombos} 
 						mainText="Sem combos registrados!" 
 						subTitleText="Você pode registrá-los na finalização de seus pedidos!"
@@ -60,7 +75,13 @@ const HomePage: React.FC = () => {
 							navigation.navigate("Shop");
 
 						}}
-					/>
+					/>): (<FlatList horizontal={true} data={dataCombo}
+							renderItem={renderItemCombo}
+							keyExtractor={item => item.name}
+						/>)
+					}
+
+					
 				</ContentSection>
 
 				<ContentSection>
@@ -69,7 +90,9 @@ const HomePage: React.FC = () => {
 						subTitle="Fique atento aos pedidos feitos, você terá um limite de tempo para recebê-los!"
 					/>
 
-					<BoxHomeEmpty 
+					{
+
+					dataPedidos == undefined ? (<BoxHomeEmpty 
 						imageSource={imageEmptyPedidos} 
 						mainText="Sem pedidos pendentes!" 
 						subTitleText="Vá a aba cantina e faça o seu!"
@@ -79,7 +102,13 @@ const HomePage: React.FC = () => {
 						onButtonPress={ () => {
 							navigation.navigate("Shop");
 						}}
-					/>
+					/>): (<FlatList horizontal={true} data={dataPedidos}
+							renderItem={renderItemPedido}
+							keyExtractor={item => item.name}
+						/>)
+					}
+
+					
 				</ContentSection>
 
 
