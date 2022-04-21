@@ -11,6 +11,8 @@ import { Container, ModalContainer, CloseIcon, ItemContainer, ItemImage, ItemTex
 
 const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible, selectItem }) => {
 
+	if(selectItem == null) return null;
+
 	const { item: itemData } = selectItem;
 
 	const { state: itemsShop, setCacheState: setItemsShop } = useCacheContext('items_shop');

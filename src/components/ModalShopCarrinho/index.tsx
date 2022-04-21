@@ -1,4 +1,4 @@
-import React,{ useContext }from 'react';
+import React,{ useContext, useCallback }from 'react';
 
 import { Modal, Text, ScrollView} from "react-native";
 
@@ -15,6 +15,8 @@ import Item from "./Item"
 import { Container, ModalContainer, CloseIcon, ModalTitle, ItemsConteiner, ActionButtonsContainer, ClearButton, ComboButton ,MakeOrderButton } from "./styles";
 
 const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
+
+	if(!modalVisible ) return null;
 
 	const theme = useContext(ThemeContext);
 
@@ -80,7 +82,7 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 								backgroundColor: theme.background
 							}}
 							onPress={() => { 
-								setItemsShop({}); onRequestClose()
+								setItemsShop([]); onRequestClose()
 							}}
 						/>
 
