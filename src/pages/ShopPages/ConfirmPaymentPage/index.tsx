@@ -10,6 +10,7 @@ import TopBackButton from '../../../components/TopBackButton'
 import { useNavigation } from '@react-navigation/native';
 
 import { ThemeContext } from '../../../themes';
+import { apiIFBANK } from '../../../services/api';
 import useCacheContext from '../../../hooks/useCacheContext';
 
 import {Container, SectionContainer, UnderLineTitle, PedidosLeadingConteiner, InfoLeadingConteiner, LimitTimeText, Button} from "./styles";
@@ -33,8 +34,20 @@ const ConfirmPaymentPage: React.Fc = () => {
 	*/
 
 	const onOrderItems = useCallback( ()=> {
-		//TODO: api order create
-		navegation.navigate("HomeApp");
+
+		const data = itemsShop.reduce( (newObj, item) => {
+			const {item_id, amount} =  item;
+
+			newObj[item_id] = amount;
+
+			return newObj
+		}, {})
+
+		apiIFBANK.post('/order/create', {data: JSON.stringify(data)}).then( (r) => {
+			if (r.status != 200) return;
+			navegation.navigate("HomeApp");
+		})
+		
 	}, [itemsShop])
 
 	useEffect( () => {
