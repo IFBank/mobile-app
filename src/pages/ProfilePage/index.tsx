@@ -1,6 +1,6 @@
 import React, { useContext, useCallback, useRef } from "react";
 import { ThemeContext } from '../../themes'
-import { ThemeContext } from '../../hooks/useCacheContext'
+import useCacheContext from '../../hooks/useCacheContext'
 
 import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
 
