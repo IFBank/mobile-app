@@ -10,6 +10,9 @@ import BoxDashboardEmpty from '../../components/BoxDashboardEmpty';
 import ModalEstatiticaCompras from '../../components/ModalEstatiticaCompras';
 import ModalInfoPedido from '../../components/ModalInfoPedido';
 
+import useSWR from 'swr'
+import { apiIFBANK } from '../../services/api'
+
 import { ThemeContext } from '../../themes'
 
 import useCacheState from '../../hooks/useCacheState'
@@ -18,6 +21,9 @@ import { Container, ContentSection, TitleHeaderStyled, StyledButton } from "./st
 
 import imageEmptyPedidos from "../../assets/emptyCard.png"
 import imageEmptyDepositos from "../../assets/questionImage.png"
+
+const fetcher = url => apiIFBANK.get(url).then(res => res.data)
+
 
 const DashboardPage: React.FC = () => {
 	const navigation = useNavigation();
@@ -39,6 +45,12 @@ const DashboardPage: React.FC = () => {
 
 	// TODO: Modals
 
+	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/list', fetcher)
+
+	const renderItemPedido = ({item}) => (
+		<BoxPedido orderName={item.name} value={null} endDate={item.withdraw_date}/>
+	)
+
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
 			<Container style={{flex: 1}}>
@@ -56,11 +68,15 @@ const DashboardPage: React.FC = () => {
 						marginBottomMain={0}
 					/>
 
-					<BoxDashboardEmpty 
+					{dataPedidos != undefined ? (<BoxDashboardEmpty 
 						imageSource={imageEmptyPedidos} 
 						mainText="Nenhum pedido foi feito ainda!" 
 						gradientColor="secondary"
-					/>
+					/>):(<FlatList horizontal={true} data={TESTE_DATA}
+							renderItem={renderItemPedido}
+							keyExtractor={item => item.item_id}
+						/>)}
+					
 				</ContentSection>
 
 				<ContentSection>
