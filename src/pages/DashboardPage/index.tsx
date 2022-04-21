@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState}from "react";
 
-import { ScrollView, Image, View } from "react-native";
+import { ScrollView, Image, View, FlatList } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -9,6 +9,9 @@ import BoxDashboardEmpty from '../../components/BoxDashboardEmpty';
 
 import ModalEstatiticaCompras from '../../components/ModalEstatiticaCompras';
 import ModalInfoPedido from '../../components/ModalInfoPedido';
+
+import BoxPedido from '../../components/BoxPedido';
+import BoxDeposito from '../../components/BoxDeposito';
 
 import useSWR from 'swr'
 import { apiIFBANK } from '../../services/api'
@@ -41,14 +44,19 @@ const DashboardPage: React.FC = () => {
 
 	const theme = useContext(ThemeContext)
 
-	// TODO: Renderização condicional para o flat list e click pra mostra pedido
-
 	// TODO: Modals
 
 	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/list', fetcher)
+	// const { data: dataDeposito, error: errorDeposito} = useSWR('/order/list', fetcher)
+	const dataDeposito = undefined;
+	// AINDÃ NÃO TEM API NO BACK END PRA ISSO
 
 	const renderItemPedido = ({item}) => (
 		<BoxPedido orderName={item.name} value={null} endDate={item.withdraw_date}/>
+	)
+
+	const renderItemDeposito = ({item}) => (
+		<BoxDeposito orderName={item.name} value={null} endDate={item.withdraw_date}/>
 	)
 
 	return (
@@ -68,15 +76,15 @@ const DashboardPage: React.FC = () => {
 						marginBottomMain={0}
 					/>
 
-					{dataPedidos != undefined ? (<BoxDashboardEmpty 
+					{dataPedidos == undefined ? (<BoxDashboardEmpty 
 						imageSource={imageEmptyPedidos} 
 						mainText="Nenhum pedido foi feito ainda!" 
 						gradientColor="secondary"
-					/>):(<FlatList horizontal={true} data={TESTE_DATA}
+					/>):(<FlatList horizontal={true} data={dataPedidos}
 							renderItem={renderItemPedido}
-							keyExtractor={item => item.item_id}
+							keyExtractor={item => item.name}
 						/>)}
-					
+
 				</ContentSection>
 
 				<ContentSection>
@@ -85,10 +93,13 @@ const DashboardPage: React.FC = () => {
 						marginBottomMain={0}
 					/>
 
-					<BoxDashboardEmpty 
+					{dataDeposito == undefined ? (<BoxDashboardEmpty 
 						imageSource={imageEmptyDepositos} 
 						mainText="Nenhum depósito foi feito ainda!" 
-					/>
+					/>) : (<FlatList horizontal={true} data={dataDeposito}
+							renderItem={renderItemDeposito}
+							keyExtractor={item => item.name}
+						/>)}
 				</ContentSection>
 
 				<StyledButton 
