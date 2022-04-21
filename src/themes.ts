@@ -7,6 +7,7 @@ export const themes = {
 			secondary: ["#5E45CC", "#4250E3"], // purple
 			semantic_red: ["#FF1F26", "#FF5512"], // red
 			neutral: ["#3B3A3E", "#373739"], // black
+			white: ["#FEFFFE", "#FEFFFE"], // black
 		},
 		text: {
 			title: "#1A1A1A",
