@@ -1,5 +1,8 @@
 import React from "react";
 
+import useSWR from 'swr'
+import { apiIFBANK } from '../../services/api'
+
 import { useNavigation } from '@react-navigation/native';
 
 import useCacheContext from '../../hooks/useCacheContext'
@@ -11,6 +14,8 @@ import { LeadingTextStyled, StyledButton} from "./styles"
 interface BoxSaldoProps{
 	hideSaldo: boolean;
 };
+
+const fetcher = url => apiIFBANK.get(url).then(res => res.data)
 
 const numberToRealString: string = (value: Number, hideSaldo) => {
 
@@ -32,9 +37,11 @@ const numberToRealString: string = (value: Number, hideSaldo) => {
 const BoxSaldo: React.FC<BoxSaldoProps> = ({ ... rest}) => {
 	const navigation = useNavigation();
 
+	const { data: dataMoney, error: errorPedidos} = useSWR('/wallet/money', fetcher)
+
 	const { state: hideSaldo } = useCacheContext('hiddenSaldo');
 
-	const value = !hideSaldo ? 0 : 0.01;
+	const value = !hideSaldo ? 0 : dataMoney?.money;
 
 	// TODO: Implement Blur
 
