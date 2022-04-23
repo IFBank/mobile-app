@@ -28,6 +28,7 @@ const LoginPage: React.FC = () => {
 	const theme = useContext(ThemeContext)
 
 	const { setCacheState: setAuthToken } = useCacheContext('auth_token');
+	const { setCacheState: setUserData } = useCacheContext('user_data');
 
 	const formRef = useRef<FormHandles>(null)
 
@@ -38,6 +39,12 @@ const LoginPage: React.FC = () => {
 
 			const data = JSON.parse(response.data);
 			setAuthToken(data.token)
+
+			apiIFBANK.get('/user').then( (r) => {
+				if (r.status != 200) return;
+
+				setUserData(r.data);
+			})
 		})
 
 	}, [])
