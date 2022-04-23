@@ -69,7 +69,7 @@ const HomePage: React.FC = () => {
 					/>
 
 					{
-					dataCombo == undefined ? (<BoxHomeEmpty 
+					!!dataCombo == false  ? (<BoxHomeEmpty 
 						imageSource={imageEmptyCombos} 
 						mainText="Sem combos registrados!" 
 						subTitleText="Você pode registrá-los na finalização de seus pedidos!"
@@ -97,7 +97,7 @@ const HomePage: React.FC = () => {
 
 					{
 
-					dataPedidos == undefined ? (<BoxHomeEmpty 
+					!!dataPedidos == false ? (<BoxHomeEmpty 
 						imageSource={imageEmptyPedidos} 
 						mainText="Sem pedidos pendentes!" 
 						subTitleText="Vá a aba cantina e faça o seu!"
