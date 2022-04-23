@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
 	const theme = useContext(ThemeContext)
 
 	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/list', fetcher)
-	const { data: dataCombo, error: errorCombo} = useSWR('/order/list', fetcher)
+	const { data: dataCombo, error: errorCombo} = useSWR('/combo/list', fetcher)
 
 	// TODO: Renderização condicional para o flat list
 
@@ -40,9 +40,14 @@ const HomePage: React.FC = () => {
 		<BoxCombo comboName={item.name} comboItems={item.combos_item} />
 	)
 
-	const renderItemPedido = ({item}) => (
-		<BoxPedido orderName={item.name} value={null} endDate={item.withdraw_date}/>
-	)
+	const renderItemPedido = ({item}) => {
+
+		const value = item.order_item.map( ({amount, item:{price}}) => {
+			return amount*price;
+		}).reduce( (value, obj) => (obj+value), 0)
+
+		return (<BoxPedido orderName={item.name} value={value} endDate={item.withdraw_date}/>)
+	}
 
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
