@@ -17,14 +17,13 @@ import {Container, SectionContainer, UnderLineTitle, PedidosLeadingConteiner, In
 
 const ConfirmPaymentPage: React.Fc = () => {
 	const [total, setTotal] = useState(0);
+	const [saldo, setSaldo] = useState(0.00);
 
 	const { state: itemsShop } = useCacheContext('items_shop');
 
 	const theme = useContext(ThemeContext);
 
 	const navegation =  useNavigation();
-
-	const saldoAtual = 10;
 
 	// TODO: Pegar saldo via API
 
@@ -49,6 +48,10 @@ const ConfirmPaymentPage: React.Fc = () => {
 		})
 		
 	}, [itemsShop])
+
+	useEffect( () => {
+		apiIFBANK.get('/wallet/money').then(r => {setSaldo(r.data.money)})
+	}, [])
 
 	useEffect( () => {
 		let total = 0.00;
@@ -101,8 +104,8 @@ const ConfirmPaymentPage: React.Fc = () => {
 
 				<BoxContainer style={{paddingVertical: 12, paddingHorizontal: 10, width:"100%"}}>
 
-					<LeadingText textName="Saldo atual" textValue={`R$ ${saldoAtual}`} style={{marginBottom: 9}}/>
-					<LeadingText textName="Saldo apos" textValue={`R$ ${saldoAtual - total}`} />	
+					<LeadingText textName="Saldo atual" textValue={`R$ ${saldo}`} style={{marginBottom: 9}}/>
+					<LeadingText textName="Saldo apos" textValue={`R$ ${saldo - total}`} />	
 				</BoxContainer>
 			</SectionContainer>
 
