@@ -102,7 +102,7 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible, selectItem }) 
 							paddingHorizontal: 18
 						}}
 
-						onPress={() => {}}
+						onPress={onRequestCloseInner}
 					/>
 					
 				</ModalContainer>
