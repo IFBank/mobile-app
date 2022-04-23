@@ -73,7 +73,7 @@ const ConfirmComboPage: React.Fc = () => {
 				apiIFBANK.post(`/combo/add/${combo_id}`, { data: JSON.stringify(item)} )
 			})
 
-			navigation.navigate("Shop");	
+			navigation.navigate("Home");	
 		})
 		
 	}, [])
