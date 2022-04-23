@@ -28,16 +28,23 @@ const LoginPage: React.FC = () => {
 	const theme = useContext(ThemeContext)
 
 	const { setCacheState: setAuthToken } = useCacheContext('auth_token');
+	const { setCacheState: setUserData } = useCacheContext('user_data');
 
 	const formRef = useRef<FormHandles>(null)
 
 	const handleLogin = useCallback((data: object) => {
 	
-		apiIFBANK.post('/user/authenticate', {data: JSON.stringify(data)}).then( (response) => {
+		apiIFBANK.post('/user/authenticate', data).then( (response) => {
 			if(response.status != 200) return;
 
-			const data = JSON.parse(response.data);
+			const data = response.data;
 			setAuthToken(data.token)
+
+			apiIFBANK.get('/user').then( (r) => {
+				if (r.status != 200) return;
+
+				setUserData(r.data);
+			})
 		})
 
 	}, [])

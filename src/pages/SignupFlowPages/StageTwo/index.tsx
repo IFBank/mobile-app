@@ -24,7 +24,7 @@ const StageTwo: React.FC = () => {
 		// TODO: chamar a api
 		const data = await AsyncStorage.getItem("ra_cadastro")
 
-		apiIFBANK.post('/ifms/validate', { data: JSON.stringify(data) }).then( (response) => {
+		apiIFBANK.post('/ifms/validate', data).then( (response) => {
 			const {data: dataRespose, status} = response;
 
 			if(status != 200) return;

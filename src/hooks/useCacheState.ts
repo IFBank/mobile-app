@@ -28,20 +28,21 @@ export default function useCacheState<T = unknow> (name: string, initialValue?: 
 
 		const cachedValue = JSON.stringify(value);
 
-		setIsLoadding(true);
+		// setIsLoadding(true);
 
 		AsyncStorage.setItem(name, cachedValue).then( () => {
 			console.debug(`CacheStateHook: Value ${cachedValue} has been save on "${name}"`);
-			setIsLoadding(false);
+			// setIsLoadding(false);
 		})
 
 		setState(value);
 	}
 
 	useEffect( () => {
+		if(!isLoadding) return;
 
 		getCachedValue(name).then( (cachedValue) => {
-			setState(cachedValue);
+			setState(cachedValue || initialValue);
 			setIsLoadding(false);
 		})	
 	})

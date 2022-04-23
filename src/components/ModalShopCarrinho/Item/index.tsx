@@ -24,8 +24,8 @@ const Item: React.FC = ({name, price, amount, avatar_url, item_id, onDelete}) =>
 					<InfoPrice textColor={theme.text.title}>{`R$ ${price}`}</InfoPrice>
 				</InfoContainer>
 
-				<DeleteButton colors={theme.linear.semantic_red} start={{x: 0, y: 0}} end={{x: 1, y: 0}} onPress={onDelete}>
-					<Icon  size={40} name="delete" color="#fff"/>
+				<DeleteButton colors={theme.linear.semantic_red} start={{x: 0, y: 0}} end={{x: 1, y: 0}} >
+					<Icon  size={40} name="delete" color="#fff" onPress={onDelete} />
 				</DeleteButton>
 
 			</ItemContentContainer>

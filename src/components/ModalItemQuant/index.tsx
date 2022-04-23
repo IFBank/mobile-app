@@ -28,9 +28,15 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible, selectItem }) 
 			
 		}
 
-		setItemsShop( (prevState) => {
-			return prevState.push(newItem)
-		})
+		if(value == 0){
+			itemsShop
+
+			return;
+		}
+
+		itemsShop.push(newItem)
+
+		setItemsShop( itemsShop)
 
 	}, [value])
 
@@ -49,6 +55,7 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible, selectItem }) 
 
 	const onRequestCloseInner = useCallback( () => {
 		updateItemsShop();
+
 		onRequestClose();
 	})
 
@@ -102,7 +109,7 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible, selectItem }) 
 							paddingHorizontal: 18
 						}}
 
-						onPress={() => {}}
+						onPress={onRequestCloseInner}
 					/>
 					
 				</ModalContainer>

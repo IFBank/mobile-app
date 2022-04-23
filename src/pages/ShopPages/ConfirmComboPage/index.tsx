@@ -62,18 +62,16 @@ const ConfirmComboPage: React.Fc = () => {
 
 	const handleSaveCombo = useCallback((data: object) => {
 
-		apiIFBANK.post('/combo/create', { data: JSON.stringify(data) }).then( (response) => {
+		apiIFBANK.post('/combo/create', data).then( (response) => {
 			if(response.status != 200) return;
 
 			const { data: { combo_id } } = response;
 
-			const items = Object.keys(itemsShop);
-
-			items.forEach( (item) => {
-				apiIFBANK.post(`/combo/add/${combo_id}`, { data: JSON.stringify(item)} )
+			itemsShop.forEach( ({item_id, amount}) => {
+				apiIFBANK.post(`/combo/add/${combo_id}`, {item_id, amount} )
 			})
 
-			navigation.navigate("Shop");	
+			navigation.navigate("Home");	
 		})
 		
 	}, [])
@@ -94,7 +92,7 @@ const ConfirmComboPage: React.Fc = () => {
 				<UnderLineTitle textColor={theme.text.title}>Pedido</UnderLineTitle>			
 
 				<FlatList 
-					data={dataFilter}
+					data={itemsShop}
 					renderItem={renderItem}
 					keyExtractor={item => item.item_id}
 				/>

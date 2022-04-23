@@ -33,9 +33,9 @@ const StageFour: React.FC = () => {
 			['ra_token']: (await AsyncStorage.getItem('token_ra'))
 		} 
 
-		apiIFBANK.post('/user/create', { data: JSON.stringify(data) }).then( (response) => {
+		apiIFBANK.post('/user/create', data).then( (response) => {
 			AsyncStorage.clear();
-			navigation.navigate(stageOfPage.nextPage);	
+			navigation.navigate("Login");	
 		})
 
 		

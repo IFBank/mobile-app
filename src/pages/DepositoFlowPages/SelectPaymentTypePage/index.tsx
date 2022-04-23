@@ -38,7 +38,8 @@ const SelectPaymentTypePage: React.FC = () => {
 					subTitle="Prático e instantâneo"
 					onPress={() => {
 						AsyncStorage.getItem("deposito_data").then( (data) => {
-							apiIFBANK.post('/deposit/pix', {data: data}).then( (response) => {
+							const trueData = JSON.parse(data)
+							apiIFBANK.post('/deposit/pix', trueData).then( (response) => {
 								if(response.status != 200) return;
 
 								AsyncStorage.setItem("pix_data", response.data).then( () => navigation.navigate("Pix"));
