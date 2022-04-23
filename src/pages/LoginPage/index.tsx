@@ -34,10 +34,10 @@ const LoginPage: React.FC = () => {
 
 	const handleLogin = useCallback((data: object) => {
 	
-		apiIFBANK.post('/user/authenticate', {data: JSON.stringify(data)}).then( (response) => {
+		apiIFBANK.post('/user/authenticate', data).then( (response) => {
 			if(response.status != 200) return;
 
-			const data = JSON.parse(response.data);
+			const data = response.data;
 			setAuthToken(data.token)
 
 			apiIFBANK.get('/user').then( (r) => {
