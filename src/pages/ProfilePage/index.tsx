@@ -75,13 +75,13 @@ const ProfilePage = () => {
 
 								onPress = {
 									() => {
-										setCacheState(null);
+										setAuth(null);
 										AsyncStorage.clear();
 									}
 								}
 							/>
 							<Button 
-								text="Noturno"
+								text={ themeState == 'dark' ? "Noturno":"Claro"}
 								textFontSize={20}
 								textColor={theme.linear.neutral[0]}
 								borderRadius={30}
