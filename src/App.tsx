@@ -29,7 +29,7 @@ const App: React.FC  = ( ) => {
 	const authToken = useCacheState('auth_token');
 	const userData = useCacheState('user_data');
 	const hiddenSaldo = useCacheState('hiddenSaldo');
-	const itemsShop = useCacheState('items_shop', []);
+	const itemsShop = useCacheState<any[]>('items_shop', []);
 	
 	const cacheContextValue = {
 		'auth_token': authToken,
