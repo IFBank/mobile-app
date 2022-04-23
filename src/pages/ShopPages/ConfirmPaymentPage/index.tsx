@@ -42,7 +42,7 @@ const ConfirmPaymentPage: React.Fc = () => {
 			return newObj
 		}, {})
 
-		apiIFBANK.post('/order/create', {data: JSON.stringify(data)}).then( (r) => {
+		apiIFBANK.post('/order/create', data).then( (r) => {
 			if (r.status != 200) return;
 			navegation.navigate("HomeApp");
 		})
