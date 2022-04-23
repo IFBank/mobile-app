@@ -1,4 +1,4 @@
-import React,{ useContext, useCallback }from 'react';
+import React,{ useContext, useCallback, useEffect, useState, useMemo}from 'react';
 
 import { Modal, Text, ScrollView} from "react-native";
 
@@ -18,6 +18,8 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 
 	if(!modalVisible ) return null;
 
+	const [total, setTotal] = useState(0);
+
 	const theme = useContext(ThemeContext);
 
 	const navigation = useNavigation();
@@ -28,13 +30,27 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 
 	const createDeleteItem = useCallback( (itemId) => {
 		return () => {
-			setItemsShop( (prevState) => {
-				return prevState.filter( (item) => {
+			const stateFilter = (prevState) => {
+				return prevState.filter( ({item_id}) => {
 					return item_id != itemId
 				})
-			})
+			}
+			setItemsShop( stateFilter(itemsShop))
 		}
-	}, []) 
+	}, [itemsShop]) 
+
+	const calculateTotal = (items) => {
+		const total = items.reduce( (newObj, item) => {
+			const {amount, price} = item;
+			return newObj + amount*price;
+		}, 0);
+
+		setTotal(total);
+	}
+
+	useMemo(() => {
+		calculateTotal(itemsShop)
+	}, [itemsShop])
 
 	const renderItem = ({item}) => (
 		<ItemShopBox 
@@ -68,7 +84,7 @@ const ModalShopCarrinho: React.FC = ({ onRequestClose, modalVisible }) => {
 					/>
 						
 					
-					<LeadingText fontFamilyName="Bold" textName="Total" textValue="R$ 4,00" integerValue={4} valueColor={theme.linear.primary[0]} />
+					<LeadingText fontFamilyName="Bold" textName="Total" textValue={`R$ ${total}`} integerValue={total} valueColor={theme.linear.primary[0]} />
 
 					<ActionButtonsContainer>
 						<ClearButton 
