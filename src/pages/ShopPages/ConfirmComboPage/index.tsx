@@ -92,7 +92,7 @@ const ConfirmComboPage: React.Fc = () => {
 				<UnderLineTitle textColor={theme.text.title}>Pedido</UnderLineTitle>			
 
 				<FlatList 
-					data={dataFilter}
+					data={itemsShop}
 					renderItem={renderItem}
 					keyExtractor={item => item.item_id}
 				/>
