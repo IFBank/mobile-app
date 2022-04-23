@@ -10,7 +10,7 @@ import { ThemeContext } from '../../themes'
 import useCacheContext from '../../hooks/useCacheContext';
 
 import LeadingText from "../LeadingText"
-import Item from "./Item"
+import ItemShopBox from "./Item"
 
 import { Container, ModalContainer, CloseIcon, ModalTitle, ItemsConteiner, ActionButtonsContainer, ClearButton, ComboButton ,MakeOrderButton } from "./styles";
 
