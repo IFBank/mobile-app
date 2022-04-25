@@ -81,7 +81,7 @@ const ProfilePage = () => {
 								}
 							/>
 							<Button 
-								text={ themeState == 'dark' ? "Noturno":"Claro"}
+								text={ themeState != 'dark' ? "Noturno":"Claro"}
 								textFontSize={20}
 								textColor={theme.linear.neutral[0]}
 								borderRadius={30}
