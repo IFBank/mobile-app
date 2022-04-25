@@ -46,14 +46,19 @@ const DashboardPage: React.FC = () => {
 
 	// TODO: Modals
 
-	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/list', fetcher)
+	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/history', fetcher)
 	// const { data: dataDeposito, error: errorDeposito} = useSWR('/order/list', fetcher)
 	const dataDeposito = undefined;
 	// AINDÃ NÃO TEM API NO BACK END PRA ISSO
 
-	const renderItemPedido = ({item}) => (
-		<BoxPedido orderName={item.name} value={null} endDate={item.withdraw_date}/>
-	)
+	const renderItemPedido = ({item}) => {
+
+		const value = item.order.order_item.map( ({amount, item:{price}}) => {
+			return amount*price;
+		}).reduce( (value, obj) => (obj+value), 0)
+
+		return (<BoxPedido orderName={item.order.name} value={value} endDate={item.retired_date}/>)
+	}
 
 	const renderItemDeposito = ({item}) => (
 		<BoxDeposito orderName={item.name} value={null} endDate={item.withdraw_date}/>
