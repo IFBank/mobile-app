@@ -39,7 +39,7 @@ const BoxContainer: React.FC<BoxContainerProps> = ({comboName, comboItems}) => {
 	});
 
 	return (
-		<Container outerStyle={{margin: 16, marginLeft: 0, marginTop: 0}} gradientColor={ (total - saldoAtual) >= ? "secondary" : "semantic_red"}>
+		<Container outerStyle={{margin: 16, marginLeft: 0, marginTop: 0}} gradientColor={ (saldoAtual - total ) >= 0 ? "secondary" : "semantic_red"}>
 
 			<CloseIcon borderColor={theme.background}>
 				<Icon onPress={onClickClose} name="close" size={16} color={theme.background}/>
