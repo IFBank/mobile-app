@@ -71,9 +71,9 @@ export const stages = {
 			inputs: [
 				{
 					headerText: "Insira seu nome de exibição (Apelido)",
-					name:"nickname",
+					name:"name",
 					autoCorrect: false,
-					returnKeyType: "done"
+					returnKeyType: "next"
 				},
 				{
 					headerText: "Insira sua senha",
