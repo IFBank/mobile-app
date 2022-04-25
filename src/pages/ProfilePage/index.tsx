@@ -44,7 +44,7 @@ const ProfilePage = () => {
 					<Form initialData={userData}>
 						
 						<Input 
-							name='nickname' headerText="Apelido" 
+							name='name' headerText="Apelido" 
 						/>	
 						<Input 
 							name='email' 
