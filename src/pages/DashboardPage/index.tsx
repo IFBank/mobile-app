@@ -31,6 +31,8 @@ const fetcher = url => apiIFBANK.get(url).then(res => res.data)
 const DashboardPage: React.FC = () => {
 	const navigation = useNavigation();
 
+	const [ orderSelect, setOrderSelect ] = useState(null);
+
 	const [ modalPedido, setModalPedido ] = useState(false)
 	const [ modalEstatistica, setModalEstatistica ] = useState(false)
 
@@ -57,7 +59,15 @@ const DashboardPage: React.FC = () => {
 			return amount*price;
 		}).reduce( (value, obj) => (obj+value), 0)
 
-		return (<BoxPedido orderName={item.order.name} value={value} endDate={item.retired_date}/>)
+		return (<BoxPedido 
+			orderName={item.order.name} 
+			value={value} 
+			endDate={item.retired_date} 
+			onPressButton={() => {
+				setOrderSelect(item);
+				setModalPedido(true);
+			}}/>
+		)
 	}
 
 	const renderItemDeposito = ({item}) => (
@@ -68,7 +78,7 @@ const DashboardPage: React.FC = () => {
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
 			<Container style={{flex: 1}}>
 				<ModalEstatiticaCompras modalVisible={modalEstatistica} onRequestClose={onRequestCloseEsatistica} />
-				<ModalInfoPedido modalVisible={modalPedido} onRequestClose={onRequestClosePedido} />
+				<ModalInfoPedido modalVisible={modalPedido} onRequestClose={onRequestClosePedido} orderSelect={orderSelect} />
 
 				<ContentSection>
 
