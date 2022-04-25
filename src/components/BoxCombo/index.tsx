@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from "react";
+import React, { useContext, useCallback, useState } from "react";
 
 import { View } from 'react-native';
 
@@ -20,6 +20,14 @@ interface BoxContainerProps {
 
 const BoxContainer: React.FC<BoxContainerProps> = ({comboName, comboItems}) => {
 
+	const [saldoAtual, setSaldoAtual] = useState(0)
+
+	apiIFBANK.get('/wallet/money').then( (response) => {
+		if(response.status != 200) return;
+
+		setSaldoAtual(response.data.money)
+	})
+
 	const theme = useContext(ThemeContext);
 
 	let total = 0.00;
@@ -31,7 +39,7 @@ const BoxContainer: React.FC<BoxContainerProps> = ({comboName, comboItems}) => {
 	});
 
 	return (
-		<Container outerStyle={{margin: 16, marginLeft: 0, marginTop: 0}} gradientColor="secondary">
+		<Container outerStyle={{margin: 16, marginLeft: 0, marginTop: 0}} gradientColor={ (total - saldoAtual) >= ? "secondary" : "semantic_red"}>
 
 			<CloseIcon borderColor={theme.background}>
 				<Icon onPress={onClickClose} name="close" size={16} color={theme.background}/>
