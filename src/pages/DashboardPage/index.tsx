@@ -31,6 +31,8 @@ const fetcher = url => apiIFBANK.get(url).then(res => res.data)
 const DashboardPage: React.FC = () => {
 	const navigation = useNavigation();
 
+	const [ orderSelect, setOrderSelect ] = useState(null);
+
 	const [ modalPedido, setModalPedido ] = useState(false)
 	const [ modalEstatistica, setModalEstatistica ] = useState(false)
 
@@ -46,14 +48,27 @@ const DashboardPage: React.FC = () => {
 
 	// TODO: Modals
 
-	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/list', fetcher)
+	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/history', fetcher)
 	// const { data: dataDeposito, error: errorDeposito} = useSWR('/order/list', fetcher)
 	const dataDeposito = undefined;
 	// AINDÃ NÃO TEM API NO BACK END PRA ISSO
 
-	const renderItemPedido = ({item}) => (
-		<BoxPedido orderName={item.name} value={null} endDate={item.withdraw_date}/>
-	)
+	const renderItemPedido = ({item}) => {
+
+		const value = item.order.order_item.map( ({amount, item:{price}}) => {
+			return amount*price;
+		}).reduce( (value, obj) => (obj+value), 0)
+
+		return (<BoxPedido 
+			orderName={item.order.name} 
+			value={value} 
+			endDate={item.retired_date} 
+			onPressButton={() => {
+				setOrderSelect(item);
+				setModalPedido(true);
+			}}/>
+		)
+	}
 
 	const renderItemDeposito = ({item}) => (
 		<BoxDeposito orderName={item.name} value={null} endDate={item.withdraw_date}/>
@@ -63,7 +78,7 @@ const DashboardPage: React.FC = () => {
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
 			<Container style={{flex: 1}}>
 				<ModalEstatiticaCompras modalVisible={modalEstatistica} onRequestClose={onRequestCloseEsatistica} />
-				<ModalInfoPedido modalVisible={modalPedido} onRequestClose={onRequestClosePedido} />
+				<ModalInfoPedido modalVisible={modalPedido} onRequestClose={onRequestClosePedido} orderSelect={orderSelect} />
 
 				<ContentSection>
 

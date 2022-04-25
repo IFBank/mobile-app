@@ -10,15 +10,26 @@ import LeadingText from '../LeadingText'
 
 import { Container, ModalContainer, CloseIcon, PedidoTitle, PedidoInfoText, PedidoInfo} from "./styles";
 
-const ModalInfoPedido: React.FC = ({ onRequestClose, modalVisible, idPedido="teste" }) => {
+const ModalInfoPedido: React.FC = ({ onRequestClose, modalVisible, orderSelect }) => {
+
+	if(orderSelect == null) return null;
+
 	const theme = useContext(ThemeContext);
 
-	const [pedidoData, setPedidoData] = useState({isConfirmed: false, items: [{name: "coxinha", price: 10.80}, {name: "coxinha", price: 10.80}], total: 21.60});
+	const [total, setTotal] = useState(0);
 
 	// TODO: Deixar os dados dinamicos
 	useEffect(() => {
-		// TODO: get pedido data and put on state
-	}, [])
+
+		if(orderSelect == null) return;
+
+		const totalValue = orderSelect.order.order_item.map( ({amount, item:{price}}) => {
+			return amount*price;
+		}).reduce( (value, obj) => (obj+value), 0)
+
+		setTotal(totalValue);
+
+	}, [orderSelect])
 
 	return (
 		<Modal
@@ -28,30 +39,32 @@ const ModalInfoPedido: React.FC = ({ onRequestClose, modalVisible, idPedido="tes
 			onRequestClose={onRequestClose}
 		>
 			<Container>
-				<ModalContainer gradientColor={pedidoData.isConfirmed ? "primary" : "semantic_red"}>
+				<ModalContainer gradientColor={orderSelect.retired_date ? "primary" : "semantic_red"}>
 					<CloseIcon>
 						<Icon onPress={onRequestClose} name="close" size={20} color="#000"/>
 					</CloseIcon>
-					<PedidoTitle textColor={pedidoData.isConfirmed ? theme.linear.primary[0] : theme.linear.semantic_red[0]}>
-						{"PEDIDO SEI LA"}
+					<PedidoTitle textColor={orderSelect.retired_date ? theme.linear.primary[0] : theme.linear.semantic_red[0]}>
+						{`PEDIDO ${orderSelect.order.name}`}
 					</PedidoTitle>
 
 					
 					{
-						pedidoData.items.map( (value, key) => {
-							return (<LeadingText key={key} textName={value.name} textValue={`R$ ${value.price}`} integerValue={value.price}/>)	
+						orderSelect.order.order_item.map( (item, key) => {
+							console.log(item)
+							const value = item.amount * item.item.price;
+							return (<LeadingText key={key} textName={item.item.name} textValue={`R$ ${value}`} integerValue={value}/>)	
 						})
 						
 					}
 
-					<LeadingText textName="Valor" textValue={`R$ ${pedidoData.total}`} integerValue={pedidoData.total} valueColor={theme.linear.primary[0]}/>
+					<LeadingText textName="Valor" textValue={`R$ ${total}`} integerValue={total} valueColor={theme.linear.primary[0]}/>
 
 					<PedidoInfoText textColor={theme.text.text}>
-						Data: <PedidoInfo textColor={theme.text.text}>{"data datosa"}</PedidoInfo>
+						Data: <PedidoInfo textColor={theme.text.text}>{orderSelect.retired_date}</PedidoInfo>
 					</PedidoInfoText>
 
 					<PedidoInfoText textColor={theme.text.text}>
-						Status: <PedidoInfo textColor={pedidoData.isConfirmed ? theme.linear.primary[0] : theme.linear.semantic_red[0]}>{"esado dele"}</PedidoInfo>
+						Status: <PedidoInfo textColor={orderSelect.retired_date ? theme.linear.primary[0] : theme.linear.semantic_red[0]}>{"A ser implementado"}</PedidoInfo>
 					</PedidoInfoText>
 				</ModalContainer>
 			</Container>

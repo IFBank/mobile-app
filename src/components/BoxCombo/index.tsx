@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 
 import { View } from 'react-native';
 
 import { ThemeContext } from '../../themes.ts'
+import { apiIFBANK } from '../../services/api'
 
 import LeadingText from '../LeadingText'
 import GenericButton from '../Button'
 
-import { Container, Title, VencimentoText, VencimentoDate, TotalOrderContainer} from "./styles"
+import Icon from "react-native-vector-icons/MaterialIcons"
+
+import { Container, CloseIcon, Title, VencimentoText, VencimentoDate, TotalOrderContainer} from "./styles"
 
 interface BoxContainerProps {
 	children: any;
@@ -23,9 +26,16 @@ const BoxContainer: React.FC<BoxContainerProps> = ({comboName, comboItems}) => {
 
 	comboItems.forEach( ({amount, item: {price}}) => {total += amount*price} )
 
+	const onClickClose = useCallback( () => {
+		// TODO: Delete combo
+	});
 
 	return (
-		<Container outerStyle={{margin: 16, marginLeft: 0, marginTop: 0}} gradientColor="white">
+		<Container outerStyle={{margin: 16, marginLeft: 0, marginTop: 0}} gradientColor="secondary">
+
+			<CloseIcon borderColor={theme.background}>
+				<Icon onPress={onClickClose} name="close" size={16} color={theme.background}/>
+			</CloseIcon>
 			<Title>Combo {comboName}</Title>
 
 			<View>

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 
 import { ThemeContext } from '../../themes.ts'
 
+import { useNavigation } from '@react-navigation/native';
+
 import LeadingText from '../LeadingText'
 import GenericButton from '../Button'
 
@@ -13,7 +15,8 @@ interface BoxContainerProps {
 	outerStyle? : any;
 }
 
-const BoxContainer: React.FC<BoxContainerProps> = ({orderName, value, endDate}) => {
+const BoxContainer: React.FC<BoxContainerProps> = ({orderName, value, endDate, onPressButton}) => {
+	const navigation = useNavigation();
 
 	const theme = useContext(ThemeContext);
 
@@ -41,6 +44,10 @@ const BoxContainer: React.FC<BoxContainerProps> = ({orderName, value, endDate}) 
 
 				style={{marginHorizontal: 36, marginVertical: 6}}
 				innerStyle={{paddingVertical: 6}}
+
+				onPress={onPressButton || (() => {
+									navigation.navigate('Dashboard')
+								})}
 				/>
 		</Container>
 	)
