@@ -66,7 +66,7 @@ const AppRoutes: React.FC = () => {
 
 	useEffect( () => {
 		console.log(`Value of Login: ${authToken != undefined}`)
-		setIsLogged( authToken != undefined);
+		setIsLogged( (authToken != undefined) && (authToken != ''));
 	}, [authToken]);
 
 	// TODO: SplashScreen or some loading

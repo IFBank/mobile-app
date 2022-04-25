@@ -75,7 +75,7 @@ const ProfilePage = () => {
 
 								onPress = {
 									() => {
-										setAuth(null);
+										setAuth('');
 										AsyncStorage.clear();
 									}
 								}
