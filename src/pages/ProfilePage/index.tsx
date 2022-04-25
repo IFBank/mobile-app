@@ -17,6 +17,8 @@ const ProfilePage = () => {
 	const theme = useContext(ThemeContext)
 
 	const {setCacheState: setAuth} = useCacheContext('auth_token');
+	const {state: userData} = useCacheContext('user_data');
+
 	const {state: themeState, setCacheState: setTheme} = useCacheContext('theme');
 
 	return (
@@ -39,17 +41,17 @@ const ProfilePage = () => {
 						
 					</ImageContainer>
 
-					<Form>
+					<Form initialData={userData}>
 						
 						<Input 
-							name='nickname' headerText="Apelido" 
+							name='name' headerText="Apelido" 
 						/>	
 						<Input 
 							name='email' 
 							headerText="E-mail" 
 						/>	
 						<Input 
-							name='password' 
+							name='new-password' 
 							headerText="Senha" 
 						/>	
 						<Input 

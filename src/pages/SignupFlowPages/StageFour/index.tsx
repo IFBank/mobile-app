@@ -25,12 +25,13 @@ const StageFour: React.FC = () => {
 		let formData =  AsyncStorage.getItem('perfil_cadastro')
 		formData =  JSON.parse(formData);
 
-		const ra =  AsyncStorage.getItem('ra');
-
+		const ra =  await AsyncStorage.getItem('ra');
+		const ra_token =  await AsyncStorage.getItem('token_ra');
+		
 		const data = {
 			... formData,
 			['ra']: ra,
-			['ra_token']: (await AsyncStorage.getItem('token_ra'))
+			['ra_token']: ra_token
 		} 
 
 		apiIFBANK.post('/user/create', data).then( (response) => {
