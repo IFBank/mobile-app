@@ -25,7 +25,7 @@ const BoxContainer: React.FC<BoxContainerProps> = ({comboName, comboItems}) => {
 
 
 	return (
-		<Container outerStyle={{margin: 16, marginLeft: 0, marginTop: 0}} gradientColor="white">
+		<Container outerStyle={{margin: 16, marginLeft: 0, marginTop: 0}} gradientColor="secondary">
 			<Title>Combo {comboName}</Title>
 
 			<View>
