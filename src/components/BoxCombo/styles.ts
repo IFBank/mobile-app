@@ -14,6 +14,20 @@ export const Container = styled(BoxContainer)`
     max-width: 300px;
 `;
 
+export const CloseIcon = styled.View`
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    border-width: 1px;
+    border-radius: 12px;
+
+    border-color: ${ ({borderColor}) => borderColor};
+
+    align-items: center;
+    justify-content: center;
+`;
+
 export const Title = styled.Text`
     font-family: ${fonts.title.bold};
     color: #FFF;
