@@ -19,11 +19,18 @@ const fetcher = url => apiIFBANK.get(url).then(res => res.data)
 
 const numberToRealString: string = (value: Number, hideSaldo) => {
 
-	if (hideSaldo){
+	if (hideSaldo ){
 		return "*****"
 	}
 
-	let stringValue = value.toString();
+	let stringValue;
+
+	try{
+		 stringValue= value.toString();	
+	}catch(e){
+		return `R$ 0,00`
+	}
+	
 
 	const [integerPart, floatPart] = stringValue.includes('.') ? stringValue.split('.') : [stringValue, '00']
 
@@ -41,13 +48,11 @@ const BoxSaldo: React.FC<BoxSaldoProps> = ({ ... rest}) => {
 
 	const { state: hideSaldo } = useCacheContext('hiddenSaldo');
 
-	const value = !hideSaldo ? 0 : dataMoney?.money;
-
 	// TODO: Implement Blur
 
 	return (
 		<BoxContainer { ... rest} >
-			<LeadingTextStyled fontSize={16} textName="Saldo Atual" textValue={numberToRealString(value, hideSaldo)} integerValue={value}/>
+			<LeadingTextStyled fontSize={16} textName="Saldo Atual" textValue={numberToRealString(dataMoney?.money, hideSaldo)} integerValue={dataMoney?.money}/>
 
 			<StyledButton 
 				text="Fazer um deposito"

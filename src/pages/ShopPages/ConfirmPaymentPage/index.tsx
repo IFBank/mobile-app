@@ -19,7 +19,7 @@ const ConfirmPaymentPage: React.Fc = () => {
 	const [total, setTotal] = useState(0);
 	const [saldo, setSaldo] = useState(0.00);
 
-	const { state: itemsShop } = useCacheContext('items_shop');
+	const { state: itemsShop, setCacheState: setItemsShop } = useCacheContext('items_shop');
 
 	const theme = useContext(ThemeContext);
 
@@ -44,6 +44,7 @@ const ConfirmPaymentPage: React.Fc = () => {
 
 		apiIFBANK.post('/order/create', data).then( (r) => {
 			if (r.status != 200) return;
+			setItemsShop([])
 			navegation.navigate("HomeApp");
 		})
 		
@@ -57,7 +58,7 @@ const ConfirmPaymentPage: React.Fc = () => {
 		let total = 0.00;
 
 		itemsShop.forEach( (item) => {
-			total = item.amout * item.price
+			total += item.amount * item.price
 		}) 
 
 		setTotal(total);
@@ -79,11 +80,11 @@ const ConfirmPaymentPage: React.Fc = () => {
 
 					{
 						itemsShop.map( (item, index) => {
-							const {amout, name, item_id, price} = item;
+							const {amount, name, item_id, price} = item;
 							mB = index == (itemsShop.lenght - 1) ? 20 : 16
 
 							return (
-								<LeadingText textName={`${amout} ${name}`} textValue={`R$ ${price}`}  style={{marginBottom: mB}} key={item_id}/>
+								<LeadingText textName={`${amount} ${name}`} textValue={`R$ ${price*amount}`}  style={{marginBottom: mB}} key={item_id}/>
 							)
 						})
 					}

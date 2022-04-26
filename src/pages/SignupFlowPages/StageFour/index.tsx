@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useRef} from "react";
+import React, { useState, useCallback, useRef, useEffect} from "react";
+
+import { useNavigation } from '@react-navigation/native';
 
 import BaseScreen from '../BaseScreen';
 
@@ -20,9 +22,11 @@ const StageFour: React.FC = () => {
 
 	const formRef = useRef<FormHandles>(null)
 
+	const navigation = useNavigation();
+
 	const extraAction = useCallback(async () => {
 
-		let formData =  AsyncStorage.getItem('perfil_cadastro')
+		let formData = await AsyncStorage.getItem('perfil_cadastro')
 		formData =  JSON.parse(formData);
 
 		const ra =  await AsyncStorage.getItem('ra');
@@ -43,6 +47,10 @@ const StageFour: React.FC = () => {
 	}, []) 
 
 	const {handleSubmit, errors} = useHandleSubmitCadastro("perfil_cadastro", "perfil", extraAction);
+
+	useEffect( () => {
+		formRef.current.setErrors(errors);
+	}, [errors])
 
 	return (
 		<StageContext.Provider

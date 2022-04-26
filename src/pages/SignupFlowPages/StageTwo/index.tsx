@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useRef} from "react";
+import React, { useState, useCallback, useRef, useEffect} from "react";
+
+import { useNavigation } from '@react-navigation/native';
 
 import BaseScreen from '../BaseScreen';
 
@@ -18,16 +20,22 @@ const StageTwo: React.FC = () => {
 	const stageNumber = 1;
 	const stageOfPage = stages.stagesList[stageNumber];	
 
+	const navigation = useNavigation();
+
 	const formRef = useRef<FormHandles>(null)
 
 	const extraAction = useCallback(async () => {
 		// TODO: chamar a api
 		const data = await AsyncStorage.getItem("ra_cadastro")
 
-		apiIFBANK.post('/ifms/validate', data).then( (response) => {
-			const {data: dataRespose, status} = response;
+		console.log(data)
+
+		apiIFBANK.post('/ifms/validate', JSON.parse(data)).then( (response) => {
+			const {status} = response;
 
 			if(status != 200) return;
+
+			console.log(response.data)
 
 			AsyncStorage.setItem("token_ra", response.data.token_ra)
 
@@ -38,6 +46,10 @@ const StageTwo: React.FC = () => {
 	}, []) 
 
 	const {handleSubmit, errors: validateErrors} = useHandleSubmitCadastro("ra_cadastro", "ra_dados", extraAction);
+
+	useEffect( () => {
+		formRef.current.setErrors(validateErrors);
+	}, [validateErrors])
 
 	return (
 		<StageContext.Provider

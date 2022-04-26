@@ -15,7 +15,8 @@ export const stages = {
 					name: 'ra',
 					autoCorrect: false,
 					keyboardType: "number-pad",
-					returnKeyType: "done"
+					returnKeyType: "done",
+					placeholder: "000000"
 				}
 			]
 		},
@@ -29,18 +30,22 @@ export const stages = {
 				{
 					headerText: "Insira seu nome completo",
 					name: 'name',
-					returnKeyType: "next"
+					returnKeyType: "next",
+					placeholder: "NOME COMPLETO"
 				},
 				{
 					headerText: "Insira seu CPF",
 					name: 'cpf',
 					keyboardType: "number-pad",
-					returnKeyType: "next"
+					returnKeyType: "next",
+					placeholder: "00000000000"
 				},
 				{
 					headerText: "Insira sua data de nascimento",
 					name: 'born_date',
-					returnKeyType: "done"
+					keyboardType: "number-pad",
+					returnKeyType: "done",
+					placeholder: "2000-12-30"
 				},
 			]
 		},
@@ -57,7 +62,8 @@ export const stages = {
 					keyboardType: "email-address",
 					autoCapitalize: 'none',
 					autoCorrect: false,
-					returnKeyType: "done"
+					returnKeyType: "done",
+					placeholder: "nome.sobrenome@estudante.ifms.edu.br"
 				},
 			]
 		},

@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useRef} from "react";
+import React, { useState, useCallback, useRef, useEffect} from "react";
+
+import { useNavigation } from '@react-navigation/native';
 
 import BaseScreen from '../BaseScreen';
 
@@ -17,11 +19,17 @@ const StageThree: React.FC = () => {
 
 	const formRef = useRef<FormHandles>(null)
 
+	const navigation = useNavigation();
+
 	const extraAction = useCallback(() => {
 		navigation.navigate(stageOfPage.nextPage);
 	}, []) 
 
 	const {handleSubmit, errors} = useHandleSubmitCadastro("perfil_cadastro", "mail", extraAction);
+
+	useEffect( () => {
+		formRef.current.setErrors(errors);
+	}, [errors])
 
 	return (
 		<StageContext.Provider

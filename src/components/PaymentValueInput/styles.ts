@@ -17,6 +17,8 @@ export const InputStyled = styled.TextInput`
 	padding: 0px;
 	padding-left: 2px;
 	width: 100px;
+
+	font-size: 24px;
 `;
 
 export const HeaderInput = styled.Text`

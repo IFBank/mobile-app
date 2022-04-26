@@ -4,6 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useNavigation } from '@react-navigation/native';
 
+import validations from '../validations'
+
 const saveToItemCache = async (itemCacheName, data) => {
 	const valueString = await AsyncStorage.getItem(itemCacheName);
 
@@ -17,29 +19,48 @@ const saveToItemCache = async (itemCacheName, data) => {
 
 }
 
-const validateForm = (page, data) => {
+const validateForm = async (page, data) => {
 
-	return {
-		hasErrors: false,
-		errors: ['teste']
+	try{
+		await validations[page].validate(data, {
+			abortEarly: false,
+		});
+
+		return {
+			hasErrors: false,
+			errors: {}
+		}
+
+	}catch(err){
+		const validationErrors = {};
+
+		err.inner.forEach(error => {
+        	validationErrors[error.path] = error.message;
+        });
+
+		return {
+			hasErrors: true,
+			errors: validationErrors
+		}
 	}
+
 }
 
 export default function useHandleSubmitCadastro(itemCacheName, pageForm, extraAction = () => {}) {
-	const [ errors, setErrors ] = useState(null);
+	const [ errors, setErrors ] = useState({});
 
 	// const navigation = useNavigation();
 
 	const handleSubmit = useCallback( async (data) => {
 
-		const result = validateForm(pageForm, data);
+		const result = await validateForm(pageForm, data);
 
 		if(result.hasErrors){
 			setErrors(result.errors);
 			return;
 		}
 
-		setErrors(null);
+		setErrors({});
 
 		saveToItemCache(itemCacheName, data).then(extraAction)
 

@@ -24,6 +24,12 @@ export const HeaderInput = styled.Text`
 	font-family: ${ fonts.text.regular };
 `
 
+export const HeaderError = styled.Text`
+	font-size: 10px;
+	font-family: ${ fonts.text.regular };
+	color: red;
+`
+
 export const InputContainer = styled.View`
 	flex-direction: row;
 	width: 100%;
