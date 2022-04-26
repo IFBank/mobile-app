@@ -19,11 +19,18 @@ const fetcher = url => apiIFBANK.get(url).then(res => res.data)
 
 const numberToRealString: string = (value: Number, hideSaldo) => {
 
-	if (hideSaldo){
+	if (hideSaldo ){
 		return "*****"
 	}
 
-	let stringValue = value.toString();
+	let stringValue;
+
+	try{
+		 stringValue= value.toString();	
+	}catch(e){
+		return `R$ 0,00`
+	}
+	
 
 	const [integerPart, floatPart] = stringValue.includes('.') ? stringValue.split('.') : [stringValue, '00']
 
