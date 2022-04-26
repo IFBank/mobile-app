@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef} from "react";
+import React, { useState, useCallback, useRef, useEffect} from "react";
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -32,6 +32,10 @@ const StageOne: React.FC = () => {
 	}, []) 
 
 	const {handleSubmit, errors} = useHandleSubmitCadastro("ra_cadastro", "ra", extraAction);
+
+	useEffect( () => {
+		formRef.current.setErrors(errors);
+	}, [errors])
 
 	return (
 		<StageContext.Provider 

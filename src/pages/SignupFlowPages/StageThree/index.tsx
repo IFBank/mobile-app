@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef} from "react";
+import React, { useState, useCallback, useRef, useEffect} from "react";
 
 import BaseScreen from '../BaseScreen';
 
@@ -22,6 +22,10 @@ const StageThree: React.FC = () => {
 	}, []) 
 
 	const {handleSubmit, errors} = useHandleSubmitCadastro("perfil_cadastro", "mail", extraAction);
+
+	useEffect( () => {
+		formRef.current.setErrors(errors);
+	}, [errors])
 
 	return (
 		<StageContext.Provider

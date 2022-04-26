@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState, useCallback, useImperativeHandle, forwardRef } from 'react';
 
-import { TextInputProps } from "react-native"
+import { TextInputProps, View} from "react-native"
 import { useField } from '@unform/core'
 
-import { Container, InputStyled, HeaderInput, IconStyled, InputContainer} from "./styles";
+import { Container, InputStyled, HeaderInput, HeaderError, IconStyled, InputContainer} from "./styles";
 
 
 interface InputProps extends TextInputProps{
@@ -61,9 +61,17 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = ({ name, heade
 
 	return (
 		<Container style={style} isFocused={isFocused}>
+		<View style={{flexDirection: 'row', alignItems: "center", justifyContent: "space-between"}}>
 			<HeaderInput>
 				{headerText}
 			</HeaderInput>
+			{
+				error && <HeaderError>
+					{error}
+				</HeaderError>
+			}
+		</View>
+			
 			<InputContainer>
 				<InputStyled
 					ref={inputElementRef}

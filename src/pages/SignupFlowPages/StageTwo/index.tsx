@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef} from "react";
+import React, { useState, useCallback, useRef, useEffect} from "react";
 
 import BaseScreen from '../BaseScreen';
 
@@ -24,7 +24,9 @@ const StageTwo: React.FC = () => {
 		// TODO: chamar a api
 		const data = await AsyncStorage.getItem("ra_cadastro")
 
-		apiIFBANK.post('/ifms/validate', data).then( (response) => {
+		console.log(data)
+
+		apiIFBANK.post('/ifms/validate', JSON.parse(data)).then( (response) => {
 			const {data: dataRespose, status} = response;
 
 			if(status != 200) return;
@@ -38,6 +40,10 @@ const StageTwo: React.FC = () => {
 	}, []) 
 
 	const {handleSubmit, errors: validateErrors} = useHandleSubmitCadastro("ra_cadastro", "ra_dados", extraAction);
+
+	useEffect( () => {
+		formRef.current.setErrors(validateErrors);
+	}, [validateErrors])
 
 	return (
 		<StageContext.Provider
