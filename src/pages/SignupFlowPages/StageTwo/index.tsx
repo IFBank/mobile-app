@@ -1,5 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect} from "react";
 
+import { useNavigation } from '@react-navigation/native';
+
 import BaseScreen from '../BaseScreen';
 
 import { Form } from "@unform/mobile"
@@ -18,6 +20,8 @@ const StageTwo: React.FC = () => {
 	const stageNumber = 1;
 	const stageOfPage = stages.stagesList[stageNumber];	
 
+	const navigation = useNavigation();
+
 	const formRef = useRef<FormHandles>(null)
 
 	const extraAction = useCallback(async () => {
@@ -27,9 +31,11 @@ const StageTwo: React.FC = () => {
 		console.log(data)
 
 		apiIFBANK.post('/ifms/validate', JSON.parse(data)).then( (response) => {
-			const {data: dataRespose, status} = response;
+			const {status} = response;
 
 			if(status != 200) return;
+
+			console.log(response.data)
 
 			AsyncStorage.setItem("token_ra", response.data.token_ra)
 

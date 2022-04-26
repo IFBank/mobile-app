@@ -1,5 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect} from "react";
 
+import { useNavigation } from '@react-navigation/native';
+
 import BaseScreen from '../BaseScreen';
 
 import { Form } from "@unform/mobile"
@@ -16,6 +18,8 @@ const StageThree: React.FC = () => {
 	const stageOfPage = stages.stagesList[stageNumber];	
 
 	const formRef = useRef<FormHandles>(null)
+
+	const navigation = useNavigation();
 
 	const extraAction = useCallback(() => {
 		navigation.navigate(stageOfPage.nextPage);
