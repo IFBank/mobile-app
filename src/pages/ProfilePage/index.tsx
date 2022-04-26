@@ -51,15 +51,10 @@ const ProfilePage = () => {
 							headerText="E-mail" 
 						/>	
 						<Input 
-							name='new-password' 
+							name='password' 
 							headerText="Senha" 
 						/>	
-						<Input 
-							name='password-confirm' 
-							headerText="Confirme a senha" 
-							secureTextEntry={true} 
-						/>	
-
+					
 						<ButtonContainer>
 							<Button 
 								text="Sair"
