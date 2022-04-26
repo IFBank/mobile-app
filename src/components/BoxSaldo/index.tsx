@@ -41,13 +41,11 @@ const BoxSaldo: React.FC<BoxSaldoProps> = ({ ... rest}) => {
 
 	const { state: hideSaldo } = useCacheContext('hiddenSaldo');
 
-	const value = !hideSaldo ? 0 : dataMoney?.money;
-
 	// TODO: Implement Blur
 
 	return (
 		<BoxContainer { ... rest} >
-			<LeadingTextStyled fontSize={16} textName="Saldo Atual" textValue={numberToRealString(value, hideSaldo)} integerValue={value}/>
+			<LeadingTextStyled fontSize={16} textName="Saldo Atual" textValue={numberToRealString(dataMoney?.money, hideSaldo)} integerValue={dataMoney?.money}/>
 
 			<StyledButton 
 				text="Fazer um deposito"
