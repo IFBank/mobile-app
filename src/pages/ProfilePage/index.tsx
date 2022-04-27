@@ -44,13 +44,16 @@ const ProfilePage = () => {
 					<Form initialData={userData}>
 						
 						<Input 
+							editable={false}
 							name='name' headerText="Apelido" 
 						/>	
 						<Input 
+							editable={false}
 							name='email' 
 							headerText="E-mail" 
 						/>	
 						<Input 
+							editable={false}
 							name='password' 
 							headerText="Senha" 
 						/>	
