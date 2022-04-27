@@ -63,7 +63,13 @@ const PixPage: React.FC = () => {
 			/>
 
 			<QRCodeBox outerStyle={{marginHorizontal: 40}}>
-				<Image source={{uri: `data:image/png;base64,${pixData.qrCodeImage}`}} />
+				<Image 
+					style={{
+						width: 200,
+						height: 200
+					}}
+					source={{uri: `${pixData.qrCodeImage}`}} 
+				/>
 
 				<IconCircle circleBgColor={theme.linear.primary[0]}>
 					<Icon name="qr-code-scanner" size={40} color="#FFF"/>		

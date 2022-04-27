@@ -5,6 +5,8 @@ import { FormHandles } from "@unform/core"
 
 import { FlatList } from 'react-native'
 
+import { useNavigation } from '@react-navigation/native';
+
 import TopBackButton from '../../../components/TopBackButton';
 import TitleHeader from '../../../components/TitleHeader';
 import BoxContainer from '../../../components/BoxContainer';
@@ -53,6 +55,8 @@ const Item: React.FC = ({name, amount, avatar_url, theme}) => {
 // TODO: Keyboard avoid view
 
 const ConfirmComboPage: React.Fc = () => {
+
+	const navigation = useNavigation();
 
 	const theme = useContext(ThemeContext);
 

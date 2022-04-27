@@ -43,7 +43,7 @@ const LoginPage: React.FC = () => {
 			apiIFBANK.get('/user').then( (r) => {
 				if (r.status != 200) return;
 
-				setUserData(r.data);
+				setUserData(r.data.user);
 			})
 		})
 

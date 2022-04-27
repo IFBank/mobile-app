@@ -63,7 +63,7 @@ const ShopPage = () => {
 		<ItemShopBox 
 			nameItem={item.item.name}
 			price={item.item.price}
-			estoqueValue={item.item.amount}
+			estoqueValue={item.amount}
 			imageUrl={item.item.avatar_url}
 			onPress={() => { setSelectItem(item); setModalItem(true)}}
 		/>

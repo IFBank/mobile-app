@@ -34,6 +34,9 @@ const HomePage: React.FC = () => {
 	const { data: dataPedidos, error: errorPedidos} = useSWR('/order/list', fetcher)
 	const { data: dataCombo, error: errorCombo} = useSWR('/combo/list', fetcher)
 
+	const [showComboList, setShowComboList] =  useState(true);
+	const [showPedidoList, setShowPedidoList] =  useState(true);
+
 	// TODO: Renderização condicional para o flat list
 
 	const renderItemCombo = ({item}) => (
@@ -48,6 +51,40 @@ const HomePage: React.FC = () => {
 
 		return (<BoxPedido orderName={item.name} value={value} endDate={item.withdraw_date}/>)
 	}
+
+	useEffect(() => {
+
+		if(dataPedidos == undefined){
+			setShowPedidoList(true)
+			return;
+		}
+
+		if(Array.isArray(dataPedidos)){
+			if (dataPedidos.length == 0) {
+				setShowPedidoList(true)
+				return;
+			}
+			setShowPedidoList(false);
+			return;
+		}
+
+	}, [dataPedidos])
+
+	useEffect(() => {
+		if(dataCombo == undefined){
+			setShowComboList(true)
+			return;
+		}
+
+		if(Array.isArray(dataCombo)){
+			if (dataCombo.length == 0) {
+				setShowComboList(true)
+				return;
+			}
+			setShowComboList(false);
+			return;
+		}	
+	}, [dataCombo])
 
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
@@ -69,7 +106,7 @@ const HomePage: React.FC = () => {
 					/>
 
 					{
-					!!dataCombo == false  ? (<BoxHomeEmpty 
+					showComboList ? (<BoxHomeEmpty 
 						imageSource={imageEmptyCombos} 
 						mainText="Sem combos registrados!" 
 						subTitleText="Você pode registrá-los na finalização de seus pedidos!"
@@ -97,7 +134,7 @@ const HomePage: React.FC = () => {
 
 					{
 
-					!!dataPedidos == false ? (<BoxHomeEmpty 
+					showPedidoList ? (<BoxHomeEmpty 
 						imageSource={imageEmptyPedidos} 
 						mainText="Sem pedidos pendentes!" 
 						subTitleText="Vá a aba cantina e faça o seu!"

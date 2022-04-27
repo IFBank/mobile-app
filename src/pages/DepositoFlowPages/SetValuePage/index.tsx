@@ -28,9 +28,9 @@ const SetValuePage: React.FC = () => {
 
 	const navigation = useNavigation();
 
-	const handleFinishedInput = useCallback((data: object) => {
+	const handleFinishedInput = useCallback( async (data: object) => {
 		// TODO: consulta na API e ações necessarias
-		AsyncStorage.setItem("deposito_data", JSON.stringify(data));
+		await AsyncStorage.setItem("deposito_data", JSON.stringify(data));
 		// console.log(data)
 		navigation.navigate("SelectPaymentType")
 	}, [])
