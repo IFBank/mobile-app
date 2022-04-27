@@ -91,7 +91,7 @@ const DashboardPage: React.FC = () => {
 						marginBottomMain={0}
 					/>
 
-					{!!dataPedidos == false ? (<BoxDashboardEmpty 
+					{!dataPedidos?.length? (<BoxDashboardEmpty 
 						imageSource={imageEmptyPedidos} 
 						mainText="Nenhum pedido foi feito ainda!" 
 						gradientColor="secondary"
@@ -108,7 +108,7 @@ const DashboardPage: React.FC = () => {
 						marginBottomMain={0}
 					/>
 
-					{!!dataDeposito == false ? (<BoxDashboardEmpty 
+					{!dataDeposito?.length ? (<BoxDashboardEmpty 
 						imageSource={imageEmptyDepositos} 
 						mainText="Nenhum depósito foi feito ainda!" 
 					/>) : (<FlatList horizontal={true} data={dataDeposito}
