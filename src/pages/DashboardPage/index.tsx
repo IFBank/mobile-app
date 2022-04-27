@@ -53,6 +53,8 @@ const DashboardPage: React.FC = () => {
 	const dataDeposito = undefined;
 	// AINDÃ NÃO TEM API NO BACK END PRA ISSO
 
+	const [showPedidoList, setShowPedidoList] =  useState(true);
+
 	const renderItemPedido = ({item}) => {
 
 		const value = item.order.order_item.map( ({amount, item:{price}}) => {
@@ -73,6 +75,24 @@ const DashboardPage: React.FC = () => {
 	const renderItemDeposito = ({item}) => (
 		<BoxDeposito orderName={item.name} value={null} endDate={item.withdraw_date}/>
 	)
+
+	useEffect( () => {
+
+		if(dataPedidos == undefined){
+			setShowPedidoList(true)
+			return;
+		}
+
+		if(Array.isArray(dataPedidos)){
+			if (dataPedidos.length == 0) {
+				setShowPedidoList(true)
+				return;
+			}
+			setShowPedidoList(false);
+			return;
+		}
+		
+	}, [dataPedidos])
 
 	return (
 		<ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: theme.background }} >
