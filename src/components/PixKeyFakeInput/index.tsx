@@ -27,7 +27,7 @@ const PixKeyFakeInput: React.FC<InputProps> = ({headerText, content, ... rest}) 
 
 	return (
 		<Container {... rest}>
-			<TextShowStyled onLongPress={handleTextPress}>{content}</TextShowStyled>
+			<TextShowStyled numberOfLines={1} onLongPress={handleTextPress}>{content}</TextShowStyled>
 		</Container>
 	)
 
