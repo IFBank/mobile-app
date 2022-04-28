@@ -36,7 +36,8 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible, selectItem }) 
 
 		// Limpa do mesmo item
 
-		const newValue = itemsShop.filter(({item_id})=> selectItem.item_id == item_id ).push(newItem)
+		const newValue = itemsShop.filter(({item_id})=> selectItem.item_id == item_id )
+		newValue.push(newItem);
 
 		setItemsShop( newValue)
 
