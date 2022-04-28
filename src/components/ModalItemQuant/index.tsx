@@ -28,15 +28,13 @@ const ModalItemQuant: React.FC = ({ onRequestClose, modalVisible, selectItem }) 
 			
 		}
 
-		if(value == 0){
-			itemsShop
+		// Limpa a setagem do item que tava armazenada
+		// Tira da lista se o item_id no cache é o mesmo do que esta sendo setado, se não, deixa.
+		const newValue = itemsShop.filter(({item_id})=> selectItem.item_id != item_id )
 
-			return;
-		}
-
-		// Limpa do mesmo item
-
-		const newValue = itemsShop.filter(({item_id})=> selectItem.item_id == item_id ).push(newItem)
+		// Se o valor for diferente de zero, ele adiciona ao carrinho
+		// Se não, ele seta no carrinha sem o item.
+		if(value != 0) newValue.push(newItem);
 
 		setItemsShop( newValue)
 

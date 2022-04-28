@@ -36,16 +36,19 @@ const SelectPaymentTypePage: React.FC = () => {
 					iconName="pix" 
 					mainTitle="Pix" 
 					subTitle="Prático e instantâneo"
-					onPress={() => {
-						AsyncStorage.getItem("deposito_data").then( (data) => {
-							const trueData = JSON.parse(data)
-							apiIFBANK.post('/deposit/pix', trueData).then( (response) => {
-								if(response.status != 200) return;
+					onPress={async () => {
+						const stringData = await AsyncStorage.getItem("deposito_data");
+						const trueData = JSON.parse(stringData);
 
-								AsyncStorage.setItem("pix_data", response.data).then( () => navigation.navigate("Pix"));
-							});
-							AsyncStorage.removeItem("deposito_data");
-						})
+						AsyncStorage.removeItem("deposito_data");
+
+						apiIFBANK.post('/deposit/pix', trueData).then( (response) => {
+							if(response.status != 200) return;
+
+							AsyncStorage.setItem("pix_data", JSON.stringify(response.data))
+								.then( () => navigation.navigate("Pix"));
+						});
+							
 						
 					}}
 				/>
