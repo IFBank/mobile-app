@@ -32,21 +32,18 @@ const LoginPage: React.FC = () => {
 
 	const formRef = useRef<FormHandles>(null)
 
-	const handleLogin = useCallback((data: object) => {
-	
-		apiIFBANK.post('/user/authenticate', data).then( (response) => {
-			if(response.status != 200) return;
-
-			const data = response.data;
-			setAuthToken(data.token)
-
-			apiIFBANK.get('/user').then( (r) => {
-				if (r.status != 200) return;
-
-				setUserData(r.data.user);
-			})
-		})
-
+	const handleLogin = useCallback(async (data: object) => {
+	  const response = await apiIFBANK.post('/user/authenticate', data);
+    if(response.status != 200) return;
+    
+    const data = response.data;
+    setAuthToken(data.token)
+    
+    const r = await apiIFBANK.get('/user');
+    
+    if (r.status != 200) return;
+		setUserData(r.data.user);
+   
 	}, [])
 
 	return (
