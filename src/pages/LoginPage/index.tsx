@@ -29,6 +29,7 @@ import {
 import logoImage from "../../assets/Logo.png";
 
 const LoginPage: React.FC = () => {
+<<<<<<< HEAD
   const navigation = useNavigation();
   const theme = useContext(ThemeContext);
 
@@ -133,5 +134,116 @@ const LoginPage: React.FC = () => {
     </KeyboardAvoidingView>
   );
 };
+=======
+	const navigation = useNavigation();
+	const theme = useContext(ThemeContext)
+
+	const { setCacheState: setAuthToken } = useCacheContext('auth_token');
+	const { setCacheState: setUserData } = useCacheContext('user_data');
+
+	const formRef = useRef<FormHandles>(null)
+
+	const handleLogin = useCallback(async (data: object) => {
+	  const response = await apiIFBANK.post('/user/authenticate', data);
+    if(response.status != 200) return;
+    
+    const data = response.data;
+    setAuthToken(data.token)
+    
+    const r = await apiIFBANK.get('/user');
+    
+    if (r.status != 200) return;
+		setUserData(r.data.user);
+   
+	}, [])
+
+	return (
+		<KeyboardAvoidingView 
+			style={{ flex: 1 }}
+			behavior={Platform.OS === "ios" ? "padding" : undefined}
+			enabled
+		>
+			<ScrollView
+				keyboardShouldPersistTaps="handled"
+				contentContainerStyle={{ flexGrow: 1 }}
+			>
+				<Container colors={theme.linear.primary} start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
+					<LogoContainer>
+						<Image source={logoImage} style={{width:195, height:226}}/>
+					</LogoContainer>
+
+					<ContentContainer theme={theme}>
+					
+						<Title theme={theme}>
+							Login
+						</Title>
+				
+						<Form ref={formRef} onSubmit={handleLogin}>
+							
+							<Input 
+								name='email' 
+								headerText="Digite seu e-mail"
+								keyboardType="email-address" 
+								autoCapitalize="none"
+								autoCorrect={false}
+								returnKeyType="next" 
+								
+							/>
+
+							<Input 
+								name="password" 
+								headerText="Digite sua senha"
+								secureTextEntry={true}
+								returnKeyType="done" 
+							/>
+
+							<Button 
+								text="LOGIN"
+								textColor={theme.background}
+								textFontSize={16}
+								borderRadius={30}
+								innerStyle={{
+									paddingHorizontal: 80,
+									paddingVertical: 15,
+								}}
+								gradientColor="primary"
+
+								onPress={
+									() => {
+										formRef.current?.submitForm()
+									}
+								}
+							/>
+
+							<Button 
+								text="NÃO TENHO CADASTRO"
+								textColor={theme.linear.secondary[0]}
+								textFontSize={14}
+								borderRadius={30}
+								innerStyle={{
+									paddingHorizontal: 20,
+									paddingVertical: 15,
+									backgroundColor: theme.background
+								}}
+								gradientColor="secondary"
+
+								onPress={
+									() => {
+										navigation.navigate("CadastroFlow")
+									}
+								}
+							/>
+
+						</Form>
+						
+					</ContentContainer>
+					
+				</Container>
+			</ScrollView>
+		</KeyboardAvoidingView>
+			
+	)
+}
+>>>>>>> 51964b82a90041fce6021ad0251affa2220751c6
 
 export default LoginPage;
